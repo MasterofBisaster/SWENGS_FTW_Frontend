@@ -56,7 +56,7 @@ export function tokenGetter() {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
     MatTableModule,

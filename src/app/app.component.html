@@ -1,2 +1,17 @@
+
+<mat-toolbar>
+  <button mat-button [matMenuTriggerFor]="movieMenu">Event</button>
+  <mat-menu #movieMenu="matMenu">
+    <button mat-menu-item routerLink="event-list">List Events</button>
+    <app-logout></app-logout>
+    <!--*ngIf="isLoggedIn"  Gehört nach oben-->
+    <button mat-menu-item routerLink="login" >Login</button>
+    <!-- *ngIf="isLoggedIn == false"   Gehört nach oben-->
+  </mat-menu>
+</mat-toolbar>
+
+
+
+
 <router-outlet></router-outlet>
-test
+
