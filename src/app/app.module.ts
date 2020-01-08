@@ -33,6 +33,8 @@ import {JwtModule} from '@auth0/angular-jwt';
 
 
 import {MenuModule} from 'primeng/menu';
+import {MediainputComponent} from './mediainput/mediainput.component';
+import {FileUploadModule} from 'ng2-file-upload';
 import {MenubarModule} from 'primeng/menubar';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
@@ -83,10 +85,7 @@ export function tokenGetter() {
         whitelistedDomains: ['localhost:4200']
       }
     }),
-    MenuModule,
-    MenubarModule,
-    InputTextModule,
-    ButtonModule
+    MenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
