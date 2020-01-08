@@ -1,4 +1,10 @@
-<p-menu [model]="items"></p-menu>
+<p-menubar [model]="menuBarItems">
+  <input type="text" pInputText placeholder="Search">
+  <button pButton label="Logout" icon="fa fa-sign-out"></button>
+  <button pButton label="Login" icon="fa fa-sign-in"></button>
+</p-menubar>
+<p-menu [model]="menuItems"></p-menu>
+
 <mat-toolbar>
   <button mat-button [matMenuTriggerFor]="movieMenu">Event</button>
   <mat-menu #movieMenu="matMenu">

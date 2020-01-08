@@ -33,6 +33,9 @@ import {JwtModule} from '@auth0/angular-jwt';
 
 
 import {MenuModule} from 'primeng/menu';
+import {MenubarModule} from 'primeng/menubar';
+import {InputTextModule} from 'primeng/inputtext';
+import {ButtonModule} from 'primeng/button';
 
 
 export function tokenGetter() {
@@ -80,7 +83,10 @@ export function tokenGetter() {
         whitelistedDomains: ['localhost:4200']
       }
     }),
-    MenuModule
+    MenuModule,
+    MenubarModule,
+    InputTextModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
