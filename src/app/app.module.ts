@@ -31,6 +31,10 @@ import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {JwtModule} from '@auth0/angular-jwt';
 
+
+import {MenuModule} from 'primeng/menu';
+
+
 export function tokenGetter() {
   return localStorage.getItem('access_token');
 }
@@ -75,9 +79,12 @@ export function tokenGetter() {
         tokenGetter,
         whitelistedDomains: ['localhost:4200']
       }
-    })
+    }),
+    MenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
