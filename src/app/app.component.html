@@ -1,16 +1,21 @@
 <p-menubar [model]="menuBarItems">
   <input type="text" pInputText placeholder="Search">
-  <!--<app-logout></app-logout>-->
-  <button routerLink="login" pButton label="Login" icon="fa fa-sign-in"></button>
+  <app-logout></app-logout>
+  <button routerLink="login" pButton label="Login" icon="fa fa-sign-in" style="margin-left:.25em"></button>
 </p-menubar>
-<div class="ui-fluid">
-  <div class="ui-g-6 ui-md-3">
+
+<div class="content-section implementation ui-fluid">
+  <div class="ui-g">
+    <div class="ui-g-12 ui-md-2">
     <p-menu [model]="menuItems"></p-menu>
-  </div>
-  <div class="ui-g-12 ui-md-6">
+    </div>
+
+  <div class="ui-g-12 ui-md-10">
+    <div class="ui-g">
     <router-outlet></router-outlet>
+    </div>
   </div>
-</div>
+
 
 <!--<mat-toolbar>
   <button mat-button [matMenuTriggerFor]="movieMenu">Event</button>
@@ -25,5 +30,5 @@
 
 
 
-
-
+  </div>
+</div>
