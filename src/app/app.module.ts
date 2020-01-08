@@ -38,6 +38,8 @@ import {FileUploadModule} from 'ng2-file-upload';
 import {MenubarModule} from 'primeng/menubar';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
+import {PasswordModule} from 'primeng/password';
+import {CardModule} from 'primeng/card';
 
 
 export function tokenGetter() {
@@ -90,7 +92,9 @@ export function tokenGetter() {
     ButtonModule,
     InputTextModule,
     MenubarModule,
-    FileUploadModule
+    FileUploadModule,
+    PasswordModule,
+    CardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

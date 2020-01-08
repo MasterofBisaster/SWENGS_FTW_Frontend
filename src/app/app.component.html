@@ -1,23 +1,29 @@
 <p-menubar [model]="menuBarItems">
   <input type="text" pInputText placeholder="Search">
-  <button pButton label="Logout" icon="fa fa-sign-out"></button>
+  <!--<app-logout></app-logout>-->
   <button routerLink="login" pButton label="Login" icon="fa fa-sign-in"></button>
 </p-menubar>
-<p-menu [model]="menuItems"></p-menu>
+<div class="ui-fluid">
+  <div class="ui-g-6 ui-md-3">
+    <p-menu [model]="menuItems"></p-menu>
+  </div>
+  <div class="ui-g-12 ui-md-6">
+    <router-outlet></router-outlet>
+  </div>
+</div>
 
-<mat-toolbar>
+<!--<mat-toolbar>
   <button mat-button [matMenuTriggerFor]="movieMenu">Event</button>
   <mat-menu #movieMenu="matMenu">
     <button mat-menu-item routerLink="event-list">List Events</button>
-    <app-logout></app-logout>
-    <!--*ngIf="isLoggedIn"  Gehört nach oben-->
-    <!-- <button mat-menu-item routerLink="login" >Login</button> -->
-    <!-- *ngIf="isLoggedIn == false"   Gehört nach oben-->
+
+    *ngIf="isLoggedIn"  Gehört nach oben
+    <button mat-menu-item routerLink="login" >Login</button>
+     *ngIf="isLoggedIn == false"   Gehört nach oben
   </mat-menu>
-</mat-toolbar>
+</mat-toolbar>-->
 
 
 
 
-<router-outlet></router-outlet>
 

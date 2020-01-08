@@ -15,7 +15,7 @@ export class AppComponent {
     this.menuItems = [{
       label: 'Event',
       items: [
-        {label: 'Create an event', icon: 'pi pi-fw pi-plus'},
+        {label: 'Create an event', icon: 'pi pi-fw pi-plus', routerLink: 'event-form'},
         {label: 'List all events', icon: 'pi pi-list', routerLink: 'event-list'}
       ]
     },
@@ -26,7 +26,7 @@ export class AppComponent {
           {label: 'Remove User', icon: 'pi pi-fw pi-user-minus'}
         ]
       }];
-
+/*
     this.menuBarItems = [
       {
         label: 'File',
@@ -50,7 +50,7 @@ export class AppComponent {
           {label: 'Refresh', icon: 'pi pi-fw pi-refresh'}
         ]
       }
-    ];
+    ]; */
   }
 }
 
