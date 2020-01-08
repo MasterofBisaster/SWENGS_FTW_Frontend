@@ -1,7 +1,7 @@
 <p-menubar [model]="menuBarItems">
   <input type="text" pInputText placeholder="Search">
   <button pButton label="Logout" icon="fa fa-sign-out"></button>
-  <button pButton label="Login" icon="fa fa-sign-in"></button>
+  <button routerLink="login" pButton label="Login" icon="fa fa-sign-in"></button>
 </p-menubar>
 <p-menu [model]="menuItems"></p-menu>
 
@@ -11,7 +11,7 @@
     <button mat-menu-item routerLink="event-list">List Events</button>
     <app-logout></app-logout>
     <!--*ngIf="isLoggedIn"  Gehört nach oben-->
-    <button mat-menu-item routerLink="login" >Login</button>
+    <!-- <button mat-menu-item routerLink="login" >Login</button> -->
     <!-- *ngIf="isLoggedIn == false"   Gehört nach oben-->
   </mat-menu>
 </mat-toolbar>

@@ -16,7 +16,7 @@ export class AppComponent {
       label: 'Event',
       items: [
         {label: 'Create an event', icon: 'pi pi-fw pi-plus'},
-        {label: 'List all events', icon: 'pi pi-list'}
+        {label: 'List all events', icon: 'pi pi-list', routerLink: 'event-list'}
       ]
     },
       {

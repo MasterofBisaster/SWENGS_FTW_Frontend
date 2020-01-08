@@ -60,7 +60,8 @@ export function tokenGetter() {
     CategoryListComponent,
     CategoryFormComponent,
     FtwWordFormComponent,
-    FtwWordListComponent
+    FtwWordListComponent,
+    MediainputComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +86,11 @@ export function tokenGetter() {
         whitelistedDomains: ['localhost:4200']
       }
     }),
-    MenuModule
+    MenuModule,
+    ButtonModule,
+    InputTextModule,
+    MenubarModule,
+    FileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent]
