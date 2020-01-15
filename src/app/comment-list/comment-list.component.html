@@ -1,10 +1,8 @@
-<h3>Prepopulated List</h3>
+<!--CSS FUNKTIONIERT NOCHT NICHT RICHTIG!-->
+<h3>Comments</h3>
 <p-virtualScroller [value]="comments" scrollHeight="500px" [itemSize]="150">
     <p-header>
         <div class="ui-g">
-            <!--<div class="ui-g-6 sort-container">
-                <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By" (onChange)="onSortChange()" [style]="{'min-width':'140px'}"></p-dropdown>
-            </div>-->
             <div class="ui-g-6 title-container">
                 List of comments
             </div>
@@ -15,16 +13,14 @@
             <div class="ui-g-12 ui-md-2">
                 <div style="font-size: 24px; text-align: center; padding-top: 48px">{{i}}</div>
             </div>
-            <!--            <div class="ui-g-12 ui-md-2">
-                            <img src="assets/showcase/images/demo/car/{{car?.brand}}.png">
-                        </div>-->
+            <div class="ui-g-12 ui-md-2">
+                <!--                <img src="assets/showcase/images/demo/car/{{car?.brand}}.png">-->
+            </div>
             <div class="ui-g-12 ui-md-8">
                 <div class="ui-g">
                     <div class="ui-g-2 ui-sm-6">User:</div>
-                    <div class="ui-g-10 ui-sm-6" *ngFor="let comment of comments">{{comment.content}}</div>
+                    <div class="ui-g-10 ui-sm-6">{{comments?.content}}</div>
 
-                    <div class="ui-g-2 ui-sm-6">Kommentar:</div>
-                    <div class="ui-g-10 ui-sm-6" *ngFor="let comment of comments">{{comment.content}}</div>
 
                 </div>
             </div>
