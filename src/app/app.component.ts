@@ -72,7 +72,11 @@ export class AppComponent implements OnInit {
 
 
   setFTWPhrase() {
-    const ftwWords = this.shuffle(this.ftwWordService.getFtwWords());
+    let ftwWords = [];
+    this.ftwWordService.getFtwWords()
+      .subscribe( (response: any[]) => {
+        ftwWords = response;
+    });
     let fWord = '';
     let tWord = '';
     let wWord = '';
