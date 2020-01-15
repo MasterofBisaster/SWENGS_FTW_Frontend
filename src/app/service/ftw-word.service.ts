@@ -1,9 +1,16 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FtwWordService {
 
-  constructor() { }
+  ftwWords = {
+    f: 'f',
+    t: 't',
+    w: 'w'
+  };
+
+  constructor() {
+  }
 }
