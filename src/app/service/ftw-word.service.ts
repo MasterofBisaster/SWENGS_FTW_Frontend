@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class FtwWordService {
 
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {
+    }
 
-  getFtwWords() {
-    return this.http.get('/api/ftwword/list');
-  }
+    getFtwWords() {
+        return this.http.get('/api/ftwword/list');
+    }
 }

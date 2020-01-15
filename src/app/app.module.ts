@@ -40,6 +40,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
 import {PasswordModule} from 'primeng/password';
 import {CardModule} from 'primeng/card';
+import {VirtualScrollerModule} from 'primeng/virtualscroller';
 
 
 export function tokenGetter() {
@@ -65,37 +66,38 @@ export function tokenGetter() {
     FtwWordListComponent,
     MediainputComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    MatTableModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatCardModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatCheckboxModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter,
-        whitelistedDomains: ['localhost:4200']
-      }
-    }),
-    MenuModule,
-    ButtonModule,
-    InputTextModule,
-    MenubarModule,
-    FileUploadModule,
-    PasswordModule,
-    CardModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        MatTableModule,
+        MatButtonModule,
+        MatToolbarModule,
+        MatMenuModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatInputModule,
+        MatCardModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatCheckboxModule,
+        JwtModule.forRoot({
+            config: {
+                tokenGetter,
+                whitelistedDomains: ['localhost:4200']
+            }
+        }),
+        MenuModule,
+        ButtonModule,
+        InputTextModule,
+        MenubarModule,
+        FileUploadModule,
+        PasswordModule,
+        CardModule,
+        VirtualScrollerModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

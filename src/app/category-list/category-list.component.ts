@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../service/user.service';
 import {CategoryService} from '../service/category.service';
+import {VirtualScrollerModule} from 'primeng/virtualscroller';
+
 
 @Component({
     selector: 'app-category-list',
