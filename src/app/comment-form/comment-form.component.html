@@ -1,1 +1,15 @@
-<p>comment-form works!</p>
+<form [formGroup]="commentFormGroup" class="comment-form">
+  <mat-form-field>
+    <input matInput type="text" placeholder="Content" formControlName="content" required>
+    <mat-hint align="end">The content of the comment</mat-hint>
+    <mat-error *ngIf="commentFormGroup.controls.content.hasError('required')">Content is required</mat-error>
+  </mat-form-field>
+
+  <br/>
+  <mat-card-actions align="center">
+    <button mat-raised-button color="primary" [disabled]="!commentFormGroup.valid" (click)="createComment()">
+      <span>Post</span>
+    </button>
+  </mat-card-actions>
+</form>
+

@@ -5,6 +5,7 @@ import {EventListComponent} from './event-list/event-list.component';
 import {LoginComponent} from './login/login.component';
 import {EventFormComponent} from './event-form/event-form.component';
 import {CommentListComponent} from './comment-list/comment-list.component';
+import {CommentFormComponent} from './comment-form/comment-form.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,11 @@ const routes: Routes = [
         component: CommentListComponent,
         canActivate: [AuthGuard],
     },
+  {
+    path: 'comment-form',
+    component: CommentFormComponent,
+    canActivate: [AuthGuard],
+  },
     {path: 'login', component: LoginComponent},
 ];
 

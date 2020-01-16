@@ -12,6 +12,8 @@ import {CommentService} from '../service/comment.service';
 })
 export class CommentFormComponent implements OnInit {
     commentFormGroup;
+    eventId = 1;
+    userId = 1;
 
     constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router,
                 private categoryService: CategoryService, private commentService: CommentService) {
@@ -20,7 +22,10 @@ export class CommentFormComponent implements OnInit {
     ngOnInit() {
         this.commentFormGroup = this.fb.group({
             id: [null],
-            content: ['', [Validators.required]]
+            event: [this.eventId],
+            creator: [this.userId],
+            content: ['', [Validators.required]],
+            create_date: [null],
         });
     }
 
@@ -32,6 +37,7 @@ export class CommentFormComponent implements OnInit {
                     alert('updated successfully');
                 });
         } else {
+            comment.release_date = Date.now();
             this.commentService.createComment(comment)
                 .subscribe((response: any) => {
                     this.router.navigate(['/comment-form/' + response.id]);
