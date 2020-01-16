@@ -41,7 +41,7 @@ import {ButtonModule} from 'primeng/button';
 import {PasswordModule} from 'primeng/password';
 import {CardModule} from 'primeng/card';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
-
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -96,7 +96,8 @@ export function tokenGetter() {
         FileUploadModule,
         PasswordModule,
         CardModule,
-        VirtualScrollerModule
+        VirtualScrollerModule,
+      AngularFontAwesomeModule
     ],
   providers: [],
   bootstrap: [AppComponent]
