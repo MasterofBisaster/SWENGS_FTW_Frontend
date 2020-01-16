@@ -17,7 +17,7 @@ export class CommentListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.commentService.getComments()
+    this.commentService.getCommentsForEvent(this.eventId)
       .subscribe((response: any[]) => {
         this.comments = response;
       });

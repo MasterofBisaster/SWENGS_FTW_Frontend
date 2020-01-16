@@ -13,6 +13,10 @@ export class CommentService {
     return this.http.get('/api/comment/list');
   }
 
+  getCommentsForEvent(id) {
+    return this.http.get('/api/comment/list/' + id);
+  }
+
   createComment(comment) {
     return this.http.post('/api/comment/create', comment);
   }
