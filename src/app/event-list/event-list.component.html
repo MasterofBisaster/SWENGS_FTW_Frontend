@@ -1,70 +1,10 @@
 
-
-  <div class="ui-g-12 ui-md-6">
-    <p-card header="Advanced Card" subheader="Subheader" [style]="{width: '100%'}" styleClass="ui-card-shadow">
+  <div class="ui-g-12 ui-md-6" *ngFor="let event of events">
+    <p-card [header]="event.name" [subheader]="event.start_date + ' bis ' + event.end_date"  [style]="{width: '100%'}" styleClass="ui-card-shadow">
       <p-header>
         <img src="Card" src="assets/usercard.png">
       </p-header>
-      <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae
-        numquam deserunt
-        quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!
-      </div>
-      <p-footer>
-        <div class="ui-g">
-          <div class="ui-g-12 ui-md-3">
-            <button pButton type="button" label="Save" icon="pi pi-check" style="margin-right: .25em"></button>
-            <button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>
-          </div>
-        </div>
-      </p-footer>
-    </p-card>
-  </div>
-  <div class="ui-g-12 ui-md-6">
-    <p-card header="Advanced Card" subheader="Subheader" [style]="{width: '100%'}" styleClass="ui-card-shadow">
-      <p-header>
-        <img src="Card" src="assets/usercard.png">
-      </p-header>
-      <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae
-        numquam deserunt
-        quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!
-      </div>
-      <p-footer>
-        <div class="ui-g">
-          <div class="ui-g-12 ui-md-3">
-            <button pButton type="button" label="Save" icon="pi pi-check" style="margin-right: .25em"></button>
-            <button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>
-          </div>
-        </div>
-      </p-footer>
-    </p-card>
-  </div>
-  <div class="ui-g-12 ui-md-6">
-    <p-card header="Advanced Card" subheader="Subheader" [style]="{width: '100%'}" styleClass="ui-card-shadow">
-      <p-header>
-        <img src="Card" src="assets/usercard.png">
-      </p-header>
-      <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae
-        numquam deserunt
-        quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!
-      </div>
-      <p-footer>
-        <div class="ui-g">
-          <div class="ui-g-12 ui-md-3">
-            <button pButton type="button" label="Save" icon="pi pi-check" style="margin-right: .25em"></button>
-            <button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>
-          </div>
-        </div>
-      </p-footer>
-    </p-card>
-  </div>
-  <div class="ui-g-12 ui-md-6">
-    <p-card header="Advanced Card" subheader="Subheader" [style]="{width: '100%'}" styleClass="ui-card-shadow">
-      <p-header>
-        <img src="Card" src="assets/usercard.png">
-      </p-header>
-      <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae
-        numquam deserunt
-        quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!
+      <div>{{event.short_description}}
       </div>
       <p-footer>
         <div class="ui-g">

@@ -27,8 +27,6 @@ export class AppComponent implements OnInit {
       this.isLoggedIn = isLoggedIn;
     });
 
-
-
     this.menuItems = [{
       label: 'Event',
       items: [

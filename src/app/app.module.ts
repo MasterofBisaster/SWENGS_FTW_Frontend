@@ -41,6 +41,7 @@ import {ButtonModule} from 'primeng/button';
 import {PasswordModule} from 'primeng/password';
 import {CardModule} from 'primeng/card';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import {CalendarModule} from 'primeng/calendar';
 import {PaginatorModule} from 'primeng/paginator';
 
@@ -68,40 +69,41 @@ export function tokenGetter() {
     FtwWordListComponent,
     MediainputComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    MatTableModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatCardModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatCheckboxModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter,
-        whitelistedDomains: ['localhost:4200']
-      }
-    }),
-    MenuModule,
-    ButtonModule,
-    InputTextModule,
-    MenubarModule,
-    FileUploadModule,
-    PasswordModule,
-    CardModule,
-    VirtualScrollerModule,
-    CalendarModule,
-    PaginatorModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        MatTableModule,
+        MatButtonModule,
+        MatToolbarModule,
+        MatMenuModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatInputModule,
+        MatCardModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatCheckboxModule,
+        JwtModule.forRoot({
+            config: {
+                tokenGetter,
+                whitelistedDomains: ['localhost:4200']
+            }
+        }),
+        MenuModule,
+        ButtonModule,
+        InputTextModule,
+        MenubarModule,
+        FileUploadModule,
+        PasswordModule,
+        CardModule,
+        VirtualScrollerModule,
+        AngularFontAwesomeModule,
+        CalendarModule,
+        PaginatorModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
