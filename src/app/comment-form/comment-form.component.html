@@ -1,4 +1,18 @@
-<form [formGroup]="commentFormGroup" class="comment-form">
+<h3>Post your comment!</h3>
+<p-editor [formGroup]="commentFormGroup" [(ngModel)]="comment" [style]="{'height':'320px'}" >
+  <p-header>
+        <span class="ql-formats">
+            <button class="ql-bold" aria-label="Bold"></button>
+            <button class="ql-italic" aria-label="Italic"></button>
+            <button class="ql-underline" aria-label="Underline"></button>
+        </span>
+  </p-header>
+</p-editor>
+
+
+<button pButton type="button" label="Clear" icon="pi pi-times" [disabled]="commentFormGroup.valid" (click)="createComment()"></button>
+
+<!--<form [formGroup]="commentFormGroup" class="comment-form">
   <mat-form-field>
     <input matInput type="text" placeholder="Content" formControlName="content" required>
     <mat-hint align="end">The content of the comment</mat-hint>
@@ -12,4 +26,4 @@
     </button>
   </mat-card-actions>
 </form>
-
+-->

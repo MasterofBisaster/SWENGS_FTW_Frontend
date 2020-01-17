@@ -18,6 +18,7 @@ export class CommentFormComponent implements OnInit {
   userId = 1;
 
   readonly accessTokenLocalStorageKey = 'access_token';
+  comment: string;
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router,
               private categoryService: CategoryService, private commentService: CommentService) {

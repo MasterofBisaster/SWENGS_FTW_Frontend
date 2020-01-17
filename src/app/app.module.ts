@@ -47,6 +47,7 @@ import {CalendarModule} from 'primeng/calendar';
 import {PaginatorModule} from 'primeng/paginator';
 import {RegisterComponent} from './register/register.component';
 import {RxReactiveFormsModule} from '@rxweb/reactive-form-validators';
+import {EditorModule} from 'primeng/editor';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -107,7 +108,8 @@ export function tokenGetter() {
     AccordionModule,
     RxReactiveFormsModule,
     CalendarModule,
-    PaginatorModule
+    PaginatorModule,
+    EditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
