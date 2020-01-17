@@ -1,0 +1,12 @@
+<h1>{{ftwUserDetailGroup.controls.user.value}}</h1>
+
+<p-accordion [multiple]="true">
+    <p-accordionTab selected=true header="About {{ftwUserDetailGroup.controls.user.value}}:">
+        <p>User: {{ftwUserDetailGroup.controls.user.value}}</p>
+        <p>Picture: {{ftwUserDetailGroup.controls.picture.value}}</p>
+        <br/>
+        <p>Username: {{ftwUserDetailGroup.controls.user_username.value}}</p>
+        <p>FirstName: {{ftwUserDetailGroup.controls.user_first_name.value}}</p>
+        <p>Last Name: {{ftwUserDetailGroup.controls.user_last_name.value}}</p>
+    </p-accordionTab>
+</p-accordion>

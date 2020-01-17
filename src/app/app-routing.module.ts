@@ -10,6 +10,7 @@ import {EventDetailComponent} from './event-detail/event-detail.component';
 import {EventResolver} from './resolver/event.resolver';
 import {EventDetailResolver} from './resolver/event-detail.resolver';
 import {RegisterComponent} from './register/register.component';
+import {UserDetailComponent} from './user-detail/user-detail.component';
 import {HomeComponent} from './home/home.component';
 import {EventListResolver} from './resolver/event-list.resolver';
 import {EventSearchResolver} from './resolver/event-search.resolver';
@@ -68,7 +69,11 @@ const routes: Routes = [
     component: CommentFormComponent,
     canActivate: [AuthGuard],
   },
-  // Bis hier!!!!!!!!!!
+  {
+    path: 'user-detail/:id',
+    component: UserDetailComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'register',
     component: RegisterComponent,
