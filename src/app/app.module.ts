@@ -47,6 +47,9 @@ import {CalendarModule} from 'primeng/calendar';
 import {PaginatorModule} from 'primeng/paginator';
 import {RegisterComponent} from './register/register.component';
 import {RxReactiveFormsModule} from '@rxweb/reactive-form-validators';
+import {EditorModule} from 'primeng/editor';
+import {UserDetailComponent} from './user-detail/user-detail.component';
+import {UserFormComponent} from './user-form/user-form.component';
 import { HomeComponent } from './home/home.component';
 
 export function tokenGetter() {
@@ -72,6 +75,8 @@ export function tokenGetter() {
     FtwWordListComponent,
     MediainputComponent,
     RegisterComponent,
+    UserDetailComponent,
+    UserFormComponent,
     HomeComponent
   ],
   imports: [
@@ -109,7 +114,8 @@ export function tokenGetter() {
     AccordionModule,
     RxReactiveFormsModule,
     CalendarModule,
-    PaginatorModule
+    PaginatorModule,
+    EditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

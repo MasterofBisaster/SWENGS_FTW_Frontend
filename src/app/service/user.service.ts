@@ -45,5 +45,7 @@ export class UserService {
     return permission in permissions;
   }
 
-
+  createUser(user) {
+    return this.http.post('/api/register/create', user);
+  }
 }
