@@ -1,5 +1,24 @@
 <h1>{{eventDetailGroup.controls.name.value}}</h1>
-<p>{{decodedToken.user_id}}</p>
-<p>{{decodedToken.username}}</p>
 
-<app-comment-list [eventId]="eventDetailGroup.controls.id.value"></app-comment-list>
+<p-accordion [multiple]="true">
+    <p-accordionTab selected=true header="About {{eventDetailGroup.controls.name.value}}:">
+      <p>Start of the event: {{eventDetailGroup.controls.start_date.value}}</p>
+      <p>End of the event: {{eventDetailGroup.controls.end_date.value}}</p>
+      <p>Created by: {{eventDetailGroup.controls.user_name.value}}</p>
+    <br>
+      <p>{{eventDetailGroup.controls.description.value}}</p>
+  </p-accordionTab>
+  <p-accordionTab selected=true header="Event Location">
+    <p>Name of the Location: {{eventDetailGroup.controls.location_name.value}}</p>
+    <p>Street: {{eventDetailGroup.controls.location_street.value}}</p>
+    <p>City: {{eventDetailGroup.controls.location_city.value}}</p>
+    <p>Zip code: {{eventDetailGroup.controls.location_zip_code.value}}</p>
+    <p>Country: {{eventDetailGroup.controls.location_country.value}}</p>
+    <p><a href="https://google.com/maps/place/{{eventDetailGroup.controls.location_street.value.replace(' ', '+')}},+{{eventDetailGroup.controls.location_zip_code.value}}+{{eventDetailGroup.controls.location_city.value}}">Google Maps for the location</a></p>
+  </p-accordionTab>
+  <p-accordionTab selected=true header="Comments">
+    <app-comment-list [eventId]="eventDetailGroup.controls.id.value"></app-comment-list>
+  </p-accordionTab>
+</p-accordion>
+
+

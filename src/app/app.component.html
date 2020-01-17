@@ -2,14 +2,14 @@
 
 <p-menubar [model]="menuBarItems">
   <input type="text" pInputText placeholder="Search">
-  <app-logout></app-logout>
-  <button routerLink="login" pButton label="Login" icon="fa fa-sign-in" style="margin-left:.25em"></button>
+  <app-logout *ngIf="isLoggedIn"></app-logout>
+  <button routerLink="login" pButton label="Login" *ngIf="isLoggedIn == false" icon="fa fa-sign-in" style="margin-left:.25em"></button>
 </p-menubar>
 
 <div class="content-section implementation ui-fluid">
 
     <div class="ui-g-12 ui-md-2">
-      <img alt="logo" src="../assets/img/ftw_logo.png" width="100%"/>
+      <img alt="logo" src="../assets/img/ftw_logo.png" width="70%"/>
       <p>{{ftwPhrase}}</p>
       <p-menu [model]="menuItems"></p-menu>
     </div>

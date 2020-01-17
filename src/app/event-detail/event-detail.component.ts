@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {EventService} from '../service/event.service';
 
 @Component({
   selector: 'app-event-detail',
@@ -16,7 +17,7 @@ export class EventDetailComponent implements OnInit {
 
   decodedToken;
 
-  constructor(private route: ActivatedRoute, private fb: FormBuilder) {
+  constructor(private eventService: EventService, private route: ActivatedRoute, private fb: FormBuilder) {
   }
 
   ngOnInit() {
@@ -27,10 +28,15 @@ export class EventDetailComponent implements OnInit {
       start_date: [null, [Validators.required]],
       end_date: [null, [Validators.required]],
       private: [null, [Validators.required]],
-      location: [null, [Validators.required]],
+      location_name: [null, [Validators.required]],
+      location_street: [null, [Validators.required]],
+      location_zip_code: [null, [Validators.required]],
+      location_city: [null, [Validators.required]],
+      location_country: [null, [Validators.required]],
       category: [null, [Validators.required]],
       description: [null, [Validators.required]],
       max_users: [null],
+      user_name: [null, [Validators.required]],
       // confirmed_users: [null],
       costs: [null],
       // picture: [],
@@ -53,4 +59,5 @@ export class EventDetailComponent implements OnInit {
 
 
   }
+
 }

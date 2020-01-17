@@ -8,6 +8,7 @@ import {CommentListComponent} from './comment-list/comment-list.component';
 import {CommentFormComponent} from './comment-form/comment-form.component';
 import {EventDetailComponent} from './event-detail/event-detail.component';
 import {EventResolver} from './resolver/event.resolver';
+import {EventDetailResolver} from './resolver/event-detail.resolver';
 
 
 const routes: Routes = [
@@ -27,7 +28,7 @@ const routes: Routes = [
     component: EventDetailComponent,
     canActivate: [AuthGuard],
     resolve: {
-      event: EventResolver,
+      event: EventDetailResolver,
     }
   },
   // Nur zum Testen. Anschließend löschen
