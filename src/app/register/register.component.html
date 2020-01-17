@@ -1,0 +1,33 @@
+<form [formGroup]="registerFormGroup" class="register-form">
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="Username" formControlName="username" required>
+    <mat-hint align="end">Your Username</mat-hint>
+    <mat-error *ngIf="registerFormGroup.controls.username.hasError('required')">Username is required</mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <input matInput pPassword type="password" placeholder="Password" formControlName="password" required/>
+    <mat-hint align="end">Your Password</mat-hint>
+    <mat-error *ngIf="registerFormGroup.controls.password.hasError('required')">Password is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput pPassword type="password" placeholder="Confirm Password" formControlName="confirmPassword" required/>
+    <mat-hint align="end">Your Password again</mat-hint>
+    <mat-error *ngIf="registerFormGroup.controls.confirmPassword.hasError('required')">Confirm Password is required</mat-error>
+    <mat-error *ngIf="registerFormGroup.controls.confirmPassword.hasError('compare')">
+      Passwords are not equal
+    </mat-error>
+  </mat-form-field>
+
+  <br/>
+  <mat-card-actions align="center">
+    <button mat-raised-button color="primary" [disabled]="!registerFormGroup.valid" (click)="createUser()">
+      <span>Create</span>
+
+    </button>
+  </mat-card-actions>
+</form>
+

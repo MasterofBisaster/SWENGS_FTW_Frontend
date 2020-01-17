@@ -8,6 +8,7 @@ import {CommentListComponent} from './comment-list/comment-list.component';
 import {CommentFormComponent} from './comment-form/comment-form.component';
 import {EventDetailComponent} from './event-detail/event-detail.component';
 import {EventResolver} from './resolver/event.resolver';
+import {RegisterComponent} from './register/register.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,10 @@ const routes: Routes = [
     path: 'comment-form',
     component: CommentFormComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
   },
   {path: 'login', component: LoginComponent},
 ];
