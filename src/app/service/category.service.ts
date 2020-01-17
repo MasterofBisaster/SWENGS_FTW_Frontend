@@ -13,6 +13,10 @@ export class CategoryService {
     return this.http.get('/api/category/list');
   }
 
+  getSearchCategories(searchString) {
+    return this.http.get('/api/category/list/search/' + searchString);
+  }
+
   createCategory(category) {
     return this.http.post('/api/category/create', category);
   }

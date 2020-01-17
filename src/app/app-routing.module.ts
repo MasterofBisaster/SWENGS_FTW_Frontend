@@ -10,10 +10,17 @@ import {EventDetailComponent} from './event-detail/event-detail.component';
 import {EventResolver} from './resolver/event.resolver';
 import {EventDetailResolver} from './resolver/event-detail.resolver';
 import {RegisterComponent} from './register/register.component';
+import {HomeComponent} from './home/home.component';
+import {EventListResolver} from './resolver/event-list.resolver';
+import {EventSearchResolver} from './resolver/event-search.resolver';
+import {CategoryListResolver} from './resolver/category-list.resolver';
+import {LocationListResolver} from './resolver/location-list.resolver';
+import {LocationSearchResolver} from './resolver/location-search.resolver';
+import {CategorySearchResolver} from './resolver/category-search.resolver';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: 'event-list', pathMatch: 'full'},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
   {
     path: 'event-list',
     component: EventListComponent,
@@ -32,6 +39,24 @@ const routes: Routes = [
       event: EventDetailResolver,
     }
   },
+  {
+    path: 'home',
+    component: HomeComponent,
+    resolve: {
+      events: EventListResolver,
+      locations: LocationListResolver,
+      categories: CategoryListResolver,
+    }
+  },
+  {
+    path: 'home/:searchString',
+    component: HomeComponent,
+    resolve: {
+      events: EventSearchResolver,
+      locations: LocationSearchResolver,
+      categories: CategorySearchResolver,
+    }
+  },
   // Nur zum Testen. Anschließend löschen
   {
     path: 'comment-list',
@@ -43,6 +68,7 @@ const routes: Routes = [
     component: CommentFormComponent,
     canActivate: [AuthGuard],
   },
+  // Bis hier!!!!!!!!!!
   {
     path: 'register',
     component: RegisterComponent,

@@ -47,6 +47,7 @@ import {CalendarModule} from 'primeng/calendar';
 import {PaginatorModule} from 'primeng/paginator';
 import {RegisterComponent} from './register/register.component';
 import {RxReactiveFormsModule} from '@rxweb/reactive-form-validators';
+import { HomeComponent } from './home/home.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -70,7 +71,8 @@ export function tokenGetter() {
     FtwWordFormComponent,
     FtwWordListComponent,
     MediainputComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

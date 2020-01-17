@@ -13,6 +13,10 @@ export class LocationService {
     return this.http.get('/api/location/list');
   }
 
+  getSearchLocations(searchString) {
+    return this.http.get('/api/location/list/search/' + searchString);
+  }
+
   createLocation(location) {
     return this.http.post('/api/location/create', location);
   }
