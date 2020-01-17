@@ -41,7 +41,9 @@ import {ButtonModule} from 'primeng/button';
 import {PasswordModule} from 'primeng/password';
 import {CardModule} from 'primeng/card';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
-import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import {CalendarModule} from 'primeng/calendar';
+import {PaginatorModule} from 'primeng/paginator';
 import {RegisterComponent} from './register/register.component';
 import {RxReactiveFormsModule} from '@rxweb/reactive-form-validators';
 
@@ -101,7 +103,9 @@ export function tokenGetter() {
     CardModule,
     VirtualScrollerModule,
     AngularFontAwesomeModule,
-    RxReactiveFormsModule
+    RxReactiveFormsModule,
+    CalendarModule,
+    PaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
