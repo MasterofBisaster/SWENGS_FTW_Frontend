@@ -1,9 +1,11 @@
 
 
 <p-menubar [model]="menuBarItems">
-  <input type="text" pInputText placeholder="Search">
+  <input type="text" [ngModel]="searchString" pInputText placeholder="Search">
+  <!-- <button [routerLink]="'/home/'+ searchString" pButton label="Go" icon="fa fa-sign-in" style="margin-left:.25em"></button>-->
   <app-logout *ngIf="isLoggedIn"></app-logout>
   <button routerLink="login" pButton label="Login" *ngIf="isLoggedIn == false" icon="fa fa-sign-in" style="margin-left:.25em"></button>
+  <button [routerLink]="'/user-detail/' + decodedToken.user_id" pButton label="My Profile" *ngIf="isLoggedIn" icon="fa fa-sign-in" style="margin-left:.25em"></button>
 </p-menubar>
 
 <div class="content-section implementation ui-fluid">

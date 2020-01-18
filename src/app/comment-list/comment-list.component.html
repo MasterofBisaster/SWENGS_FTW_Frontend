@@ -1,7 +1,7 @@
 <!--CSS FUNKTIONIERT NOCHT NICHT RICHTIG!-->
 <app-comment-form [eventId]="eventId"></app-comment-form>
 
-<p-virtualScroller [value]="comments" scrollHeight="500px" [itemSize]="150">
+<p-virtualScroller [value]="comments" scrollHeight="500px" [itemSize]="100">
     <!--<p-header>
         <div class="ui-g">
             <div class="ui-g-6 title-container">
@@ -19,8 +19,13 @@
             </div>-->
             <div class="ui-g-12 ui-md-8">
                 <div class="ui-g">
-                    <div class="ui-g-2 ui-sm-6">User: {{comments?.user_name}}</div>
-                    <div class="ui-g-10 ui-sm-6">{{comments?.content}}</div>
+                    <div class="ui-g-2 ui-sm-6">
+                      <img width="70" height="70" alt="logo" src="../assets/img/Jaguar.png"/>
+                    </div>
+                    <div class="ui-g-10 ui-sm-6" >
+                      <p ><span style="font-weight:bold">User: {{comments?.user_name}}, Posted: {{comments?.create_date}}</span></p>
+                      <p [innerHTML]="comments?.content"></p>
+                    </div>
 
 
                 </div>
