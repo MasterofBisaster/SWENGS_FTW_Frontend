@@ -6,7 +6,7 @@
     </mat-form-field>
     <br/>
     <div>
-        <p-fileUpload fileLimit="1" name="picture" accept="image/*"></p-fileUpload>
+        <p-fileUpload accept="image/*" name="myfile[]" showUploadButton=false (onSelect)="test($event)"></p-fileUpload>
     </div>
     <mat-card-actions align="center">
         <button mat-raised-button color="primary" [disabled]="!categoryFormGroup.valid" (click)="createCategory()">

@@ -19,7 +19,7 @@ export class CategoryFormComponent implements OnInit {
         this.categoryFormGroup = this.fb.group({
             id: [null],
             title: ['', [Validators.required]],
-            picture: [null]
+            picture: [[]]
         });
     }
 
@@ -36,5 +36,11 @@ export class CategoryFormComponent implements OnInit {
                     this.router.navigate(['home']);
                 });
         }
+    }
+
+    test(event) {
+        const x = event.files;
+        const y = x[0];
+        this.categoryFormGroup.controls.picture.value = x;
     }
 }
