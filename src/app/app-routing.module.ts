@@ -24,7 +24,6 @@ const routes: Routes = [
   {
     path: 'event-list',
     component: EventListComponent,
-    canActivate: [AuthGuard],
   },
   {
     path: 'event-form',
@@ -34,7 +33,6 @@ const routes: Routes = [
   {
     path: 'event-detail/:id',
     component: EventDetailComponent,
-    canActivate: [AuthGuard],
     resolve: {
       event: EventDetailResolver,
     }
@@ -68,10 +66,10 @@ const routes: Routes = [
     component: CommentFormComponent,
     canActivate: [AuthGuard],
   },
+  // Bis hier
   {
     path: 'user-detail/:id',
     component: UserDetailComponent,
-    canActivate: [AuthGuard],
     resolve: {
       user: FtwUserDetailResolver,
     }
