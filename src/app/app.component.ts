@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {MenuItem} from 'primeng/api';
 import {UserService} from './service/user.service';
 import {FtwWordService} from './service/ftw-word.service';
+import {EventService} from './service/event.service';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-root',
@@ -14,13 +16,13 @@ export class AppComponent implements OnInit {
   menuBarItems: MenuItem[];
   isLoggedIn = false;
   ftwPhrase;
+  searchString: string;
 
-  constructor(private userService: UserService, private ftwWordService: FtwWordService) {
+  constructor(private userService: UserService, private ftwWordService: FtwWordService, private  eventService: EventService) {
   }
 
 
   ngOnInit() {
-
     this.setFTWPhrase();
 
     this.userService.isLoggedIn.subscribe( (isLoggedIn) => {
@@ -67,7 +69,6 @@ export class AppComponent implements OnInit {
       }
     ]; */
   }
-
 
   setFTWPhrase() {
     let ftwWords: any[];

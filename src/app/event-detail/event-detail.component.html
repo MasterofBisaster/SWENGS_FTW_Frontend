@@ -2,11 +2,14 @@
 
 <p-accordion [multiple]="true">
     <p-accordionTab selected=true header="About {{eventDetailGroup.controls.name.value}}:">
-      <p>Start of the event: {{eventDetailGroup.controls.start_date.value}}</p>
-      <p>End of the event: {{eventDetailGroup.controls.end_date.value}}</p>
-      <p>Created by: {{eventDetailGroup.controls.user_name.value}}</p>
-    <br>
-      <p>{{eventDetailGroup.controls.description.value}}</p>
+      <h3>Start of the event:</h3>
+      {{eventDetailGroup.controls.start_date.value}}
+      <h3>End of the event:</h3>
+      {{eventDetailGroup.controls.end_date.value}}
+      <h3>Created by:</h3>
+      {{eventDetailGroup.controls.user_name.value}}
+      <h3>Description:</h3>
+      {{eventDetailGroup.controls.description.value}}
   </p-accordionTab>
   <p-accordionTab selected=true header="Event Location">
     <p>Name of the Location: {{eventDetailGroup.controls.location_name.value}}</p>

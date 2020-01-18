@@ -23,13 +23,13 @@ export class UserService {
 
   login(userData: { username: string, password: string }) {
     this.http.post('/api/api-token-auth/', userData)
-        .subscribe((res: any) => {
-          this.isLoggedIn.next(true);
-          localStorage.setItem('access_token', res.token);
-          this.router.navigate(['event-list']);
-        }, () => {
-          alert('wrong username or password');
-        });
+      .subscribe((res: any) => {
+        this.isLoggedIn.next(true);
+        localStorage.setItem('access_token', res.token);
+        this.router.navigate(['home']);
+      }, () => {
+        alert('wrong username or password');
+      });
   }
 
   logout() {
@@ -42,7 +42,22 @@ export class UserService {
     const token = localStorage.getItem(this.accessTokenLocalStorageKey);
     const decodeToken = this.jwtHelperService.decodeToken(token);
     const permissions = decodeToken.permissions;
+    if (permissions === undefined) {
+      return false;
+    }
     return permission in permissions;
+  }
+
+  userId() {
+    const token = localStorage.getItem(this.accessTokenLocalStorageKey);
+    const decodeToken = this.jwtHelperService.decodeToken(token);
+    return decodeToken.user_id;
+  }
+
+  userName() {
+    const token = localStorage.getItem(this.accessTokenLocalStorageKey);
+    const decodeToken = this.jwtHelperService.decodeToken(token);
+    return decodeToken.username;
   }
 
   createUser(user) {

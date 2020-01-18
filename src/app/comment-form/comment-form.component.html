@@ -1,5 +1,6 @@
 <h3>Post your comment!</h3>
-<p-editor [formGroup]="commentFormGroup" [(ngModel)]="comment" [style]="{'height':'320px'}" >
+<form [formGroup]="commentFormGroup">
+<p-editor [(ngModel)]="comment" formControlName="content" [style]="{'height':'320px'}">
   <p-header>
         <span class="ql-formats">
             <button class="ql-bold" aria-label="Bold"></button>
@@ -8,10 +9,13 @@
         </span>
   </p-header>
 </p-editor>
-
-
-<button pButton type="button" label="Clear" icon="pi pi-times" [disabled]="commentFormGroup.valid" (click)="createComment()"></button>
-
+</form>
+<p>Value: {{comment||null}}</p>
+<div class="ui-g">
+<div class="ui-g-1 ui-m-1">
+<button  pButton type="button" label="Post" icon="pi pi-times" [disabled]="!commentFormGroup.valid" (click)="createComment()"></button>
+</div>
+</div>
 <!--<form [formGroup]="commentFormGroup" class="comment-form">
   <mat-form-field>
     <input matInput type="text" placeholder="Content" formControlName="content" required>
