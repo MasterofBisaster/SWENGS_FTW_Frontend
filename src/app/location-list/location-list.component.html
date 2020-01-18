@@ -1,15 +1,19 @@
 <div [class]="classCard" *ngFor="let location of locations">
-  <p-card [header]="location.name" subheader="afsf"  [style]="{width: '100%'}" styleClass="ui-card-shadow">
+  <p-card [header]="location.name" subheader="Address"  [style]="{width: '100%'}" styleClass="ui-card-shadow">
     <p-header>
       <img src="assets/usercard.png">
     </p-header>
-    <div>Test
+    <div>
+      <p>{{location.street}}</p>
+      <p>{{location.zip_code}} + {{location.city}}</p>
+      <p>Country: {{location.country}}</p>
     </div>
     <p-footer>
 
       <div class="ui-g">
         <div [class]="classButton">
-          <button pButton type="button" label="More Infos" icon="pi pi-search-plus" style="margin-right: .25em"></button>
+          <a target="_blank" href="https://google.com/maps/place/{{location.street.replace(' ', '+')}},+{{location.zip_code}}+{{location.city}}">
+          <button pButton type="button" label="Google Maps" icon="pi pi-compass" style="margin-right: .25em" ></button></a>
           <!--<button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>-->
         </div>
       </div>

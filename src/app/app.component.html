@@ -9,32 +9,12 @@
 </p-menubar>
 
 <div class="content-section implementation ui-fluid">
-
     <div class="ui-g-12 ui-md-2">
       <img alt="logo" src="../assets/img/ftw_logo.png" width="70%"/>
       <p>{{ftwPhrase}}</p>
       <p-menu [model]="menuItems"></p-menu>
     </div>
-
     <div class="ui-g-12 ui-md-10">
-
         <router-outlet></router-outlet>
-
     </div>
-
-
-<!--<mat-toolbar>
-  <button mat-button [matMenuTriggerFor]="movieMenu">Event</button>
-  <mat-menu #movieMenu="matMenu">
-    <button mat-menu-item routerLink="event-list">List Events</button>
-
-    *ngIf="isLoggedIn"  Gehört nach oben
-    <button mat-menu-item routerLink="login" >Login</button>
-     *ngIf="isLoggedIn == false"   Gehört nach oben
-  </mat-menu>
-</mat-toolbar>-->
-
-
-
-
 </div>
