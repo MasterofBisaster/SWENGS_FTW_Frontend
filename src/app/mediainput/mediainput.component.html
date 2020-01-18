@@ -11,7 +11,7 @@
         <tbody>
         <tr *ngFor="let media of medias; let i = index;">
             <td><strong>{{ media.original_file_name }}</strong></td>
-            <td>{{ media.size/1024/1024 | number }}&nbsp;MB</td>
+            <td>{{ media.size / 1024 / 1024 | number }}&nbsp;MB</td>
             <td>
                 <span *ngIf="!media.id">Wird hochgeladen...</span>
                 <span *ngIf="media.id">Hochgeladen</span>
@@ -29,5 +29,5 @@
         </tr>
         </tbody>
     </table>
-    <input type="file" [accept]="accept" ng2FileSelect [uploader]="uploader" [multiple]="true"/>
+    <!--    <input type="file" [accept]="accept" ng2FileSelect [uploader]="uploader" [multiple]="true"/>-->
 </div>

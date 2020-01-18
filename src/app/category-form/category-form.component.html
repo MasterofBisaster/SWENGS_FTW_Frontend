@@ -1,1 +1,17 @@
-<p>category-form works!</p>
+<form [formGroup]="categoryFormGroup" class="category-form">
+    <mat-form-field>
+        <input matInput type="text" placeholder="Title" formControlName="title" required>
+        <mat-hint align="end">The title of the Category</mat-hint>
+        <mat-error *ngIf="categoryFormGroup.controls.title.hasError('required')">Title is required</mat-error>
+    </mat-form-field>
+    <br/>
+    <div>
+        <p-fileUpload fileLimit="1" name="picture" accept="image/*"></p-fileUpload>
+    </div>
+    <mat-card-actions align="center">
+        <button mat-raised-button color="primary" [disabled]="!categoryFormGroup.valid" (click)="createCategory()">
+            <span *ngIf="!categoryFormGroup.controls.id.value">Create</span>
+            <span *ngIf="categoryFormGroup.controls.id.value">Update</span>
+        </button>
+    </mat-card-actions>
+</form>

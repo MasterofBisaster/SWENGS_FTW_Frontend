@@ -20,6 +20,7 @@ import {CategorySearchResolver} from './resolver/category-search.resolver';
 import {FtwUserDetailResolver} from './resolver/ftwuser-detail.resolver';
 import {CategoryListComponent} from './category-list/category-list.component';
 import {LocationListComponent} from './location-list/location-list.component';
+import {CategoryFormComponent} from './category-form/category-form.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -57,7 +58,7 @@ const routes: Routes = [
       categories: CategorySearchResolver,
     }
   },
-  // Nur zum Testen. Anschließend löschen
+  // Comment zum Testen. Anschließend löschen
   {
     path: 'comment-list',
     component: CommentListComponent,
@@ -69,6 +70,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   // Bis hier
+  {
+    path: 'category-form',
+    component: CategoryFormComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'user-detail/:id',
     component: UserDetailComponent,

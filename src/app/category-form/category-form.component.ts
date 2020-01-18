@@ -33,7 +33,7 @@ export class CategoryFormComponent implements OnInit {
         } else {
             this.categoryService.createCategory(category)
                 .subscribe((response: any) => {
-                    this.router.navigate(['/category-form/' + response.id]);
+                    this.router.navigate(['home']);
                 });
         }
     }
