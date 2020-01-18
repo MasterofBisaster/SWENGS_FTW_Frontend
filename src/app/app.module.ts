@@ -34,7 +34,7 @@ import {JwtModule} from '@auth0/angular-jwt';
 
 import {MenuModule} from 'primeng/menu';
 import {MediainputComponent} from './mediainput/mediainput.component';
-import {FileUploadModule} from 'ng2-file-upload';
+// import {FileUploadModule} from 'ng2-file-upload';
 import {MenubarModule} from 'primeng/menubar';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
@@ -51,6 +51,7 @@ import {EditorModule} from 'primeng/editor';
 import {UserDetailComponent} from './user-detail/user-detail.component';
 import {UserFormComponent} from './user-form/user-form.component';
 import { HomeComponent } from './home/home.component';
+import {FileUploadModule} from 'primeng/fileupload';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -115,7 +116,8 @@ export function tokenGetter() {
     RxReactiveFormsModule,
     CalendarModule,
     PaginatorModule,
-    EditorModule
+    EditorModule,
+    FileUploadModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
