@@ -4,6 +4,7 @@ import {UserService} from './service/user.service';
 import {FtwWordService} from './service/ftw-word.service';
 import {EventService} from './service/event.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ export class AppComponent implements OnInit {
   ftwPhrase;
   searchString: string;
 
-  constructor(private userService: UserService, private ftwWordService: FtwWordService, private  eventService: EventService) {
+  constructor(private userService: UserService, private ftwWordService: FtwWordService, private router: Router) {
   }
 
 
@@ -39,22 +40,29 @@ export class AppComponent implements OnInit {
       {
         label: 'Location',
         items: [
-          {label: 'Add User', icon: 'pi pi-fw pi-user-plus'},
-          {label: 'Remove User', icon: 'pi pi-fw pi-user-minus'}
+          {label: 'Create a location', icon: 'pi pi-fw pi-plus', routerLink: 'location-form'},
+          {label: 'List all locations', icon: 'pi pi-list', routerLink: 'location-list'}
+        ]
+      },
+      {
+        label: 'Categories',
+        items: [
+          {label: 'Create a category', icon: 'pi pi-fw pi-plus', routerLink: 'category-form'},
+          {label: 'List all categories', icon: 'pi pi-list', routerLink: 'category-list'}
         ]
       }];
-/*
+
     this.menuBarItems = [
       {
-        label: 'File',
-        items: [{
+        label: 'Home', icon: 'pi pi-fw pi-plus', routerLink: 'home'
+        /*items: [{
           label: 'New',
           icon: 'pi pi-fw pi-plus',
           items: [
             {label: 'Project'},
             {label: 'Other'},
-          ]
-        },
+          ]*/
+        }]; /*,
           {label: 'Open'},
           {label: 'Quit'}
         ]
@@ -124,5 +132,8 @@ export class AppComponent implements OnInit {
     return arra1;
   }
 
+  save(event) {
+    this.router.navigate(['/home/' + event.target.value]);
+  }
 }
 

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {EventService} from '../service/event.service';
 import {UserService} from '../service/user.service';
 import {LocationService} from '../service/location.service';
@@ -10,6 +10,8 @@ import {LocationService} from '../service/location.service';
 })
 export class EventListComponent implements OnInit {
     events: any[];
+    @Input() classCard = 'ui-g-12 ui-md-6';
+    @Input() classButton = 'ui-g-12 ui-md-5';
 
     constructor(private eventService: EventService, public userService: UserService, public locationService: LocationService) {
     }

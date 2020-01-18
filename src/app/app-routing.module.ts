@@ -18,6 +18,8 @@ import {LocationListResolver} from './resolver/location-list.resolver';
 import {LocationSearchResolver} from './resolver/location-search.resolver';
 import {CategorySearchResolver} from './resolver/category-search.resolver';
 import {FtwUserDetailResolver} from './resolver/ftwuser-detail.resolver';
+import {CategoryListComponent} from './category-list/category-list.component';
+import {LocationListComponent} from './location-list/location-list.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -72,6 +74,21 @@ const routes: Routes = [
     component: UserDetailComponent,
     resolve: {
       user: FtwUserDetailResolver,
+    }
+  },
+  {
+    path: 'category-list',
+    component: CategoryListComponent,
+    canActivate: [AuthGuard],
+    resolve: {
+      categories: CategoryListResolver,
+    }
+  },
+  {
+    path: 'location-list',
+    component: LocationListComponent,
+    resolve: {
+      locations: LocationListResolver,
     }
   },
   {

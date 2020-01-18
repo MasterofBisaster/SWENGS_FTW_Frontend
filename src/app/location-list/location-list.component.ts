@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {UserService} from '../service/user.service';
+import {ActivatedRoute} from '@angular/router';
+import {LocationService} from '../service/location.service';
 
 @Component({
   selector: 'app-location-list',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LocationListComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  locations: any[];
+  @Input() classCard = 'ui-g-12 ui-md-3';
+  @Input() classButton = 'ui-g-12 ui-md-5';
+  constructor(private locationService: LocationService, public userService: UserService, private route: ActivatedRoute) {
   }
 
+  ngOnInit() {
+
+    const data = this.route.snapshot.data;
+    this.locations = data.locations;
+  }
+
+  deleteCategory(location: any) {
+    this.locationService.deleteLocation(location)
+      .subscribe(() => {
+        this.ngOnInit();
+      });
+  }
 }
+
