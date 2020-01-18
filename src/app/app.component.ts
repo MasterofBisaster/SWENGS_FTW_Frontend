@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
 
     this.menuBarItems = [
       {
-        label: 'Home', icon: 'pi pi-fw pi-plus', routerLink: 'home'
+        label: 'Home', icon: 'pi pi-home', routerLink: 'home'
         /*items: [{
           label: 'New',
           icon: 'pi pi-fw pi-plus',
