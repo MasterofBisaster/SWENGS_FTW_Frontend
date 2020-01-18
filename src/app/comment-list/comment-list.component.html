@@ -1,5 +1,5 @@
 <!--CSS FUNKTIONIERT NOCHT NICHT RICHTIG!-->
-<app-comment-form [eventId]="eventId"></app-comment-form>
+<app-comment-form [eventId]="eventId" *ngIf="userService.hasPermission('ftw.add_comment')"></app-comment-form>
 
 <p-virtualScroller [value]="comments" scrollHeight="500px" [itemSize]="100">
     <!--<p-header>
