@@ -16,8 +16,6 @@ export class AppComponent implements OnInit {
   menuBarItems: MenuItem[];
   isLoggedIn = false;
   ftwPhrase;
-  decodedToken;
-  readonly accessTokenLocalStorageKey = 'access_token';
   searchString: string;
 
   constructor(private userService: UserService, private ftwWordService: FtwWordService, private  eventService: EventService) {
@@ -25,12 +23,6 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit() {
-    const myRawToken = localStorage.getItem(this.accessTokenLocalStorageKey);
-
-    const helper = new JwtHelperService();
-
-    this.decodedToken = helper.decodeToken(myRawToken);
-
     this.setFTWPhrase();
 
     this.userService.isLoggedIn.subscribe( (isLoggedIn) => {
