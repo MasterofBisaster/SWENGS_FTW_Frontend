@@ -7,7 +7,6 @@ import {EventFormComponent} from './event-form/event-form.component';
 import {CommentListComponent} from './comment-list/comment-list.component';
 import {CommentFormComponent} from './comment-form/comment-form.component';
 import {EventDetailComponent} from './event-detail/event-detail.component';
-import {EventResolver} from './resolver/event.resolver';
 import {EventDetailResolver} from './resolver/event-detail.resolver';
 import {RegisterComponent} from './register/register.component';
 import {UserDetailComponent} from './user-detail/user-detail.component';
@@ -18,7 +17,7 @@ import {CategoryListResolver} from './resolver/category-list.resolver';
 import {LocationListResolver} from './resolver/location-list.resolver';
 import {LocationSearchResolver} from './resolver/location-search.resolver';
 import {CategorySearchResolver} from './resolver/category-search.resolver';
-
+import {FtwUserDetailResolver} from './resolver/ftwuser-detail.resolver';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -73,6 +72,9 @@ const routes: Routes = [
     path: 'user-detail/:id',
     component: UserDetailComponent,
     canActivate: [AuthGuard],
+    resolve: {
+      user: FtwUserDetailResolver,
+    }
   },
   {
     path: 'register',

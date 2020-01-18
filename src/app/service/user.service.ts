@@ -48,4 +48,8 @@ export class UserService {
   createUser(user) {
     return this.http.post('/api/register/create', user);
   }
+
+  getUserDetail(id) {
+    return this.http.get('/api/user/' + id + '/detail');
+  }
 }

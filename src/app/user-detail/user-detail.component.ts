@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
-import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Component({
     selector: 'app-user-detail',
@@ -18,18 +17,16 @@ export class UserDetailComponent implements OnInit {
 
         this.ftwUserDetailGroup = this.fb.group({
             id: [null],
-            user: ['', [Validators.required]],
-            picture: [],
+            picture: [null],
             user_username: [null, [Validators.required]],
             user_first_name: [null, [Validators.required]],
             user_last_name: [null, [Validators.required]],
-            last_login: [null, [Validators.required]],
         });
 
         const data = this.route.snapshot.data;
 
         if (data.user) {
-            this.ftwUserDetailGroup.patchValue(data.event);
+            this.ftwUserDetailGroup.patchValue(data.user);
         }
     }
 
