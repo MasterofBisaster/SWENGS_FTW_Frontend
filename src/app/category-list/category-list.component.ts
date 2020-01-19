@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from '../service/user.service';
 import {CategoryService} from '../service/category.service';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
+import {ActivatedRoute} from '@angular/router';
 
 
 @Component({
@@ -11,16 +12,16 @@ import {VirtualScrollerModule} from 'primeng/virtualscroller';
 })
 export class CategoryListComponent implements OnInit {
 
-    category: any[];
-
-    constructor(private categoryService: CategoryService, public userService: UserService) {
+    categories: any[];
+    @Input() classCard = 'ui-g-12 ui-md-3';
+    @Input() classButton = 'ui-g-12 ui-md-5';
+    constructor(private categoryService: CategoryService, public userService: UserService, private route: ActivatedRoute) {
     }
 
     ngOnInit() {
-        this.categoryService.getCategories()
-            .subscribe((response: any[]) => {
-                this.category = response;
-            });
+
+      const data = this.route.snapshot.data;
+      this.categories = data.categories;
     }
 
     deleteCategory(category: any) {

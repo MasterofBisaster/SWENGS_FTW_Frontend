@@ -5,13 +5,13 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatMenuModule, MatNativeDateModule,
-  MatSelectModule,
-  MatTableModule,
-  MatToolbarModule
+    MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatMenuModule, MatNativeDateModule,
+    MatSelectModule,
+    MatTableModule,
+    MatToolbarModule
 } from '@angular/material';
 import {LogoutComponent} from './logout/logout.component';
 import {LoginComponent} from './login/login.component';
@@ -33,8 +33,6 @@ import {JwtModule} from '@auth0/angular-jwt';
 
 
 import {MenuModule} from 'primeng/menu';
-import {MediainputComponent} from './mediainput/mediainput.component';
-import {FileUploadModule} from 'ng2-file-upload';
 import {MenubarModule} from 'primeng/menubar';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
@@ -50,35 +48,36 @@ import {RxReactiveFormsModule} from '@rxweb/reactive-form-validators';
 import {EditorModule} from 'primeng/editor';
 import {UserDetailComponent} from './user-detail/user-detail.component';
 import {UserFormComponent} from './user-form/user-form.component';
-import { HomeComponent } from './home/home.component';
+import {HomeComponent} from './home/home.component';
+import {FileUploadModule} from 'primeng/fileupload';
+import {MessageModule} from 'primeng/message';
+
 
 export function tokenGetter() {
-  return localStorage.getItem('access_token');
+    return localStorage.getItem('access_token');
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LogoutComponent,
-    LoginComponent,
-    DateComponent,
-    EventListComponent,
-    EventFormComponent,
-    EventDetailComponent,
-    LocationListComponent,
-    LocationFormComponent,
-    CommentFormComponent,
-    CommentListComponent,
-    CategoryListComponent,
-    CategoryFormComponent,
-    FtwWordFormComponent,
-    FtwWordListComponent,
-    MediainputComponent,
-    RegisterComponent,
-    UserDetailComponent,
-    UserFormComponent,
-    HomeComponent
-  ],
+    declarations: [
+        AppComponent,
+        LogoutComponent,
+        LoginComponent,
+        DateComponent,
+        EventListComponent,
+        EventFormComponent,
+        EventDetailComponent,
+        LocationListComponent,
+        LocationFormComponent,
+        CommentFormComponent,
+        CommentListComponent,
+        CategoryListComponent,
+        CategoryFormComponent,
+        FtwWordFormComponent,
+        FtwWordListComponent,
+        RegisterComponent,
+        UserDetailComponent,
+        UserFormComponent,
+        HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -115,11 +114,14 @@ export function tokenGetter() {
     RxReactiveFormsModule,
     CalendarModule,
     PaginatorModule,
-    EditorModule
+    EditorModule,
+    FileUploadModule,
+    MessageModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+    providers: [],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
 
 

@@ -1,1 +1,24 @@
-<p>category-list works!</p>
+<div [class]="classCard" *ngFor="let category of categories">
+  <p-card [header]="category.title" subheader="afsf"  [style]="{width: '100%'}" styleClass="ui-card-shadow">
+    <p-header>
+      <div *ngIf="category?.picture"class="aspect-ratio-box">
+      <img   src="/api/media/{{category.picture}}">
+      </div>
+      <div *ngIf="!category?.picture"class="aspect-ratio-box">
+      <img  src="assets/usercard.png">
+      </div>
+    </p-header>
+    <div>Test
+    </div>
+    <p-footer>
+
+      <div class="ui-g">
+        <div [class]="classButton">
+          <button pButton type="button" label="More Infos" icon="pi pi-search-plus" style="margin-right: .25em"></button>
+          <!--<button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>-->
+        </div>
+      </div>
+    </p-footer>
+  </p-card>
+</div>
+

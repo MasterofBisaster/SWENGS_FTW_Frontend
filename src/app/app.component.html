@@ -1,38 +1,20 @@
 
 
 <p-menubar [model]="menuBarItems">
-  <input type="text" pInputText placeholder="Search">
+  <input type="text" (keydown.enter)="save($event)" pInputText placeholder="Search">
+  <!-- <button [routerLink]="'/home/'+ searchString" pButton label="Go" icon="fa fa-sign-in" style="margin-left:.25em"></button>-->
   <app-logout *ngIf="isLoggedIn"></app-logout>
   <button routerLink="login" pButton label="Login" *ngIf="isLoggedIn == false" icon="fa fa-sign-in" style="margin-left:.25em"></button>
+  <button [routerLink]="'/user-detail/' + userService.userId()" pButton label="My Profile" *ngIf="isLoggedIn" icon="pi pi-user" style="margin-left:.25em"></button>
 </p-menubar>
 
 <div class="content-section implementation ui-fluid">
-
     <div class="ui-g-12 ui-md-2">
       <img alt="logo" src="../assets/img/ftw_logo.png" width="70%"/>
-      <p>{{ftwPhrase}}</p>
+      <h4>{{ftwPhrase}}</h4>
       <p-menu [model]="menuItems"></p-menu>
     </div>
-
     <div class="ui-g-12 ui-md-10">
-
         <router-outlet></router-outlet>
-
     </div>
-
-
-<!--<mat-toolbar>
-  <button mat-button [matMenuTriggerFor]="movieMenu">Event</button>
-  <mat-menu #movieMenu="matMenu">
-    <button mat-menu-item routerLink="event-list">List Events</button>
-
-    *ngIf="isLoggedIn"  Gehört nach oben
-    <button mat-menu-item routerLink="login" >Login</button>
-     *ngIf="isLoggedIn == false"   Gehört nach oben
-  </mat-menu>
-</mat-toolbar>-->
-
-
-
-
 </div>

@@ -1,11 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~primeicons/primeicons.css";
-@import "~primeng/resources/themes/luna-amber/theme.css";
+@import "~primeng/resources/themes/luna-green/theme.css";
 @import "~primeng/resources/primeng.min.css";
 @import "~primeflex/primeflex.css";
 @import "~font-awesome/css/font-awesome.css";
 @import "~quill/dist/quill.core.css";
 @import "~quill/dist/quill.snow.css";
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color:#3f3f3f;color:#dedede}
+h3 {}
 
+.aspect-ratio-box {
+  position: relative;
+}
+
+/* Create a pseudo element that uses padding-bottom to take up space */
+.aspect-ratio-box::after {
+  display: block;
+  content: '';
+  /* 16:9 aspect ratio */
+  padding-bottom: 56.25%;
+}
+
+/* Image is positioned absolutely relative to the parent element */
+.aspect-ratio-box img {
+  /* Image should match parent box size */
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}

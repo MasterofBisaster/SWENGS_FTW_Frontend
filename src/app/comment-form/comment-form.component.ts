@@ -5,6 +5,7 @@ import {CategoryService} from '../service/category.service';
 import {CommentService} from '../service/comment.service';
 import {DatePipe} from '@angular/common';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {UserService} from '../service/user.service';
 
 
 @Component({
@@ -15,27 +16,17 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 export class CommentFormComponent implements OnInit {
   commentFormGroup;
   @Input() eventId: number;
-  userId = 1;
-
-  readonly accessTokenLocalStorageKey = 'access_token';
   comment: string;
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router,
-              private categoryService: CategoryService, private commentService: CommentService) {
+              private categoryService: CategoryService, private commentService: CommentService, private userService: UserService) {
   }
 
   ngOnInit() {
-
-    const myRawToken = localStorage.getItem(this.accessTokenLocalStorageKey);
-
-    const helper = new JwtHelperService();
-
-    const decodedToken = helper.decodeToken(myRawToken);
-
     this.commentFormGroup = this.fb.group({
       id: [null],
       event: [this.eventId],
-      creator: [decodedToken.user_id],
+      creator: [this.userService.userId()],
       content: ['', [Validators.required]],
       create_date: [null],
     });

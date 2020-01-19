@@ -7,7 +7,6 @@ import {EventFormComponent} from './event-form/event-form.component';
 import {CommentListComponent} from './comment-list/comment-list.component';
 import {CommentFormComponent} from './comment-form/comment-form.component';
 import {EventDetailComponent} from './event-detail/event-detail.component';
-import {EventResolver} from './resolver/event.resolver';
 import {EventDetailResolver} from './resolver/event-detail.resolver';
 import {RegisterComponent} from './register/register.component';
 import {UserDetailComponent} from './user-detail/user-detail.component';
@@ -18,14 +17,20 @@ import {CategoryListResolver} from './resolver/category-list.resolver';
 import {LocationListResolver} from './resolver/location-list.resolver';
 import {LocationSearchResolver} from './resolver/location-search.resolver';
 import {CategorySearchResolver} from './resolver/category-search.resolver';
-
+import {FtwUserDetailResolver} from './resolver/ftwuser-detail.resolver';
+import {CategoryListComponent} from './category-list/category-list.component';
+import {LocationListComponent} from './location-list/location-list.component';
+import {CategoryFormComponent} from './category-form/category-form.component';
+import {LocationFormComponent} from './location-form/location-form.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {
     path: 'event-list',
     component: EventListComponent,
-    canActivate: [AuthGuard],
+    resolve: {
+      events: EventListResolver,
+    }
   },
   {
     path: 'event-form',
@@ -35,7 +40,6 @@ const routes: Routes = [
   {
     path: 'event-detail/:id',
     component: EventDetailComponent,
-    canActivate: [AuthGuard],
     resolve: {
       event: EventDetailResolver,
     }
@@ -58,7 +62,7 @@ const routes: Routes = [
       categories: CategorySearchResolver,
     }
   },
-  // Nur zum Testen. Anschließend löschen
+  // Comment zum Testen. Anschließend löschen
   {
     path: 'comment-list',
     component: CommentListComponent,
@@ -69,10 +73,39 @@ const routes: Routes = [
     component: CommentFormComponent,
     canActivate: [AuthGuard],
   },
+  // Bis hier
+  {
+    path: 'category-form',
+    component: CategoryFormComponent,
+    canActivate: [AuthGuard],
+  },
+    {
+        path: 'location-form',
+        component: LocationFormComponent,
+        canActivate: [AuthGuard],
+    },
   {
     path: 'user-detail/:id',
     component: UserDetailComponent,
+    runGuardsAndResolvers: 'always',
+    resolve: {
+      user: FtwUserDetailResolver,
+    }
+  },
+  {
+    path: 'category-list',
+    component: CategoryListComponent,
     canActivate: [AuthGuard],
+    resolve: {
+      categories: CategoryListResolver,
+    }
+  },
+  {
+    path: 'location-list',
+    component: LocationListComponent,
+    resolve: {
+      locations: LocationListResolver,
+    }
   },
   {
     path: 'register',
@@ -82,7 +115,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    onSameUrlNavigation: 'reload'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {
