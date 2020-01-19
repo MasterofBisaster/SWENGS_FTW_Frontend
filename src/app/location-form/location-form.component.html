@@ -24,7 +24,8 @@
         <mat-hint align="end">The maximum amount of people of the location</mat-hint>
     </mat-form-field>
     <div>
-       <!-- <app-mediainput formControlName="picture"></app-mediainput> -->
+        <p-fileUpload url="./api/media/upload" accept="image/*" name="myfile[]" showUploadButton=false
+                      (onSelect)="uploadFile($event)"></p-fileUpload>
     </div>
     <br/>
     <mat-card-actions align="center">
