@@ -8,4 +8,11 @@
         <p>FirstName: {{ftwUserDetailGroup.controls.user_first_name.value}}</p>
         <p>Last Name: {{ftwUserDetailGroup.controls.user_last_name.value}}</p>
     </p-accordionTab>
+    <p-accordion>
+        <div>
+            <p-fileUpload url="./api/media/upload" accept="image/*" name="myfile[]" showUploadButton=false
+                          (onSelect)="uploadFile($event)"></p-fileUpload>
+        </div>
+    </p-accordion>
 </p-accordion>
+
