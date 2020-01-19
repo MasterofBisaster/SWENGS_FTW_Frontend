@@ -2,10 +2,18 @@
 
 <p-accordion [multiple]="true">
     <p-accordionTab selected=true header="About {{ftwUserDetailGroup.controls.user_username.value}}:">
-        <p>Picture: {{ftwUserDetailGroup.controls.picture.value}}</p>
+        <img width="400" [src]="'/api/media/' + ftwUserDetailGroup.controls.picture.value">
         <br/>
         <p>Username: {{ftwUserDetailGroup.controls.user_username.value}}</p>
         <p>FirstName: {{ftwUserDetailGroup.controls.user_first_name.value}}</p>
         <p>Last Name: {{ftwUserDetailGroup.controls.user_last_name.value}}</p>
     </p-accordionTab>
+    <p-accordion>
+        <p>Change Picture:</p>
+        <div>
+            <p-fileUpload url="./api/media/upload" accept="image/*" name="myfile[]" showUploadButton=false
+                          (onSelect)="uploadFile($event)" showUploadButton="false"></p-fileUpload>
+        </div>
+    </p-accordion>
 </p-accordion>
+

@@ -64,6 +64,10 @@ export class UserService {
     return this.http.post('/api/register/create', user);
   }
 
+  updateUser(user) {
+    return this.http.put('/api/user/' + user.id + '/update', user);
+  }
+
   getUserDetail(id) {
     return this.http.get('/api/user/' + id + '/detail');
   }

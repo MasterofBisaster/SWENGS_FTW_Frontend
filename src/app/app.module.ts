@@ -50,7 +50,6 @@ import {UserDetailComponent} from './user-detail/user-detail.component';
 import {UserFormComponent} from './user-form/user-form.component';
 import {HomeComponent} from './home/home.component';
 import {FileUploadModule} from 'primeng/fileupload';
-import {MediainputComponent} from './mediainput/mediainput.component';
 import {MessageModule} from 'primeng/message';
 
 
@@ -75,7 +74,6 @@ export function tokenGetter() {
         CategoryFormComponent,
         FtwWordFormComponent,
         FtwWordListComponent,
-        MediainputComponent,
         RegisterComponent,
         UserDetailComponent,
         UserFormComponent,
