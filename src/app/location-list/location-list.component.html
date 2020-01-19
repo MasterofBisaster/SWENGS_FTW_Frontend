@@ -1,7 +1,12 @@
 <div [class]="classCard" *ngFor="let location of locations">
   <p-card [header]="location.name" subheader="Address"  [style]="{width: '100%'}" styleClass="ui-card-shadow">
     <p-header>
-      <img src="assets/usercard.png">
+      <div *ngIf="location?.picture"class="aspect-ratio-box">
+        <img   src="/api/media/{{location.picture}}">
+      </div>
+      <div *ngIf="!location?.picture"class="aspect-ratio-box">
+        <img  src="assets/usercard.png">
+      </div>
     </p-header>
     <div>
       <p>{{location.street}}</p>

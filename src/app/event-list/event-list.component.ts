@@ -11,15 +11,16 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class EventListComponent implements OnInit {
   events: any[];
-  @Input() classCard = 'ui-g-12 ui-md-6';
+  @Input() classCard = 'ui-g-12 ui-md-4';
   @Input() classButton = 'ui-g-12 ui-md-3';
 
-  constructor(private eventService: EventService, public userService: UserService, public locationService: LocationService, private route: ActivatedRoute) {
+  constructor(private eventService: EventService, public userService: UserService, public locationService: LocationService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     const data = this.route.snapshot.data;
-    this.events = data.locations;
+    this.events = data.events;
   }
 
   deleteEvent(event: any) {

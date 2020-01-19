@@ -34,7 +34,12 @@
 
 <div class="ui-g-12 ui-md-4">
 
-  <img src="../../assets/img/galleria5.jpg">
+  <div *ngIf="eventDetailGroup?.controls.picture.value" class="aspect-ratio-box">
+    <img   src="/api/media/{{eventDetailGroup.controls.picture.value}}">
+  </div>
+  <div *ngIf="!eventDetailGroup.controls?.picture.value"class="aspect-ratio-box">
+    <img  src="assets/usercard.png">
+  </div>
   <div class="ui-g-12 ui-md-3">
     <button pButton type="button" label="Edit Event" icon="pi pi-pencil" style="margin-right: .25em"*ngIf="eventDetailGroup.controls.creator.value == decodedToken.id" [routerLink]="'/event-form/' + eventDetailGroup.controls.id.value"></button>
   </div>

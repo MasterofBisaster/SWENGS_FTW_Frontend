@@ -40,7 +40,8 @@ export class EventDetailComponent implements OnInit {
       // confirmed_users: [null],
       costs: [null],
       // picture: [],
-      creator: [null]
+      creator: [null],
+      picture: [null]
     });
 
     const data = this.route.snapshot.data;

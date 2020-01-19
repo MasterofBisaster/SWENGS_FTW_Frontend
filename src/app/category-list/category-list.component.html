@@ -1,7 +1,12 @@
 <div [class]="classCard" *ngFor="let category of categories">
   <p-card [header]="category.title" subheader="afsf"  [style]="{width: '100%'}" styleClass="ui-card-shadow">
     <p-header>
-      <img src="assets/usercard.png">
+      <div *ngIf="category?.picture"class="aspect-ratio-box">
+      <img   src="/api/media/{{category.picture}}">
+      </div>
+      <div *ngIf="!category?.picture"class="aspect-ratio-box">
+      <img  src="assets/usercard.png">
+      </div>
     </p-header>
     <div>Test
     </div>

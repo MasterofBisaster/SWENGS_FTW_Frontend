@@ -2,7 +2,12 @@
   <div [class]="classCard" *ngFor="let event of events">
     <p-card [header]="event.name" [subheader]="event.start_date + ' bis ' + event.end_date"  [style]="{width: '100%'}" styleClass="ui-card-shadow">
       <p-header>
-        <img src="assets/usercard.png">
+        <div *ngIf="event?.picture"class="aspect-ratio-box">
+          <img   src="/api/media/{{event.picture}}">
+        </div>
+        <div *ngIf="!event?.picture"class="aspect-ratio-box">
+          <img  src="assets/usercard.png">
+        </div>
       </p-header>
       <div>{{event.short_description}}
       </div>
