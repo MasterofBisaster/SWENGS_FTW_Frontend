@@ -1,22 +1,76 @@
+<h1>Create an Event</h1>
+<div class="ui-g-12 ui-md-6">
+  <form [formGroup]="eventFormGroup" class="event-form">
+    <!--NAME-->
+    <div class="ui-g-12 ui-md-12">
+      <span class="ui-float-label">
+        <input id="float-name" type="text" size="30" formControlName="name" pInputText required>
+        <label for="float-name">Eventname</label>
+      </span>
+    </div>
+    <!--  start date-->
+    <div class="ui-g-12 ui-md-6">
+      <div class="ui-g-12 ui-md-12">
+        <h3>Start Date</h3>
+      </div>
+      <div class="ui-g-12 ui-md-12">
+          <input id="float-startdate" type="date" formControlName="start_date" pInputText required>
+      </div>
+    </div>
+    <!--  end date-->
+    <div class="ui-g-12 ui-md-6">
+      <div class="ui-g-12 ui-md-12">
+        <h3>End Date</h3>
+      </div>
+      <div class="ui-g-12 ui-md-12">
+          <input id="float-enddate" type="date" formControlName="end_date" pInputText required>
+      </div>
+    </div>
+    <!--   private-->
+    <div class="ui-g-12 ui-md-12">
+      <div class="ui-g-12 ui-md-12">
+<!--      <mat-checkbox formControlName="private">Private</mat-checkbox>-->
+      <p-checkbox formControlName="private" binary="true" label="private"></p-checkbox>
+      </div>
+    </div>
+<!--    Location-->
+    <div class="ui-g-12 ui-md-12">
+      <span class="ui-float-label">
+        <input id="float-location" type="text" formControlName="location" pInputText>
+        <label for="float-location">Location</label>
+      </span>
+    </div>
+<!--    Category-->
+    <div class="ui-g-12 ui-md-12">
+      <span class="ui-float-label">
+        <input id="float-category" type="text" formControlName="category" pInputText>
+        <label for="float-category">Category</label>
+      </span>
+    </div>
+<!--    Desciption-->
+    <div class="ui-g-12 ui-md-12">
+      <span class="ui-float-label">
+        <input id="float-description" type="text" formControlName="description" pInputText>
+        <label for="float-description">Description</label>
+      </span>
+    </div>
+    <!--Creator-->
+    <div class="ui-g-12 ui-md-12">
+      <span class="ui-float-label">
+        <input id="float-creator" type="text" formControlName="creator" pInputText>
+        <label for="float-creator">Creator</label>
+      </span>
+    </div>
+    <!--Buttons-->
+    <div class="ui-g-12 ui-md-2">
+      <button pButton *ngIf="!eventFormGroup.controls.id.value" label="Create" [disabled]="!eventFormGroup.valid"
+              (click)="createEvent()">
+      </button>
+      <button pButton *ngIf="eventFormGroup.controls.id.value" label="Update" [disabled]="!eventFormGroup.valid"
+              (click)="eventFormGroup()">
+      </button>
+    </div>
 
-<!--<form>-->
-  <h3>Float Label</h3>
-  <span class="ui-float-label">
-    <input id="float-input1" type="text" size="30" pInputText>
-    <label for="float-input1">Username</label>
-</span>
-  <h3>Float Label</h3>
-  <span class="ui-float-label">
-    <input id="float-input2" type="text" size="30" pInputText>
-    <label for="float-input2">Username</label>
-</span>
-  <h3>Float Label</h3>
-  <span class="ui-float-label">
-    <input id="float-input3" type="text" size="30" pInputText>
-    <label for="float-input3">Username</label>
-</span>
-
-<!--</form>-->
-
+  </form>
+</div>
 <!--<div><app-mediainput></app-mediainput></div>-->
-

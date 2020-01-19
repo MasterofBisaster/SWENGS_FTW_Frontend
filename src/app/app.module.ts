@@ -51,6 +51,7 @@ import {UserFormComponent} from './user-form/user-form.component';
 import {HomeComponent} from './home/home.component';
 import {FileUploadModule} from 'primeng/fileupload';
 import {MessageModule} from 'primeng/message';
+import {CheckboxModule} from "primeng/checkbox";
 
 
 export function tokenGetter() {
@@ -78,46 +79,47 @@ export function tokenGetter() {
         UserDetailComponent,
         UserFormComponent,
         HomeComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    MatTableModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatCardModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatCheckboxModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter,
-        whitelistedDomains: ['localhost:4200']
-      }
-    }),
-    MenuModule,
-    ButtonModule,
-    InputTextModule,
-    MenubarModule,
-    FileUploadModule,
-    PasswordModule,
-    CardModule,
-    VirtualScrollerModule,
-    AngularFontAwesomeModule,
-    AccordionModule,
-    RxReactiveFormsModule,
-    CalendarModule,
-    PaginatorModule,
-    EditorModule,
-    FileUploadModule,
-    MessageModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        MatTableModule,
+        MatButtonModule,
+        MatToolbarModule,
+        MatMenuModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatInputModule,
+        MatCardModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatCheckboxModule,
+        JwtModule.forRoot({
+            config: {
+                tokenGetter,
+                whitelistedDomains: ['localhost:4200']
+            }
+        }),
+        MenuModule,
+        ButtonModule,
+        InputTextModule,
+        MenubarModule,
+        FileUploadModule,
+        PasswordModule,
+        CardModule,
+        VirtualScrollerModule,
+        AngularFontAwesomeModule,
+        AccordionModule,
+        RxReactiveFormsModule,
+        CalendarModule,
+        PaginatorModule,
+        EditorModule,
+        FileUploadModule,
+        MessageModule,
+        CheckboxModule
+    ],
     providers: [],
     bootstrap: [AppComponent]
 })
