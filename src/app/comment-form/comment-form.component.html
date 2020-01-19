@@ -12,8 +12,8 @@
 </form>
 <p>Value: {{comment||null}}</p>
 <div class="ui-g">
-<div class="ui-g-1 ui-m-1">
-<button  pButton type="button" label="Post" icon="pi pi-times" [disabled]="!commentFormGroup.valid" (click)="createComment()"></button>
+<div class="ui-g-1 ui-m-2 ui-sm-3">
+<button  pButton type="button" label="Post" icon="pi pi-comment" [disabled]="!commentFormGroup.valid" (click)="createComment()"></button>
 </div>
 </div>
 <!--<form [formGroup]="commentFormGroup" class="comment-form">
