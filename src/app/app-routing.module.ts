@@ -28,6 +28,9 @@ const routes: Routes = [
   {
     path: 'event-list',
     component: EventListComponent,
+    resolve: {
+      events: EventListResolver,
+    }
   },
   {
     path: 'event-form',
