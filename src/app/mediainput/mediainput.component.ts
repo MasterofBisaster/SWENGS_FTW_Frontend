@@ -6,107 +6,107 @@ import {UserService} from '../service/user.service';
 import {forkJoin} from 'rxjs';
 
 export interface IMedia {
-    id?: number;
-    original_file_name?: string;
-    content_type?: string;
-    size?: number;
+  id?: number;
+  original_file_name?: string;
+  content_type?: string;
+  size?: number;
 }
 
 @Component({
-    selector: 'app-mediainput',
-    templateUrl: './mediainput.component.html',
-    styles: [],
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => MediainputComponent),
-            multi: true
-        }
-    ]
+  selector: 'app-mediainput',
+  templateUrl: './mediainput.component.html',
+  styles: [],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => MediainputComponent),
+      multi: true
+    }
+  ]
 })
 export class MediainputComponent implements OnInit, ControlValueAccessor {
-    @Input()
-    accept = '';
-    resourceUrl = '/api/media';
-    initializing = true;
-    medias: IMedia[];
-    uploader: FileUploader;
-    onChange = (medias: number[]) => {
-        // empty default
+  @Input()
+  accept = '';
+  resourceUrl = '/api/media';
+  initializing = true;
+  medias: IMedia[];
+  uploader: FileUploader;
+  onChange = (medias: number[]) => {
+    // empty default
+  };
+
+  constructor(private userService: UserService, private http: HttpClient, elm: ElementRef) {
+  }
+
+  ngOnInit() {
+    this.uploader = new FileUploader({
+      url: this.resourceUrl,
+      authToken: 'Bearer ' + localStorage.getItem(this.userService.accessTokenLocalStorageKey),
+      autoUpload: true,
+    });
+    this.uploader.onBeforeUploadItem = (item: FileItem) => {
+      if (!this.medias) {
+        this.medias = [];
+      }
+      this.medias.push({
+        content_type: item.file.type,
+        original_file_name: item.file.name,
+        size: item.file.size
+      });
     };
+    this.uploader.onSuccessItem = (item: FileItem, response: string, status: number, headers: ParsedResponseHeaders) => {
+      const uploadedMedia = <IMedia> JSON.parse(response);
+      this.medias.find(media => !media.id && media.original_file_name === uploadedMedia.original_file_name).id = uploadedMedia.id;
+    };
+    this.uploader.onCompleteAll = () => {
+      this.onChange(this.medias.map((m) => {
+        return m.id;
+      }));
+    };
+  }
 
-    constructor(private userService: UserService, private http: HttpClient, elm: ElementRef) {
-    }
+  deleteMedia(index: number): void {
+    this.medias.splice(index, 1);
+    this.onChange(this.medias.map((m) => {
+      return m.id;
+    }));
+  }
 
-    ngOnInit() {
-        this.uploader = new FileUploader({
-            url: this.resourceUrl,
-            authToken: 'Bearer ' + localStorage.getItem(this.userService.accessTokenLocalStorageKey),
-            autoUpload: true,
-        });
-        this.uploader.onBeforeUploadItem = (item: FileItem) => {
-            if (!this.medias) {
-                this.medias = [];
-            }
-            this.medias.push({
-                content_type: item.file.type,
-                original_file_name: item.file.name,
-                size: item.file.size
-            });
-        };
-        this.uploader.onSuccessItem = (item: FileItem, response: string, status: number, headers: ParsedResponseHeaders) => {
-            const uploadedMedia = JSON.parse(response) as IMedia;
-            this.medias.find(media => !media.id && media.original_file_name === uploadedMedia.original_file_name).id = uploadedMedia.id;
-        };
-        this.uploader.onCompleteAll = () => {
-            this.onChange(this.medias.map((m) => {
-                return m.id;
-            }));
-        };
-    }
+  downloadMedia(media: IMedia): void {
+    this.http.get(`${this.resourceUrl}/${media.id}`, {responseType: 'blob'}).subscribe((blob: Blob) => {
+      const fileURL = URL.createObjectURL(blob);
+      const a = <HTMLAnchorElement> document.createElement('a');
+      a.href = fileURL;
+      a.download = media.original_file_name;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => {
+        document.body.removeChild(a);
+      }, 100);
+    });
+  }
 
-    deleteMedia(index: number): void {
-        this.medias.splice(index, 1);
-        this.onChange(this.medias.map((m) => {
-            return m.id;
-        }));
-    }
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
 
-    downloadMedia(media: IMedia): void {
-        this.http.get(`${this.resourceUrl}/${media.id}`, {responseType: 'blob'}).subscribe((blob: Blob) => {
-            const fileURL = URL.createObjectURL(blob);
-            const a = document.createElement('a') as HTMLAnchorElement;
-            a.href = fileURL;
-            a.download = media.original_file_name;
-            document.body.appendChild(a);
-            a.click();
-            setTimeout(() => {
-                document.body.removeChild(a);
-            }, 100);
-        });
-    }
+  registerOnTouched(fn: any): void {
+    // not implemented
+  }
 
-    registerOnChange(fn: any): void {
-        this.onChange = fn;
-    }
+  setDisabledState(isDisabled: boolean): void {
+    // not implemented
+  }
 
-    registerOnTouched(fn: any): void {
-        // not implemented
+  writeValue(mediaIds: any): void {
+    if (!mediaIds || !mediaIds.length) {
+      this.initializing = false;
     }
-
-    setDisabledState(isDisabled: boolean): void {
-        // not implemented
-    }
-
-    writeValue(mediaIds: any): void {
-        if (!mediaIds || !mediaIds.length) {
-            this.initializing = false;
-        }
-        forkJoin(mediaIds.map((id) => {
-            return this.http.get(`${this.resourceUrl}/${id}/get`);
-        })).subscribe((medias) => {
-            this.medias = medias;
-            this.initializing = false;
-        });
-    }
+    forkJoin(mediaIds.map((id) => {
+      return this.http.get(`${this.resourceUrl}/${id}/get`);
+    })).subscribe((medias) => {
+      this.medias = medias;
+      this.initializing = false;
+    });
+  }
 }

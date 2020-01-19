@@ -21,6 +21,7 @@ import {FtwUserDetailResolver} from './resolver/ftwuser-detail.resolver';
 import {CategoryListComponent} from './category-list/category-list.component';
 import {LocationListComponent} from './location-list/location-list.component';
 import {CategoryFormComponent} from './category-form/category-form.component';
+import {LocationFormComponent} from './location-form/location-form.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -75,6 +76,11 @@ const routes: Routes = [
     component: CategoryFormComponent,
     canActivate: [AuthGuard],
   },
+    {
+        path: 'location-form',
+        component: LocationFormComponent,
+        canActivate: [AuthGuard],
+    },
   {
     path: 'user-detail/:id',
     component: UserDetailComponent,
