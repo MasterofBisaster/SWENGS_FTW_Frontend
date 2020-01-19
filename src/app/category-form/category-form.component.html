@@ -1,13 +1,13 @@
 <form [formGroup]="categoryFormGroup" class="category-form">
     <mat-form-field>
         <input matInput type="text" placeholder="Title" formControlName="title" required>
-        <mat-hint align="end">The title of the Category</mat-hint>
+        <mat-hint align="end">The title of the movie</mat-hint>
         <mat-error *ngIf="categoryFormGroup.controls.title.hasError('required')">Title is required</mat-error>
     </mat-form-field>
-    <br/>
     <div>
-        <p-fileUpload accept="image/*" name="myfile[]" showUploadButton=false (onSelect)="test($event)"></p-fileUpload>
+        <app-mediainput formControlName="picture"></app-mediainput>
     </div>
+    <br/>
     <mat-card-actions align="center">
         <button mat-raised-button color="primary" [disabled]="!categoryFormGroup.valid" (click)="createCategory()">
             <span *ngIf="!categoryFormGroup.controls.id.value">Create</span>

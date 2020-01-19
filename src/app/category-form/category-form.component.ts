@@ -33,14 +33,8 @@ export class CategoryFormComponent implements OnInit {
         } else {
             this.categoryService.createCategory(category)
                 .subscribe((response: any) => {
-                    this.router.navigate(['home']);
+                    this.router.navigate(['/home/']);
                 });
         }
-    }
-
-    test(event) {
-        const x = event.files;
-        const y = x[0];
-        this.categoryFormGroup.controls.picture.value = x;
     }
 }

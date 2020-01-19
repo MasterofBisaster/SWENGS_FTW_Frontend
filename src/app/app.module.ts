@@ -5,14 +5,10 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-    MatButtonModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatDatepickerModule,
+    MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
-    MatMenuModule,
-    MatNativeDateModule,
+    MatMenuModule, MatNativeDateModule,
     MatSelectModule,
     MatTableModule,
     MatToolbarModule
@@ -37,7 +33,6 @@ import {JwtModule} from '@auth0/angular-jwt';
 
 
 import {MenuModule} from 'primeng/menu';
-import {MediainputComponent} from './mediainput/mediainput.component';
 import {MenubarModule} from 'primeng/menubar';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
@@ -54,7 +49,8 @@ import {EditorModule} from 'primeng/editor';
 import {UserDetailComponent} from './user-detail/user-detail.component';
 import {UserFormComponent} from './user-form/user-form.component';
 import {HomeComponent} from './home/home.component';
-import {FileUploadModule} from 'primeng/fileupload';
+import {FileUploadModule} from 'ng2-file-upload';
+import {MediainputComponent} from './mediainput/mediainput.component';
 
 
 export function tokenGetter() {
@@ -78,11 +74,11 @@ export function tokenGetter() {
         CategoryFormComponent,
         FtwWordFormComponent,
         FtwWordListComponent,
+        MediainputComponent,
         RegisterComponent,
         UserDetailComponent,
         UserFormComponent,
-        HomeComponent
-    ],
+        HomeComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -110,6 +106,7 @@ export function tokenGetter() {
         ButtonModule,
         InputTextModule,
         MenubarModule,
+        FileUploadModule,
         PasswordModule,
         CardModule,
         VirtualScrollerModule,
@@ -119,7 +116,7 @@ export function tokenGetter() {
         CalendarModule,
         PaginatorModule,
         EditorModule,
-        FileUploadModule,
+        FileUploadModule
     ],
     providers: [],
     bootstrap: [AppComponent]
