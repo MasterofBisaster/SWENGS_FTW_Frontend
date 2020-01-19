@@ -49,7 +49,7 @@ import {EditorModule} from 'primeng/editor';
 import {UserDetailComponent} from './user-detail/user-detail.component';
 import {UserFormComponent} from './user-form/user-form.component';
 import {HomeComponent} from './home/home.component';
-import {FileUploadModule} from 'ng2-file-upload';
+import {FileUploadModule} from 'primeng/fileupload';
 import {MediainputComponent} from './mediainput/mediainput.component';
 
 
@@ -116,7 +116,6 @@ export function tokenGetter() {
         CalendarModule,
         PaginatorModule,
         EditorModule,
-        FileUploadModule
     ],
     providers: [],
     bootstrap: [AppComponent]
