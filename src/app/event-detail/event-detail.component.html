@@ -1,6 +1,6 @@
 <h1>{{eventDetailGroup.controls.name.value}}</h1>
 
-<p-accordion [multiple]="true">
+<p-accordion class="ui-g-12 ui-md-8" [multiple]="true">
     <p-accordionTab selected=true header="About {{eventDetailGroup.controls.name.value}}">
       <h3>Start of the event:</h3>
       {{eventDetailGroup.controls.start_date.value}}
@@ -32,4 +32,11 @@
   </p-accordionTab>
 </p-accordion>
 
+<div class="ui-g-12 ui-md-4">
+
+  <img src="../../assets/img/galleria5.jpg">
+  <div class="ui-g-12 ui-md-3">
+    <button pButton type="button" label="Edit Event" icon="pi pi-pencil" style="margin-right: .25em"*ngIf="eventDetailGroup.controls.creator.value == decodedToken.id" [routerLink]="'/event-form/' + eventDetailGroup.controls.id.value"></button>
+  </div>
+</div>
 

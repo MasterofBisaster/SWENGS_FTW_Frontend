@@ -1,17 +1,36 @@
-<form [formGroup]="categoryFormGroup" class="category-form">
-    <mat-form-field>
-        <input matInput type="text" placeholder="Title" formControlName="title" required>
-        <mat-hint align="end">The title of the Category</mat-hint>
-        <mat-error *ngIf="categoryFormGroup.controls.title.hasError('required')">Title is required</mat-error>
-    </mat-form-field>
-    <br/>
-    <div>
-        <p-fileUpload url="./api/media/upload" accept="image/*" name="myfile[]" showUploadButton=false (onSelect)="uploadFile($event)" ></p-fileUpload>
+
+<h1>Create a category</h1>
+<div class="ui-g-12 ui-md-6">
+  <form [formGroup]="categoryFormGroup" class="category-form">
+    <div class="ui-g-12 ui-md-3">
+      <span class="ui-float-label">
+        <input id="float-title" type="text" size="30" formControlName="title" required pInputText>
+        <label for="float-title">Title</label>
+       </span>
     </div>
-    <mat-card-actions align="center">
-        <button mat-raised-button color="primary" [disabled]="!categoryFormGroup.valid" (click)="createCategory()">
-            <span *ngIf="!categoryFormGroup.controls.id.value">Create</span>
-            <span *ngIf="categoryFormGroup.controls.id.value">Update</span>
-        </button>
-    </mat-card-actions>
-</form>
+    <div class="ui-g-12 ui-md-3">
+      <p-message *ngIf="categoryFormGroup.controls.title.hasError('required')" severity="error"
+               text="Field is required"></p-message>
+    </div>
+
+    <!--    <mat-error *ngIf="categoryFormGroup.controls.title.hasError('required')">Title is required</mat-error>
+
+      <mat-form-field>
+          <input matInput type="text" placeholder="Title" formControlName="title" required>
+          <mat-hint align="end">The title of the movie</mat-hint>
+          <mat-error *ngIf="categoryFormGroup.controls.title.hasError('required')">Title is required</mat-error>
+      </mat-form-field>-->
+<div class="ui-g-12 ui-md-12">
+      <p-fileUpload url="./api/media/upload" accept="image/*" name="myfile[]" showUploadButton=false (onSelect)="uploadFile($event)" ></p-fileUpload>
+</div><br/>
+    <div class="ui-g-12 ui-md-2">
+      <button pButton *ngIf="!categoryFormGroup.controls.id.value" label="Create" [disabled]="!categoryFormGroup.valid"
+            (click)="createCategory()">
+      </button>
+      <button pButton *ngIf="categoryFormGroup.controls.id.value" label="Update" [disabled]="!categoryFormGroup.valid"
+            (click)="createCategory()">
+    </button>
+    </div>
+  </form>
+</div>
+
