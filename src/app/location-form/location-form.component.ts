@@ -28,7 +28,7 @@ export class LocationFormComponent implements OnInit {
       zip_code: [],
       country: [null],
       max_user: [null],
-      picture: [[]]
+        picture: [null]
     });
   }
 
