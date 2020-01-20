@@ -6,7 +6,6 @@ import {CommentService} from '../service/comment.service';
 import {LocationService} from '../service/location.service';
 import {UserService} from '../service/user.service';
 import {EventService} from '../service/event.service';
-import {SelectItem} from 'primeng/api';
 
 
 @Component({
@@ -17,7 +16,7 @@ import {SelectItem} from 'primeng/api';
 export class EventFormComponent implements OnInit {
   eventFormGroup;
   categoryOptions;
-  locationOptions: SelectItem[];
+  locationOptions;
 
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router,
@@ -56,6 +55,8 @@ export class EventFormComponent implements OnInit {
 
   createEvent() {
     const event = this.eventFormGroup.value;
+    event.category = event.category.id;
+    event.location = event.location.id;
     event.start_date = this.dateAsYYYYMMDDHHNNSS(new Date());
     event.end_date = this.dateAsYYYYMMDDHHNNSS(new Date());
     if (event.id) {
@@ -66,7 +67,8 @@ export class EventFormComponent implements OnInit {
     } else {
       this.eventService.createEvent(event)
         .subscribe((response: any) => {
-          this.router.navigate(['/event-form/' + response.id]);
+          this.router.navigate(['/home']);
+          // this.router.navigate(['/event-form/' + response.id]);
         });
     }
   }
