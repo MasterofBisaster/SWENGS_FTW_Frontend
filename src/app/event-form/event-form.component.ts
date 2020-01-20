@@ -16,7 +16,8 @@ import {EventService} from '../service/event.service';
 export class EventFormComponent implements OnInit {
   eventFormGroup;
   categoryOptions;
-  commentOptions;
+  locationOptions;
+
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router,
               private categoryService: CategoryService, private commentService: CommentService,
@@ -34,9 +35,10 @@ export class EventFormComponent implements OnInit {
       private: [null, [Validators.required]],
       location: [null, [Validators.required]],
       category: [null, [Validators.required]],
+      short_description: [null, [Validators.required]],
       description: [null, [Validators.required]],
       max_users: [null],
-      confirmed_users: [null],
+      confirmed_users: [[]],
       costs: [null],
       picture: [],
       creator: [null]
@@ -44,7 +46,7 @@ export class EventFormComponent implements OnInit {
 
     const data = this.route.snapshot.data;
     this.categoryOptions = data.categoryOptions;
-    this.commentOptions = data.commentOptions;
+    this.locationOptions = data.locationOptions;
 
     if (data.event) {
       this.eventFormGroup.patchValue(data.event);
@@ -53,6 +55,8 @@ export class EventFormComponent implements OnInit {
 
   createEvent() {
     const event = this.eventFormGroup.value;
+    event.start_date = this.dateAsYYYYMMDDHHNNSS(new Date());
+    event.end_date = this.dateAsYYYYMMDDHHNNSS(new Date());
     if (event.id) {
       this.eventService.updateEvent(event)
         .subscribe(() => {
@@ -64,5 +68,19 @@ export class EventFormComponent implements OnInit {
           this.router.navigate(['/event-form/' + response.id]);
         });
     }
+  }
+
+  dateAsYYYYMMDDHHNNSS(date): string {
+    return date.getFullYear()
+      + '-' + this.leftpad(date.getMonth() + 1, 2)
+      + '-' + this.leftpad(date.getDate(), 2)
+      + ' ' + this.leftpad(date.getHours(), 2)
+      + ':' + this.leftpad(date.getMinutes(), 2)
+      + ':' + this.leftpad(date.getSeconds(), 2);
+  }
+
+  leftpad(val, resultLength = 2, leftpadChar = '0'): string {
+    return (String(leftpadChar).repeat(resultLength)
+      + String(val)).slice(String(val).length);
   }
 }

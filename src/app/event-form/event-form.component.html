@@ -14,7 +14,7 @@
         <h3>Start Date</h3>
       </div>
       <div class="ui-g-12 ui-md-12">
-          <input id="float-startdate" type="date" formControlName="start_date" pInputText required>
+        <p-calendar formControlName="start_date" showTime="true" [monthNavigator]="true" [yearNavigator]="true" yearRange="2020:2030"></p-calendar>
       </div>
     </div>
     <!--  end date-->
@@ -23,7 +23,7 @@
         <h3>End Date</h3>
       </div>
       <div class="ui-g-12 ui-md-12">
-          <input id="float-enddate" type="date" formControlName="end_date" pInputText required>
+        <p-calendar formControlName="end_date" showTime="true" [monthNavigator]="true" [yearNavigator]="true" yearRange="2020:2030"></p-calendar>
       </div>
     </div>
     <!--   private-->
@@ -47,7 +47,14 @@
         <label for="float-category">Category</label>
       </span>
     </div>
-<!--    Desciption-->
+    <!--Short Description-->
+    <div class="ui-g-12 ui-md-12">
+      <span class="ui-float-label">
+        <input id="float-sdescription" type="text" size="50" formControlName="short_description" pInputText>
+        <label for="float-sdescription">Short Description</label>
+      </span>
+    </div>
+    <!--    Description-->
     <div class="ui-g-12 ui-md-12">
       <span class="ui-float-label">
         <input id="float-description" type="text" formControlName="description" pInputText>
@@ -67,7 +74,7 @@
               (click)="createEvent()">
       </button>
       <button pButton *ngIf="eventFormGroup.controls.id.value" label="Update" [disabled]="!eventFormGroup.valid"
-              (click)="eventFormGroup()">
+              (click)="createEvent()">
       </button>
     </div>
 

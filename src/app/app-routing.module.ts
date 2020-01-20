@@ -36,6 +36,10 @@ const routes: Routes = [
     path: 'event-form',
     component: EventFormComponent,
     canActivate: [AuthGuard],
+    resolve: {
+      locations: LocationListResolver,
+      categories: CategoryListResolver,
+    }
   },
   {
     path: 'event-detail/:id',
