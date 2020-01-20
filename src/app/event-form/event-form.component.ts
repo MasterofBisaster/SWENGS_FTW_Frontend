@@ -67,8 +67,8 @@ export class EventFormComponent implements OnInit {
     } else {
       this.eventService.createEvent(event)
         .subscribe((response: any) => {
-          this.router.navigate(['/home']);
-          // this.router.navigate(['/event-form/' + response.id]);
+          // this.router.navigate(['/home']);
+           this.router.navigate(['/event-form/' + response.id]);
         });
     }
   }

@@ -24,6 +24,7 @@ import {CategoryFormComponent} from './category-form/category-form.component';
 import {LocationFormComponent} from './location-form/location-form.component';
 import {CategoryResolver} from './resolver/category.resolver';
 import {LocationResolver} from './resolver/location.resolver';
+import {EventResolver} from './resolver/event.resolver';
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {
@@ -40,6 +41,16 @@ const routes: Routes = [
     resolve: {
       locationOptions: LocationListResolver,
       categoryOptions: CategoryListResolver,
+    }
+  },
+  {
+    path: 'event-form/:id',
+    component: EventFormComponent,
+    canActivate: [AuthGuard],
+    resolve: {
+      locationOptions: LocationListResolver,
+      categoryOptions: CategoryListResolver,
+      event: EventResolver,
     }
   },
   {
