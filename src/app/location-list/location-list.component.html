@@ -1,11 +1,11 @@
 <div [class]="classCard" *ngFor="let location of locations">
-  <p-card [header]="location.name" subheader="Address"  [style]="{width: '100%'}" styleClass="ui-card-shadow">
+  <p-card [header]="location.name" subheader="Address" [style]="{width: '100%'}" styleClass="ui-card-shadow">
     <p-header>
-      <div *ngIf="location?.picture"class="aspect-ratio-box">
-        <img   src="/api/media/{{location.picture}}">
+      <div *ngIf="location?.picture" class="aspect-ratio-box">
+        <img src="/api/media/{{location.picture}}">
       </div>
-      <div *ngIf="!location?.picture"class="aspect-ratio-box">
-        <img  src="assets/usercard.png">
+      <div *ngIf="!location?.picture" class="aspect-ratio-box">
+        <img src="assets/usercard.png">
       </div>
     </p-header>
     <div>
@@ -16,13 +16,22 @@
 
       <div class="ui-g">
         <div [class]="classButton">
-          <a target="_blank" href="https://google.com/maps/place/{{location.street.replace(' ', '+')}},+{{location.zip_code}}+{{location.city}}">
-          <button pButton type="button" label="Google Maps" icon="pi pi-compass" style="margin-right: .25em" ></button></a>
+          <a target="_blank"
+             href="https://google.com/maps/place/{{location.street.replace(' ', '+')}},+{{location.zip_code}}+{{location.city}}">
+            <button pButton type="button" label="Google Maps" icon="pi pi-compass" style="margin-right: .25em"></button>
+          </a>
           <!--<button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>-->
 
         </div>
         <div [class]="classButtonEdit">
-          <button class="ui-button-info" *ngIf="userService.hasPermission('ftw.change_location')"  [routerLink]="'/location-form/' + location.id"pButton type="button" label="Edit" icon="pi pi-search-plus" style="margin-right: .25em"></button>
+          <button class="ui-button-info" *ngIf="userService.hasPermission('ftw.change_location')"
+                  [routerLink]="'/location-form/' + location.id" pButton type="button" label="Edit"
+                  icon="pi pi-search-plus" style="margin-right: .25em"></button>
+        </div>
+        <div [class]="classButtonDelete">
+          <button class="ui-button-danger" *ngIf="userService.hasPermission('ftw.delete_location')"
+                  (click)="deleteLocation(location.id)" pButton type="button" label="Delete" icon="pi pi-trash"
+                  style="margin-right: .25em"></button>
         </div>
       </div>
     </p-footer>

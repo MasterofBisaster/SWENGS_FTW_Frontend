@@ -14,7 +14,8 @@
         <h3>Start Date</h3>
       </div>
       <div class="ui-g-12 ui-md-12">
-        <p-calendar formControlName="start_date" showTime="true" [monthNavigator]="true" [yearNavigator]="true" yearRange="2020:2030"></p-calendar>
+        <p-calendar formControlName="start_date" showTime="true" [monthNavigator]="true" [yearNavigator]="true"
+                    yearRange="2020:2030"></p-calendar>
       </div>
     </div>
     <!--  end date-->
@@ -23,23 +24,26 @@
         <h3>End Date</h3>
       </div>
       <div class="ui-g-12 ui-md-12">
-        <p-calendar formControlName="end_date" showTime="true" [monthNavigator]="true" [yearNavigator]="true" yearRange="2020:2030"></p-calendar>
+        <p-calendar formControlName="end_date" showTime="true" [monthNavigator]="true" [yearNavigator]="true"
+                    yearRange="2020:2030"></p-calendar>
       </div>
     </div>
     <!--   private-->
     <div class="ui-g-12 ui-md-12">
       <div class="ui-g-12 ui-md-12">
-<!--      <mat-checkbox formControlName="private">Private</mat-checkbox>-->
-      <p-checkbox formControlName="private" binary="true" label="private"></p-checkbox>
+        <!--      <mat-checkbox formControlName="private">Private</mat-checkbox>-->
+        <p-checkbox formControlName="private" binary="true" label="private"></p-checkbox>
       </div>
     </div>
-<!--    Location-->
+    <!--    Location-->
     <div class="ui-g-12 ui-md-12">
-      <p-dropdown formControlName="location" [options]="locationOptions" placeholder="Select a Location" optionLabel="name"></p-dropdown>
+      <p-dropdown formControlName="location" [options]="locationOptions" placeholder="Select a Location"
+                  optionLabel="name"></p-dropdown>
     </div>
-<!--    Category-->
+    <!--    Category-->
     <div class="ui-g-12 ui-md-12">
-      <p-dropdown formControlName="category" [options]="categoryOptions"  placeholder="Select a Category" optionLabel="title"></p-dropdown>
+      <p-dropdown formControlName="category" [options]="categoryOptions" placeholder="Select a Category"
+                  optionLabel="title"></p-dropdown>
     </div>
     <!--Short Description-->
     <div class="ui-g-12 ui-md-12">
@@ -56,12 +60,12 @@
       </span>
     </div>
     <!--Creator-->
-<!--    <div class="ui-g-12 ui-md-12">
-      <span class="ui-float-label">
-        <input id="float-creator" type="text" formControlName="creator" disabled="true" pInputText>
-        <label for="float-creator">Creator</label>
-      </span>
-    </div>-->
+    <!--    <div class="ui-g-12 ui-md-12">
+          <span class="ui-float-label">
+            <input id="float-creator" type="text" formControlName="creator" disabled="true" pInputText>
+            <label for="float-creator">Creator</label>
+          </span>
+        </div>-->
     <!--Buttons-->
     <div class="ui-g-12 ui-md-2">
       <button pButton *ngIf="!eventFormGroup.controls.id.value" label="Create" [disabled]="!eventFormGroup.valid"

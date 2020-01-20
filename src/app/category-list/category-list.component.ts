@@ -6,29 +6,31 @@ import {ActivatedRoute} from '@angular/router';
 
 
 @Component({
-    selector: 'app-category-list',
-    templateUrl: './category-list.component.html',
-    styleUrls: ['./category-list.component.scss']
+  selector: 'app-category-list',
+  templateUrl: './category-list.component.html',
+  styleUrls: ['./category-list.component.scss']
 })
 export class CategoryListComponent implements OnInit {
 
-    categories: any[];
-    @Input() classCard = 'ui-g-12 ui-md-3';
-    @Input() classButton = 'ui-g-12 ui-md-5';
-    @Input() classButtonEdit = 'ui-g-12 ui-md-3';
-    constructor(private categoryService: CategoryService, public userService: UserService, private route: ActivatedRoute) {
-    }
+  categories: any[];
+  @Input() classCard = 'ui-g-12 ui-md-3';
+  @Input() classButton = 'ui-g-12 ui-md-5';
+  @Input() classButtonEdit = 'ui-g-12 ui-md-3';
+  @Input() classButtonDelete = 'ui-g-12 ui-md-4';
 
-    ngOnInit() {
+  constructor(private categoryService: CategoryService, public userService: UserService, private route: ActivatedRoute) {
+  }
 
-      const data = this.route.snapshot.data;
-      this.categories = data.categories;
-    }
+  ngOnInit() {
 
-    deleteCategory(category: any) {
-        this.categoryService.deleteCategory(category)
-            .subscribe(() => {
-                this.ngOnInit();
-            });
-    }
+    const data = this.route.snapshot.data;
+    this.categories = data.categories;
+  }
+
+  deleteCategory(category: any) {
+    this.categoryService.deleteCategory(category)
+      .subscribe(() => {
+        this.ngOnInit();
+      });
+  }
 }
