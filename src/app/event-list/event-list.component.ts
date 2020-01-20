@@ -12,7 +12,9 @@ import {ActivatedRoute} from '@angular/router';
 export class EventListComponent implements OnInit {
   events: any[];
   @Input() classCard = 'ui-g-12 ui-md-4';
-  @Input() classButton = 'ui-g-12 ui-md-3';
+  @Input() classButton = 'ui-g-12 ui-md-4';
+  @Input() classButtonEdit = 'ui-g-12 ui-md-3';
+
 
   constructor(private eventService: EventService, public userService: UserService, public locationService: LocationService,
               private route: ActivatedRoute) {

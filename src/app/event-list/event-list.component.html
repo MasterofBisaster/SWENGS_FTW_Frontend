@@ -18,6 +18,9 @@
             <button pButton type="button" label="More Infos" icon="pi pi-search-plus" style="margin-right: .25em" [routerLink]="'/event-detail/' + event.id"></button>
             <!--<button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>-->
           </div>
+          <div [class]="classButtonEdit">
+            <button class="ui-button-info" *ngIf="userService.userId()==event.creator"  [routerLink]="'/event-form/' + event.id"pButton type="button" label="Edit" icon="pi pi-search-plus" style="margin-right: .25em"></button>
+          </div>
         </div>
       </p-footer>
     </p-card>

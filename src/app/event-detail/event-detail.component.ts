@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
-import {JwtHelperService} from '@auth0/angular-jwt';
 import {EventService} from '../service/event.service';
+import {UserService} from '../service/user.service';
 
 @Component({
   selector: 'app-event-detail',
@@ -13,11 +13,8 @@ export class EventDetailComponent implements OnInit {
 
   eventDetailGroup;
 
-  readonly accessTokenLocalStorageKey = 'access_token';
 
-  decodedToken;
-
-  constructor(private eventService: EventService, private route: ActivatedRoute, private fb: FormBuilder) {
+  constructor(private eventService: EventService, private route: ActivatedRoute, private fb: FormBuilder, private userService: UserService) {
   }
 
   ngOnInit() {
@@ -49,16 +46,6 @@ export class EventDetailComponent implements OnInit {
     if (data.event) {
       this.eventDetailGroup.patchValue(data.event);
     }
-
-
-    const myRawToken = localStorage.getItem(this.accessTokenLocalStorageKey);
-
-    const helper = new JwtHelperService();
-
-    this.decodedToken = helper.decodeToken(myRawToken);
-
-
-
   }
 
 }

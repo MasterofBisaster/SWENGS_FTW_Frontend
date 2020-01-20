@@ -41,7 +41,7 @@
     <img  src="assets/usercard.png">
   </div>
   <div class="ui-g-12 ui-md-3">
-    <button pButton type="button" label="Edit Event" icon="pi pi-pencil" style="margin-right: .25em"*ngIf="eventDetailGroup.controls.creator.value == decodedToken.id" [routerLink]="'/event-form/' + eventDetailGroup.controls.id.value"></button>
+    <button pButton type="button" label="Edit Event" icon="pi pi-pencil" style="margin-right: .25em"*ngIf="eventDetailGroup.controls.creator.value == userService.userId()" [routerLink]="'/event-form/' + eventDetailGroup.controls.id.value"></button>
   </div>
 </div>
 

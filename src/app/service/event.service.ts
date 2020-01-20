@@ -13,8 +13,20 @@ export class EventService {
     return this.http.get('/api/event/list');
   }
 
+  getPublicEvents() {
+    return this.http.get('/api/event/list/public');
+  }
+
+  getPrivateEvents(userId) {
+    return this.http.get('/api/event/list/private/' + userId);
+  }
+
   getSearchEvents(searchString) {
     return this.http.get('/api/event/list/search/' + searchString);
+  }
+
+  getPrivateSearchEvents(searchString, userId) {
+    return this.http.get('/api/event/list/private/search/' + searchString + '/' + userId);
   }
 
   createEvent(event) {

@@ -13,6 +13,8 @@ export class LocationListComponent implements OnInit {
   locations: any[];
   @Input() classCard = 'ui-g-12 ui-md-3';
   @Input() classButton = 'ui-g-12 ui-md-5';
+  @Input() classButtonEdit = 'ui-g-12 ui-md-3';
+
   constructor(private locationService: LocationService, public userService: UserService, private route: ActivatedRoute) {
   }
 
