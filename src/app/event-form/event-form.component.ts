@@ -6,6 +6,7 @@ import {CommentService} from '../service/comment.service';
 import {LocationService} from '../service/location.service';
 import {UserService} from '../service/user.service';
 import {EventService} from '../service/event.service';
+import {SelectItem} from 'primeng/api';
 
 
 @Component({
@@ -16,7 +17,7 @@ import {EventService} from '../service/event.service';
 export class EventFormComponent implements OnInit {
   eventFormGroup;
   categoryOptions;
-  locationOptions;
+  locationOptions: SelectItem[];
 
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router,
@@ -32,7 +33,7 @@ export class EventFormComponent implements OnInit {
       name: ['', [Validators.required]],
       start_date: [null, [Validators.required]],
       end_date: [null, [Validators.required]],
-      private: [null, [Validators.required]],
+      private: [false, [Validators.required]],
       location: [null, [Validators.required]],
       category: [null, [Validators.required]],
       short_description: [null, [Validators.required]],
@@ -41,7 +42,7 @@ export class EventFormComponent implements OnInit {
       confirmed_users: [[]],
       costs: [null],
       picture: [],
-      creator: [null]
+      creator: [this.userService.userId()]
     });
 
     const data = this.route.snapshot.data;

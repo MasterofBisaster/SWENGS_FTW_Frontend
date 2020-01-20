@@ -35,17 +35,33 @@
     </div>
 <!--    Location-->
     <div class="ui-g-12 ui-md-12">
-      <span class="ui-float-label">
-        <input id="float-location" type="text" formControlName="location" pInputText>
-        <label for="float-location">Location</label>
-      </span>
+<!--
+      <mat-form-field>
+        <mat-select placeholder="Location"
+                    formControlName="location">
+          <mat-option [value]="null">Unknown</mat-option>
+          <mat-option [value]="locationOptions.id" *ngFor="let
+          locationOption of locationOptions">{{locationOption.name}}</mat-option>
+        </mat-select>
+        <mat-hint align="end">Location of the Event</mat-hint>
+      </mat-form-field>
+-->
+      <p-dropdown formControlName="location" [options]="locationOptions" placeholder="Select a City" optionLabel="name" [showClear]="true"></p-dropdown>
     </div>
 <!--    Category-->
     <div class="ui-g-12 ui-md-12">
-      <span class="ui-float-label">
-        <input id="float-category" type="text" formControlName="category" pInputText>
-        <label for="float-category">Category</label>
-      </span>
+<!--
+      <mat-form-field>
+        <mat-select placeholder="Category"
+                    formControlName="category">
+          <mat-option [value]="null">Unknown</mat-option>
+          <mat-option [value]="categoryOptions.id" *ngFor="let
+          categoryOption of categoryOptions">{{categoryOption.title}}</mat-option>
+        </mat-select>
+        <mat-hint align="end">Category</mat-hint>
+      </mat-form-field>
+-->
+      <p-dropdown formControlName="category" [options]="categoryOptions.id" [optionLabel]="categoryOptions.name"  placeholder="Select a Category" optionLabel="title" [showClear]="true"></p-dropdown>
     </div>
     <!--Short Description-->
     <div class="ui-g-12 ui-md-12">
@@ -62,12 +78,12 @@
       </span>
     </div>
     <!--Creator-->
-    <div class="ui-g-12 ui-md-12">
+<!--    <div class="ui-g-12 ui-md-12">
       <span class="ui-float-label">
-        <input id="float-creator" type="text" formControlName="creator" pInputText>
+        <input id="float-creator" type="text" formControlName="creator" disabled="true" pInputText>
         <label for="float-creator">Creator</label>
       </span>
-    </div>
+    </div>-->
     <!--Buttons-->
     <div class="ui-g-12 ui-md-2">
       <button pButton *ngIf="!eventFormGroup.controls.id.value" label="Create" [disabled]="!eventFormGroup.valid"

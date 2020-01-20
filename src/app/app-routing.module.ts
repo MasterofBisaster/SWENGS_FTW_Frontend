@@ -37,8 +37,8 @@ const routes: Routes = [
     component: EventFormComponent,
     canActivate: [AuthGuard],
     resolve: {
-      locations: LocationListResolver,
-      categories: CategoryListResolver,
+      locationOptions: LocationListResolver,
+      categoryOptions: CategoryListResolver,
     }
   },
   {
