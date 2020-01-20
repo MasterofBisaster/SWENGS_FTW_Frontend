@@ -22,7 +22,8 @@ import {CategoryListComponent} from './category-list/category-list.component';
 import {LocationListComponent} from './location-list/location-list.component';
 import {CategoryFormComponent} from './category-form/category-form.component';
 import {LocationFormComponent} from './location-form/location-form.component';
-
+import {CategoryResolver} from './resolver/category.resolver';
+import {LocationResolver} from './resolver/location.resolver';
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {
@@ -77,7 +78,14 @@ const routes: Routes = [
     component: CommentFormComponent,
     canActivate: [AuthGuard],
   },
-  // Bis hier
+  {
+    path: 'category-form/:id',
+    component: CategoryFormComponent,
+    canActivate: [AuthGuard],
+    resolve: {
+    category: CategoryResolver,
+    }
+    },
   {
     path: 'category-form',
     component: CategoryFormComponent,
@@ -88,6 +96,14 @@ const routes: Routes = [
         component: LocationFormComponent,
         canActivate: [AuthGuard],
     },
+  {
+    path: 'location-form/:id',
+    component: LocationFormComponent,
+    canActivate: [AuthGuard],
+    resolve: {
+      location: LocationResolver,
+    }
+  },
   {
     path: 'user-detail/:id',
     component: UserDetailComponent,
@@ -111,6 +127,7 @@ const routes: Routes = [
       locations: LocationListResolver,
     }
   },
+
   {
     path: 'register',
     component: RegisterComponent,

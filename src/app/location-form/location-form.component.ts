@@ -30,6 +30,11 @@ export class LocationFormComponent implements OnInit {
       max_user: [null],
         picture: [null]
     });
+    const data = this.route.snapshot.data;
+
+    if (data.location) {
+      this.locationFormGroup.patchValue(data.location);
+    }
   }
 
   createLocation() {

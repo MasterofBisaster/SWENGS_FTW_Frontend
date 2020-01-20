@@ -17,6 +17,9 @@
           <button pButton type="button" label="More Infos" icon="pi pi-search-plus" style="margin-right: .25em"></button>
           <!--<button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>-->
         </div>
+        <div [class]="classButtonEdit">
+          <button class="ui-button-info" *ngIf="userService.hasPermission('ftw.change_category')"  [routerLink]="'/category-form/' + category.id"pButton type="button" label="Edit" icon="pi pi-search-plus" style="margin-right: .25em"></button>
+        </div>
       </div>
     </p-footer>
   </p-card>
