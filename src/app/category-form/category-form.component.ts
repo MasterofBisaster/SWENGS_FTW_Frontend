@@ -25,6 +25,11 @@ export class CategoryFormComponent implements OnInit {
       title: ['', [Validators.required]],
       picture: [null]
     });
+    const data = this.route.snapshot.data;
+
+    if (data.category) {
+      this.categoryFormGroup.patchValue(data.category);
+    }
   }
 
   createCategory() {
