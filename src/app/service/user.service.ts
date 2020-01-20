@@ -41,6 +41,9 @@ export class UserService {
   hasPermission(permission) {
     const token = localStorage.getItem(this.accessTokenLocalStorageKey);
     const decodeToken = this.jwtHelperService.decodeToken(token);
+    if (decodeToken == null) {
+      return false;
+    }
     const permissions = decodeToken.permissions;
     if (permissions === undefined) {
       return false;
@@ -51,12 +54,18 @@ export class UserService {
   userId() {
     const token = localStorage.getItem(this.accessTokenLocalStorageKey);
     const decodeToken = this.jwtHelperService.decodeToken(token);
+    if (decodeToken == null) {
+      return null;
+    }
     return decodeToken.user_id;
   }
 
   userName() {
     const token = localStorage.getItem(this.accessTokenLocalStorageKey);
     const decodeToken = this.jwtHelperService.decodeToken(token);
+    if (decodeToken == null) {
+      return null;
+    }
     return decodeToken.username;
   }
 
