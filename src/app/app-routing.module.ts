@@ -22,6 +22,7 @@ import {CategoryListComponent} from './category-list/category-list.component';
 import {LocationListComponent} from './location-list/location-list.component';
 import {CategoryFormComponent} from './category-form/category-form.component';
 import {LocationFormComponent} from './location-form/location-form.component';
+import {UserFormComponent} from './user-form/user-form.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -87,6 +88,14 @@ const routes: Routes = [
   {
     path: 'user-detail/:id',
     component: UserDetailComponent,
+    runGuardsAndResolvers: 'always',
+    resolve: {
+      user: FtwUserDetailResolver,
+    }
+  },
+  {
+    path: 'user-form/:id',
+    component: UserFormComponent,
     runGuardsAndResolvers: 'always',
     resolve: {
       user: FtwUserDetailResolver,
