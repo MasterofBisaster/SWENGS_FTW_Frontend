@@ -1,6 +1,5 @@
-<div [class]="classCard" *ngFor="let event of events">
-  <p-card [header]="event.name" [subheader]="' by '+  event.user_name"  [style]="{width: '100%'}"
-          styleClass="ui-card-shadow">
+  <p-card [class]="classCard" [header]="event.name" [subheader]="' by '+  event.user_name"  [style]="{width: '100%'}"
+          styleClass="ui-card-shadow"*ngFor="let event of events">
     <p-header>
       <div *ngIf="event?.picture" class="aspect-ratio-box">
         <img src="/api/media/{{event.picture}}">
@@ -32,5 +31,6 @@
       </div>
     </p-footer>
   </p-card>
-</div>
-
+ <div class="ui-g-12">
+   <p-paginator [rows]="3" [totalRecords]="allEvents.length"   [rowsPerPageOptions]="[3,6,9]" (onPageChange)="paginate($event)"></p-paginator>
+ </div>
