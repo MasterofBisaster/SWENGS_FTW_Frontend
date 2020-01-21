@@ -14,6 +14,8 @@ export class LocationListComponent implements OnInit {
   @Input() classCard = 'ui-g-12 ui-md-3';
   @Input() classButton = 'ui-g-12 ui-md-5';
   @Input() classButtonEdit = 'ui-g-12 ui-md-3';
+  @Input() classButtonDelete = 'ui-g-12 ui-md-4';
+
 
   constructor(private locationService: LocationService, public userService: UserService, private route: ActivatedRoute) {
   }
@@ -24,7 +26,7 @@ export class LocationListComponent implements OnInit {
     this.locations = data.locations;
   }
 
-  deleteCategory(location: any) {
+  deleteLocation(location: any) {
     this.locationService.deleteLocation(location)
       .subscribe(() => {
         this.ngOnInit();

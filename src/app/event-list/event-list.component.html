@@ -1,28 +1,36 @@
-
-  <div [class]="classCard" *ngFor="let event of events">
-    <p-card [header]="event.name" [subheader]="event.start_date + ' bis ' + event.end_date"  [style]="{width: '100%'}" styleClass="ui-card-shadow">
-      <p-header>
-        <div *ngIf="event?.picture"class="aspect-ratio-box">
-          <img   src="/api/media/{{event.picture}}">
-        </div>
-        <div *ngIf="!event?.picture"class="aspect-ratio-box">
-          <img  src="assets/usercard.png">
-        </div>
-      </p-header>
-      <div>{{event.short_description}}
+<div [class]="classCard" *ngFor="let event of events">
+  <p-card [header]="event.name" [subheader]="event.start_date + ' bis ' + event.end_date" [style]="{width: '100%'}"
+          styleClass="ui-card-shadow">
+    <p-header>
+      <div *ngIf="event?.picture" class="aspect-ratio-box">
+        <img src="/api/media/{{event.picture}}">
       </div>
-      <p-footer>
+      <div *ngIf="!event?.picture" class="aspect-ratio-box">
+        <img src="assets/usercard.png">
+      </div>
+    </p-header>
+    <div>{{event.short_description}}
+    </div>
+    <p-footer>
 
-        <div class="ui-g">
-          <div [class]="classButton">
-            <button pButton type="button" label="More Infos" icon="pi pi-search-plus" style="margin-right: .25em" [routerLink]="'/event-detail/' + event.id"></button>
-            <!--<button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>-->
-          </div>
-          <div [class]="classButtonEdit">
-            <button class="ui-button-info" *ngIf="userService.userId()==event.creator"  [routerLink]="'/event-form/' + event.id"pButton type="button" label="Edit" icon="pi pi-search-plus" style="margin-right: .25em"></button>
-          </div>
+      <div class="ui-g">
+        <div [class]="classButton">
+          <button pButton type="button" label="More Infos" icon="pi pi-search-plus" style="margin-right: .25em"
+                  [routerLink]="'/event-detail/' + event.id"></button>
+          <!--<button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>-->
         </div>
-      </p-footer>
-    </p-card>
-  </div>
+        <div [class]="classButtonEdit">
+          <button class="ui-button-info" *ngIf="userService.userId()==event.creator"
+                  [routerLink]="'/event-form/' + event.id" pButton type="button" label="Edit" icon="pi pi-search-plus"
+                  style="margin-right: .25em"></button>
+        </div>
+        <div [class]="classButtonDelete">
+          <button class="ui-button-danger" *ngIf="userService.hasPermission('ftw.delete_event')"
+                  (click)="deleteEvent(event.id)" pButton type="button" label="Delete" icon="pi pi-trash"
+                  style="margin-right: .25em"></button>
+        </div>
+      </div>
+    </p-footer>
+  </p-card>
+</div>
 

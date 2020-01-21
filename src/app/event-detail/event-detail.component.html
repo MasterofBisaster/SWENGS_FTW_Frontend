@@ -1,15 +1,15 @@
 <h1>{{eventDetailGroup.controls.name.value}}</h1>
 
 <p-accordion class="ui-g-12 ui-md-8" [multiple]="true">
-    <p-accordionTab selected=true header="About {{eventDetailGroup.controls.name.value}}">
-      <h3>Start of the event:</h3>
-      {{eventDetailGroup.controls.start_date.value}}
-      <h3>End of the event:</h3>
-      {{eventDetailGroup.controls.end_date.value}}
-      <h3>Created by:</h3>
-      {{eventDetailGroup.controls.user_name.value}}
-      <h3>Description:</h3>
-      {{eventDetailGroup.controls.description.value}}
+  <p-accordionTab selected=true header="About {{eventDetailGroup.controls.name.value}}">
+    <h3>Start of the event:</h3>
+    {{eventDetailGroup.controls.start_date.value}}
+    <h3>End of the event:</h3>
+    {{eventDetailGroup.controls.end_date.value}}
+    <h3>Created by:</h3>
+    {{eventDetailGroup.controls.user_name.value}}
+    <h3>Description:</h3>
+    {{eventDetailGroup.controls.description.value}}
   </p-accordionTab>
   <p-accordionTab selected=true header="Event Location">
     <p>{{eventDetailGroup.controls.location_name.value}}</p>
@@ -17,12 +17,13 @@
     <p>{{eventDetailGroup.controls.location_zip_code.value}} {{eventDetailGroup.controls.location_city.value}},
       {{eventDetailGroup.controls.location_country.value}}</p>
 
-      <div class="ui-g-12 ui-md-2">
-       <a href="https://google.com/maps/place/{{eventDetailGroup.controls.location_street.value.replace(' ', '+')}},
+    <div class="ui-g-12 ui-md-2">
+      <a href="https://google.com/maps/place/{{eventDetailGroup.controls.location_street.value.replace(' ', '+')}},
     +{{eventDetailGroup.controls.location_zip_code.value}}
     +{{eventDetailGroup.controls.location_city.value}}">
-       <button pButton type="button" label="Google Maps" icon="pi pi-compass" style="margin-right: .25em" ></button></a>
-      </div>
+        <button pButton type="button" label="Google Maps" icon="pi pi-compass" style="margin-right: .25em"></button>
+      </a>
+    </div>
     <br>
     <br>
 
@@ -35,13 +36,15 @@
 <div class="ui-g-12 ui-md-4">
 
   <div *ngIf="eventDetailGroup?.controls.picture.value" class="aspect-ratio-box">
-    <img   src="/api/media/{{eventDetailGroup.controls.picture.value}}">
+    <img src="/api/media/{{eventDetailGroup.controls.picture.value}}">
   </div>
-  <div *ngIf="!eventDetailGroup.controls?.picture.value"class="aspect-ratio-box">
-    <img  src="assets/usercard.png">
+  <div *ngIf="!eventDetailGroup.controls?.picture.value" class="aspect-ratio-box">
+    <img src="assets/user_picture_default.png">
   </div>
   <div class="ui-g-12 ui-md-3">
-    <button pButton type="button" label="Edit Event" icon="pi pi-pencil" style="margin-right: .25em"*ngIf="eventDetailGroup.controls.creator.value == userService.userId()" [routerLink]="'/event-form/' + eventDetailGroup.controls.id.value"></button>
+    <button pButton type="button" label="Edit Event" icon="pi pi-pencil" style="margin-right: .25em"
+            *ngIf="eventDetailGroup.controls.creator.value == userService.userId()"
+            [routerLink]="'/event-form/' + eventDetailGroup.controls.id.value"></button>
   </div>
 </div>
 

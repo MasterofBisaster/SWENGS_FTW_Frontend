@@ -44,24 +44,26 @@
     <!--NAME -->
     <div class="ui-g-12 ui-md-12">
       <div class="ui-g-12 ui-md-12">
-        <h2>Name</h2>
+        <!--
+                <h2>Name</h2>
+        -->
       </div>
-    <div class="ui-g-12 ui-md-9">
+      <div class="ui-g-12 ui-md-9">
 
       <span class="ui-float-label">
         <input id="float-name" type="text" size="30" formControlName="name" required pInputText>
         <label for="float-name">Name</label>
        </span>
-    </div>
-    <!--<div class="ui-g-12 ui-md-3">
-      <p-message *ngIf="locationFormGroup.controls.name.hasError('required')" severity="error"
-                 text="Field is required"></p-message>
-    </div>-->
+      </div>
+      <!--<div class="ui-g-12 ui-md-3">
+        <p-message *ngIf="locationFormGroup.controls.name.hasError('required')" severity="error"
+                   text="Field is required"></p-message>
+      </div>-->
     </div>
     <!--STREET -->
     <div class="ui-g-12 ui-md-12">
       <div class="ui-g-12 ui-md-12">
-        <h2>Street</h2>
+        <!--<h2>Street</h2>-->
       </div>
       <div class="ui-g-12 ui-md-9">
 
@@ -70,15 +72,17 @@
         <label for="float-street">Street</label>
        </span>
       </div>
-     <!-- <div class="ui-g-12 ui-md-3">
-        <p-message *ngIf="locationFormGroup.controls.street.hasError('required')" severity="error"
-                   text="Field is required"></p-message>
-      </div>-->
+      <!-- <div class="ui-g-12 ui-md-3">
+         <p-message *ngIf="locationFormGroup.controls.street.hasError('required')" severity="error"
+                    text="Field is required"></p-message>
+       </div>-->
     </div>
     <!--ZIPCODE -->
     <div class="ui-g-12 ui-md-6">
       <div class="ui-g-12 ui-md-12">
-        <h2>Zip Code</h2>
+        <!--
+                <h2>Zip Code</h2>
+        -->
       </div>
       <div class="ui-g-12 ui-md-9">
 
@@ -95,7 +99,9 @@
     <!--CITY -->
     <div class="ui-g-12 ui-md-6">
       <div class="ui-g-12 ui-md-12">
-        <h2>City</h2>
+        <!--
+                <h2>City</h2>
+        -->
       </div>
       <div class="ui-g-12 ui-md-9">
 
@@ -112,29 +118,31 @@
     <!--COUNTRY -->
     <div class="ui-g-12 ui-md-6">
       <div class="ui-g-12 ui-md-12">
-        <h2>Country</h2>
+        <!--
+                <h2>Country</h2>
+        -->
       </div>
       <div class="ui-g-12 ui-md-6">
 
       <span class="ui-float-label">
-        <input id="float-country" type="text" size="30" formControlName="country"  pInputText>
+        <input id="float-country" type="text" size="30" formControlName="country" pInputText>
         <label for="float-country">Country</label>
        </span>
       </div>
-    <!--  <div class="ui-g-12 ui-md-3">
-        <p-message *ngIf="locationFormGroup.controls.country.hasError('required')" severity="error"
-                   text="Field is required"></p-message>
-      </div>-->
+      <!--  <div class="ui-g-12 ui-md-3">
+          <p-message *ngIf="locationFormGroup.controls.country.hasError('required')" severity="error"
+                     text="Field is required"></p-message>
+        </div>-->
     </div>
     <!--CAPACITY -->
     <div class="ui-g-12 ui-md-6">
       <div class="ui-g-12 ui-md-12">
-        <h2>Capacity</h2>
+        <!--<h2>Capacity</h2>-->
       </div>
       <div class="ui-g-12 ui-md-6">
 
       <span class="ui-float-label">
-        <input id="float-max_user" type="number" size="30" formControlName="max_user"  pInputText>
+        <input id="float-max_user" type="number" size="30" formControlName="max_user" pInputText>
         <label for="float-max_user">Max. amount of people</label>
        </span>
       </div>
@@ -151,8 +159,10 @@
           <mat-error *ngIf="categoryFormGroup.controls.title.hasError('required')">Title is required</mat-error>
       </mat-form-field>-->
     <div class="ui-g-12 ui-md-12">
-      <p-fileUpload url="./api/media/upload" accept="image/*" name="myfile[]" showUploadButton=false (onSelect)="uploadFile($event)" ></p-fileUpload>
-    </div><br/>
+      <p-fileUpload url="./api/media/upload" accept="image/*" name="myfile[]" showUploadButton=false
+                    (onSelect)="uploadFile($event)"></p-fileUpload>
+    </div>
+    <br/>
     <div class="ui-g-12 ui-md-2">
       <button pButton *ngIf="!locationFormGroup.controls.id.value" label="Create" [disabled]="!locationFormGroup.valid"
               (click)="createLocation()">

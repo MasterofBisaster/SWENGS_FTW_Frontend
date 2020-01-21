@@ -122,6 +122,7 @@ const routes: Routes = [
     component: UserDetailComponent,
     runGuardsAndResolvers: 'always',
     resolve: {
+      event: EventListResolver,
       user: FtwUserDetailResolver,
     }
   },

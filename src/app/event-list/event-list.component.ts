@@ -14,7 +14,7 @@ export class EventListComponent implements OnInit {
   @Input() classCard = 'ui-g-12 ui-md-4';
   @Input() classButton = 'ui-g-12 ui-md-4';
   @Input() classButtonEdit = 'ui-g-12 ui-md-3';
-
+  @Input() classButtonDelete = 'ui-g-12 ui-md-4';
 
   constructor(private eventService: EventService, public userService: UserService, public locationService: LocationService,
               private route: ActivatedRoute) {
