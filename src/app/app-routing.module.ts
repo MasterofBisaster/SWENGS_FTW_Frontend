@@ -25,6 +25,8 @@ import {LocationFormComponent} from './location-form/location-form.component';
 import {CategoryResolver} from './resolver/category.resolver';
 import {LocationResolver} from './resolver/location.resolver';
 import {EventResolver} from './resolver/event.resolver';
+import {UserFormComponent} from './user-form/user-form.component';
+
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {
@@ -125,6 +127,14 @@ const routes: Routes = [
     }
   },
   {
+    path: 'user-form/:id',
+    component: UserFormComponent,
+    runGuardsAndResolvers: 'always',
+    resolve: {
+      user: FtwUserDetailResolver,
+    }
+  },
+  {
     path: 'category-list',
     component: CategoryListComponent,
     canActivate: [AuthGuard],
@@ -139,7 +149,6 @@ const routes: Routes = [
       locations: LocationListResolver,
     }
   },
-
   {
     path: 'register',
     component: RegisterComponent,

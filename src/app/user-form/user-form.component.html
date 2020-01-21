@@ -1,1 +1,44 @@
-<p>user-form works!</p>
+<h1>Update your information</h1>
+<div class="ui-g-12 ui-md-6">
+    <form [formGroup]="userFormGroup" class="user-form">
+        <p>Username: {{userFormGroup.controls.user_username.value}}</p>
+        <p>First name: {{userFormGroup.controls.first_name.value}}</p>
+        <p>Last name: {{userFormGroup.controls.last_name.value}}</p>
+        <div class="ui-g-12 ui-md-3">
+                <span class="ui-float-label">
+                    <input id="float-first_name" type="text" size="30" formControlName="first_name" pInputText>
+                    <label for="float-first_name">First Name</label>
+                </span>
+        </div>
+
+        <div class="ui-g-12 ui-md-3">
+                <span class="ui-float-label">
+                    <input id="float-last_name" type="text" size="30" formControlName="last_name" pInputText>
+                    <label for="float-last_name">Last Name</label>
+                </span>
+        </div>
+
+        <div class="ui-g-12 ui-md-2">
+            <button pButton *ngIf="userFormGroup.controls.id.value" label="Update" [disabled]="!userFormGroup.valid"
+                    (click)="createUser()">
+            </button>
+        </div>
+        <br/>
+        <br/>
+        <p-accordion>
+            <p>Change Picture:</p>
+            <img width="400" [src]="'/api/media/' + userFormGroup.controls.picture.value">
+            <div>
+                <p-fileUpload url="./api/media/upload" accept="image/*" name="myfile[]" showUploadButton=false
+                              (onSelect)="uploadFile($event)" showUploadButton="false"></p-fileUpload>
+            </div>
+        </p-accordion>
+    </form>
+</div>
+
+
+
+
+
+
+

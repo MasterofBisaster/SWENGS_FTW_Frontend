@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
-import {CategoryService} from '../service/category.service';
 import {HttpClient} from '@angular/common/http';
 import {UserService} from '../service/user.service';
-import {MediaService} from '../service/media.service';
 
 @Component({
     selector: 'app-user-detail',
@@ -18,7 +16,7 @@ export class UserDetailComponent implements OnInit {
     picture;
 
     constructor(private route: ActivatedRoute, private fb: FormBuilder, private http: HttpClient,
-                private userService: UserService, private mediaService: MediaService) {
+                private userService: UserService) {
     }
 
     ngOnInit() {
