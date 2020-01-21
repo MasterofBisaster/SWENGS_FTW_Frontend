@@ -21,7 +21,7 @@
         <div [class]="classButtonEdit">
           <button class="ui-button-info" *ngIf="userService.hasPermission('ftw.change_category')"
                   [routerLink]="'/category-form/' + category.id" pButton type="button" label="Edit"
-                  icon="pi pi-search-plus" style="margin-right: .25em"></button>
+                  icon="pi pi-pencil" style="margin-right: .25em"></button>
         </div>
         <div [class]="classButtonDelete">
           <button class="ui-button-danger" *ngIf="userService.hasPermission('ftw.delete_category')"

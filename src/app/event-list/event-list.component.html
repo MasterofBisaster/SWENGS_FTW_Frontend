@@ -1,5 +1,5 @@
 <div [class]="classCard" *ngFor="let event of events">
-  <p-card [header]="event.name" [subheader]="event.start_date + ' bis ' + event.end_date" [style]="{width: '100%'}"
+  <p-card [header]="event.name" [subheader]="' by '+  event.user_name"  [style]="{width: '100%'}"
           styleClass="ui-card-shadow">
     <p-header>
       <div *ngIf="event?.picture" class="aspect-ratio-box">
@@ -21,11 +21,11 @@
         </div>
         <div [class]="classButtonEdit">
           <button class="ui-button-info" *ngIf="userService.userId()==event.creator"
-                  [routerLink]="'/event-form/' + event.id" pButton type="button" label="Edit" icon="pi pi-search-plus"
+                  [routerLink]="'/event-form/' + event.id" pButton type="button" label="Edit" icon="pi pi-pencil"
                   style="margin-right: .25em"></button>
         </div>
         <div [class]="classButtonDelete">
-          <button class="ui-button-danger" *ngIf="userService.hasPermission('ftw.delete_event')"
+          <button class="ui-button-danger" *ngIf="userService.userId()==event.creator"
                   (click)="deleteEvent(event.id)" pButton type="button" label="Delete" icon="pi pi-trash"
                   style="margin-right: .25em"></button>
         </div>

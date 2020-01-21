@@ -26,6 +26,7 @@ import {CategoryResolver} from './resolver/category.resolver';
 import {LocationResolver} from './resolver/location.resolver';
 import {EventResolver} from './resolver/event.resolver';
 import {UserFormComponent} from './user-form/user-form.component';
+import {UserEventResolver} from './resolver/user-event.resolver';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -122,7 +123,7 @@ const routes: Routes = [
     component: UserDetailComponent,
     runGuardsAndResolvers: 'always',
     resolve: {
-      event: EventListResolver,
+      events: UserEventResolver,
       user: FtwUserDetailResolver,
     }
   },
