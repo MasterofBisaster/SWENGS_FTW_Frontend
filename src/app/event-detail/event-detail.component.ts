@@ -14,7 +14,8 @@ export class EventDetailComponent implements OnInit {
   eventDetailGroup;
 
 
-  constructor(private eventService: EventService, private route: ActivatedRoute, private fb: FormBuilder, private userService: UserService) {
+    constructor(private eventService: EventService, private route: ActivatedRoute,
+                private fb: FormBuilder, private userService: UserService) {
   }
 
   ngOnInit() {

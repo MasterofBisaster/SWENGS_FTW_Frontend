@@ -1,3 +1,59 @@
+<h1>Create a new User</h1>
+<div class="ui-g-12 ui-md-6">
+    <form [formGroup]="registerFormGroup" class="register-form">
+        <div class="ui-g-12 ui-md-3">
+        <span class="ui-float-label">
+            <input id="float-username" type="text" size="30" formControlName="username" required pInputText>
+            <label for="float-username">Username</label>
+        </span>
+        </div>
+        <div class="ui-g-12 ui-md-3">
+            <p-message *ngIf="registerFormGroup.controls.username.hasError('required')" severity="error"
+                       text="Field is required"></p-message>
+        </div>
+        <br/>
+        <br/>
+
+        <div class="ui-g-12 ui-md-3">
+      <span class="ui-float-label">
+        <input id="float-password" type="text" size="30" formControlName="password" required pInputText>
+        <label for="float-password">Password</label>
+       </span>
+        </div>
+        <div class="ui-g-12 ui-md-3">
+            <p-message *ngIf="registerFormGroup.controls.password.hasError('required')" severity="error"
+                       text="Field is required"></p-message>
+        </div>
+        <br/>
+        <br/>
+
+        <div class="ui-g-12 ui-md-3">
+      <span class="ui-float-label">
+        <input id="float-confirmPassword" type="text" size="30" formControlName="confirmPassword" required pInputText>
+        <label for="float-confirmPassword">Confirm password</label>
+       </span>
+        </div>
+        <div class="ui-g-12 ui-md-3">
+            <p-message *ngIf="registerFormGroup.controls.confirmPassword.hasError('compare')" severity="error"
+                       text="Passwords do not match"></p-message>
+            <p-message *ngIf="registerFormGroup.controls.confirmPassword.hasError('required')" severity="error"
+                       text="Field is required"></p-message>
+        </div>
+
+        <div class="ui-g-12 ui-md-2">
+            <button pButton *ngIf="!registerFormGroup.controls.id.value" label="Create"
+                    [disabled]="!registerFormGroup.valid"
+                    (click)="createUser()">
+            </button>
+            <button pButton *ngIf="registerFormGroup.controls.id.value" label="Update"
+                    [disabled]="!registerFormGroup.valid"
+                    (click)="createUser()">
+            </button>
+        </div>
+    </form>
+</div>
+
+<!--
 <form [formGroup]="registerFormGroup" class="register-form">
 
   <mat-form-field>
@@ -5,7 +61,6 @@
     <mat-hint align="end">Your Username</mat-hint>
     <mat-error *ngIf="registerFormGroup.controls.username.hasError('required')">Username is required</mat-error>
   </mat-form-field>
-
 
   <mat-form-field>
     <input matInput pPassword type="password" placeholder="Password" formControlName="password" required/>
@@ -30,4 +85,4 @@
     </button>
   </mat-card-actions>
 </form>
-
+-->

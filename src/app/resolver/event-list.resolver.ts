@@ -17,7 +17,7 @@ export class EventListResolver implements Resolve<Observable<any>> {
     if (userId == null) {
       return this.eventService.getPublicEvents();
     } else {
-      return this.eventService.getPrivateEvents(userId);
+      return this.eventService.getPrivateEvents();
     }
   }
 }

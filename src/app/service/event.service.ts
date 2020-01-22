@@ -17,8 +17,8 @@ export class EventService {
     return this.http.get('/api/event/list/public');
   }
 
-  getPrivateEvents(userId) {
-    return this.http.get('/api/event/list/private/' + userId);
+  getPrivateEvents() {
+    return this.http.get('/api/event/list/private/');
   }
 
   getSearchEvents(searchString) {
