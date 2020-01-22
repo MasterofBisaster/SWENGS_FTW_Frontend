@@ -11,6 +11,8 @@ import {LocationService} from '../service/location.service';
 export class LocationListComponent implements OnInit {
 
   locations: any[];
+  allLocations: any[];
+  amountRows = 4;
   @Input() classCard = 'ui-g-12 ui-md-3';
   @Input() classButton = 'ui-g-12 ui-md-5';
   @Input() classButtonEdit = 'ui-g-12 ui-md-3';
@@ -23,7 +25,8 @@ export class LocationListComponent implements OnInit {
   ngOnInit() {
 
     const data = this.route.snapshot.data;
-    this.locations = data.locations;
+    this.allLocations = data.locations;
+    this.locations = this.allLocations.slice(0, this.amountRows);
   }
 
   deleteLocation(location: any) {
@@ -31,6 +34,10 @@ export class LocationListComponent implements OnInit {
       .subscribe(() => {
         this.ngOnInit();
       });
+  }
+
+  paginate(location) {
+    this.locations = this.allLocations.slice(location.first, location.first + location.rows);
   }
 }
 

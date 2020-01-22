@@ -32,4 +32,9 @@
     </p-footer>
   </p-card>
 </div>
+<div class="ui-g-12">
+    <p-paginator [rows]="amountRows" [totalRecords]="allCategories.length" [rowsPerPageOptions]="[4,8,12]"
+                 (onPageChange)="paginate($event)"></p-paginator>
+</div>
+
 
