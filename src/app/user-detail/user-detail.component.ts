@@ -58,8 +58,11 @@ export class UserDetailComponent implements OnInit {
         return this.http.post(endpoint, formData);
     }
     addOrRemoveAsFriend() {
-      this.userService.addOrRemoveUserAsFriend(this.userService.userId(), this.ftwUserDetailGroup.controls.user_id.value);
-
+      // this.userService.addOrRemoveUserAsFriend(this.userService.userId(), this.ftwUserDetailGroup.controls.user_id.value);
+      this.userService.addOrRemoveUserAsFriend(this.userService.userId(), this.ftwUserDetailGroup.controls.user_id.value)
+        .subscribe(() => {
+          window.location.reload();
+        });
     }
 
 }
