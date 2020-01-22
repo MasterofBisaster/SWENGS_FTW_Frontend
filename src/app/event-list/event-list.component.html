@@ -2,18 +2,18 @@
           styleClass="ui-card-shadow"*ngFor="let event of events">
     <p-header>
       <div *ngIf="event?.picture" class="aspect-ratio-box">
-        <img src="/api/media/{{event.picture}}">
+        <img  src="/api/media/{{event.picture}}">
       </div>
       <div *ngIf="!event?.picture" class="aspect-ratio-box">
-        <img src="assets/usercard.png">
+        <img  src="assets/usercard.png">
       </div>
     </p-header>
-    <div>
+
       <p-progressBar [value]="event.confirmed_users"></p-progressBar>
       <p> Capacity: {{event.confirmed_users}}/{{event.max_users}}</p>
       <p> Start: {{event.start_date | date:'dd. MMM  yyyy, HH:mm ' }}</p>
       <p>End: {{event.end_date | date:'dd. MMM  yyyy, HH:mm ' }}</p>
-    </div>
+
     <p-footer>
 
       <div class="ui-g">
@@ -35,7 +35,7 @@
       </div>
     </p-footer>
   </p-card>
- <div class="ui-g-12">
+<div class="ui-g-12">
      <p-paginator [rows]="amountRows" [totalRecords]="allEvents.length" [rowsPerPageOptions]="[3,6,9]"
                   (onPageChange)="paginate($event)"></p-paginator>
  </div>
