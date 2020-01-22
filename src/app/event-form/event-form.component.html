@@ -14,8 +14,11 @@
         <h3>Start Date</h3>
       </div>
       <div class="ui-g-12 ui-md-12">
-        <p-calendar formControlName="start_date" showTime="true" [monthNavigator]="true" [yearNavigator]="true"
-                    yearRange="2020:2030"></p-calendar>
+<!--        Prime NG Datepicker funktioniert update noch nicht.-->
+<!--        <p-calendar formControlName="start_date" showTime="true" [monthNavigator]="true" [yearNavigator]="true"-->
+<!--                    yearRange="2020:2030"></p-calendar>-->
+        <app-date formControlName="start_date" showTime="true"
+                  yearRange="2020:2030"></app-date>
       </div>
     </div>
     <!--  end date-->
@@ -24,8 +27,11 @@
         <h3>End Date</h3>
       </div>
       <div class="ui-g-12 ui-md-12">
-        <p-calendar formControlName="end_date" showTime="true" [monthNavigator]="true" [yearNavigator]="true"
-                    yearRange="2020:2030"></p-calendar>
+<!--        Prime NG Datepicker funktioniert update noch nicht.-->
+<!--        <p-calendar formControlName="end_date" showTime="true" [monthNavigator]="true" [yearNavigator]="true"-->
+<!--                    yearRange="2020:2030"></p-calendar>-->
+        <app-date formControlName="end_date" showTime="true"
+                  yearRange="2020:2030"></app-date>
       </div>
     </div>
     <!--   private-->
@@ -63,7 +69,6 @@
         </span>
         </p-header>
       </p-editor>
-      <p>Value: {{description||null}}</p>
     </div>
      <!-- <span class="ui-float-label">
         <input id="float-description" type="text" formControlName="description" pInputText>

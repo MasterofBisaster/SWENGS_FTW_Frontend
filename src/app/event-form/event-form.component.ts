@@ -51,6 +51,15 @@ export class EventFormComponent implements OnInit {
     if (data.event) {
       this.eventFormGroup.patchValue(data.event);
     }
+
+    // verzweifelte versuche mit dem Datum folgen
+
+    // this.eventFormGroup.controls.start_date.value = this.eventFormGroup.controls.start_date.value | date ['MM/dd/yyyy HH:mm'];
+    // this.eventFormGroup.start_date = this.datepipe.transform(this.eventFormGroup.start_date, 'MM/dd/yyyy HH:mm:ss');
+    // let latest_date = this.datepipe.transform(this.eventFormGroup.start_date, 'MM/dd/yyyy HH:mm');
+    // this.latestDate = this.datepipe.transform(this.eventFormGroup.start_date, 'MM/dd/yyyy HH:mm');
+    // this.eventFormGroup.start_date = this.latestDate;
+
   }
 
   createEvent() {
@@ -67,19 +76,19 @@ export class EventFormComponent implements OnInit {
     } else {
       this.eventService.createEvent(event)
         .subscribe((response: any) => {
+          this.router.navigate(['/event-form/' + response.id]);
           // this.router.navigate(['/home']);
-           this.router.navigate(['/event-form/' + response.id]);
         });
     }
   }
 
-  dateAsYYYYMMDDHHNNSS(date): string {
-    return date.getFullYear()
-      + '-' + this.leftpad(date.getMonth() + 1, 2)
-      + '-' + this.leftpad(date.getDate(), 2)
-      + ' ' + this.leftpad(date.getHours(), 2)
-      + ':' + this.leftpad(date.getMinutes(), 2)
-      + ':' + this.leftpad(date.getSeconds(), 2);
+  dateAsYYYYMMDDHHNNSS(vdate): string {
+    return vdate.getFullYear()
+      + '-' + this.leftpad(vdate.getMonth() + 1, 2)
+      + '-' + this.leftpad(vdate.getDate(), 2)
+      + ' ' + this.leftpad(vdate.getHours(), 2)
+      + ':' + this.leftpad(vdate.getMinutes(), 2)
+      + ':' + this.leftpad(vdate.getSeconds(), 2);
   }
 
   leftpad(val, resultLength = 2, leftpadChar = '0'): string {

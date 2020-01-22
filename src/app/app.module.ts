@@ -51,7 +51,7 @@ import {UserFormComponent} from './user-form/user-form.component';
 import {HomeComponent} from './home/home.component';
 import {FileUploadModule} from 'primeng/fileupload';
 import {MessageModule} from 'primeng/message';
-import {CheckboxModule} from "primeng/checkbox";
+import {CheckboxModule} from 'primeng/checkbox';
 
 
 export function tokenGetter() {
