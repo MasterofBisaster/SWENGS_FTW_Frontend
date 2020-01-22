@@ -10,22 +10,28 @@
     </div>
     <!--  start date-->
     <div class="ui-g-12 ui-md-6">
-      <!--<div class="ui-g-12 ui-md-12">
-        <h3>Start Date</h3>
-      </div>-->
       <div class="ui-g-12 ui-md-12">
-        <p-calendar placeholder="Start Date"formControlName="start_date" showTime="true" [monthNavigator]="true" [yearNavigator]="true"
-                    yearRange="2020:2030"></p-calendar>
+        <h3>Start Date</h3>
+      </div>
+      <div class="ui-g-12 ui-md-12">
+<!--        Prime NG Datepicker funktioniert update noch nicht.-->
+<!--        <p-calendar formControlName="start_date" showTime="true" [monthNavigator]="true" [yearNavigator]="true"-->
+<!--                    yearRange="2020:2030"></p-calendar>-->
+        <app-date formControlName="start_date" showTime="true"
+                  yearRange="2020:2030"></app-date>
       </div>
     </div>
     <!--  end date-->
     <div class="ui-g-12 ui-md-6">
-     <!-- <div class="ui-g-12 ui-md-12">
-        <h3>End Date</h3>
-      </div>-->
       <div class="ui-g-12 ui-md-12">
-        <p-calendar placeholder="End Date" formControlName="end_date" showTime="true" [monthNavigator]="true" [yearNavigator]="true"
-                    yearRange="2020:2030"></p-calendar>
+        <h3>End Date</h3>
+      </div>
+      <div class="ui-g-12 ui-md-12">
+<!--        Prime NG Datepicker funktioniert update noch nicht.-->
+<!--        <p-calendar formControlName="end_date" showTime="true" [monthNavigator]="true" [yearNavigator]="true"-->
+<!--                    yearRange="2020:2030"></p-calendar>-->
+        <app-date formControlName="end_date" showTime="true"
+                  yearRange="2020:2030"></app-date>
       </div>
     </div>
     <!--   private-->
@@ -36,17 +42,17 @@
       </div>
     </div>
     <!--    Location-->
-    <div class="ui-g-12 ui-md-6">
+    <div class="ui-g-12 ui-md-12">
       <p-dropdown formControlName="location" [options]="locationOptions" placeholder="Select a Location"
                   optionLabel="name"></p-dropdown>
     </div>
     <!--    Category-->
-    <div class="ui-g-12 ui-md-6">
+    <div class="ui-g-12 ui-md-12">
       <p-dropdown formControlName="category" [options]="categoryOptions" placeholder="Select a Category"
                   optionLabel="title"></p-dropdown>
     </div>
     <!--Short Description-->
-    <div class="ui-g-12 ui-md-9">
+    <div class="ui-g-12 ui-md-12">
       <span class="ui-float-label">
         <input id="float-sdescription" type="text" size="50" formControlName="short_description" pInputText>
         <label for="float-sdescription">Short Description</label>
@@ -63,7 +69,6 @@
         </span>
         </p-header>
       </p-editor>
-      <!--<p>Value: {{description||null}}</p>-->
     </div>
      <!-- <span class="ui-float-label">
         <input id="float-description" type="text" formControlName="description" pInputText>
@@ -77,17 +82,6 @@
             <label for="float-creator">Creator</label>
           </span>
         </div>-->
-    <div class="ui-g-12 ui-md-12">
-      <h3 *ngIf="!eventFormGroup.controls?.picture.value">No picture added!</h3>
-      <h3 *ngIf="eventFormGroup.controls?.picture.value">Picture of the event:</h3>
-      <img *ngIf="eventFormGroup.controls?.picture.value" class="ui-g-12 ui-md-3" width="400" [src]="'/api/media/' + eventFormGroup.controls.picture.value">
-    </div>
-    <div class="ui-g-12 ui-md-12">
-      <p-fileUpload class="ui-g-12 ui-md-3" chooseLabel="Upload a picture..." url="./api/media/upload" accept="image/*"
-                    name="myfile[]" mode="basic"
-                    (onSelect)="uploadFile($event)"></p-fileUpload>
-
-    </div>
     <!--Buttons-->
     <div class="ui-g-12 ui-md-2">
       <button pButton *ngIf="!eventFormGroup.controls.id.value" label="Create" [disabled]="!eventFormGroup.valid"
