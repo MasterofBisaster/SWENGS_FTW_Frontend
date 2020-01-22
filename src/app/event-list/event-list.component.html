@@ -8,7 +8,10 @@
         <img src="assets/usercard.png">
       </div>
     </p-header>
-    <div>{{event.short_description}}
+    <div>
+      <p-progressBar [value]="event.confirmed_users"></p-progressBar>
+      <p> Start: {{event.start_date | date:'dd. MMM  yyyy, HH:mm ' }}</p>
+      <p>End: {{event.end_date | date:'dd. MMM  yyyy, HH:mm ' }}</p>
     </div>
     <p-footer>
 

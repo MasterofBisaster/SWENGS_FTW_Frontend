@@ -3,9 +3,9 @@
 <p-accordion class="ui-g-12 ui-md-8" [multiple]="true">
   <p-accordionTab selected=true header="About {{eventDetailGroup.controls.name.value}}">
     <h3>Start of the event:</h3>
-    {{eventDetailGroup.controls.start_date.value}}
+    {{eventDetailGroup.controls.start_date.value | date:'dd. MMM  yyyy, HH:mm ' }}
     <h3>End of the event:</h3>
-    {{eventDetailGroup.controls.end_date.value}}
+    {{eventDetailGroup.controls.end_date.value | date:'dd. MMM  yyyy, HH:mm ' }}
     <h3>Created by:</h3>
     {{eventDetailGroup.controls.user_name.value}}
     <h3>Description:</h3>
