@@ -43,12 +43,12 @@
     </div>
     <!--    Location-->
     <div class="ui-g-12 ui-md-6">
-      <p-dropdown formControlName="location" [options]="locationOptions" placeholder="Select a Location"
+      <p-dropdown formControlName="location" editable="true" [options]="locationOptions" placeholder="Select a Location"
                   optionLabel="name"></p-dropdown>
     </div>
     <!--    Category-->
     <div class="ui-g-12 ui-md-6">
-      <p-dropdown formControlName="category" [options]="categoryOptions" placeholder="Select a Category"
+      <p-dropdown formControlName="category" editable="true" [options]="categoryOptions" placeholder="Select a Category"
                   optionLabel="title"></p-dropdown>
     </div>
     <!--Short Description-->
@@ -83,6 +83,21 @@
             <label for="float-creator">Creator</label>
           </span>
         </div>-->
+<!--    Max Users-->
+    <div class="ui-g-12 ui-md-12">
+      <span class="ui-float-label">
+        <input id="float-maxusers" type="number" formControlName="max_users" pInputText>
+        <label for="float-maxusers">Max Users</label>
+      </span>
+    </div>
+<!--    Costs-->
+    <div class="ui-g-12 ui-md-12">
+      <span class="ui-float-label">
+        <input id="float-costs" type="number" formControlName="costs" pInputText>
+        <label for="float-costs">Costs</label>
+      </span>
+    </div>
+<!--    Picture Upload-->
     <div class="ui-g-12 ui-md-12">
       <h3 *ngIf="!eventFormGroup.controls?.picture.value">No picture added!</h3>
       <h3 *ngIf="eventFormGroup.controls?.picture.value">Picture of the event:</h3>
