@@ -81,6 +81,8 @@ export class UserService {
     return this.http.get('/api/user/' + id + '/detail');
   }
   addOrRemoveUserAsFriend(userId, friendId) {
-    this.http.post('/api/user/add-friend/' + userId + '/' + friendId, null);
+    console.log(userId);
+    console.log(friendId);
+    this.http.post('/api/user/add-friend/', userId, friendId);
   }
 }

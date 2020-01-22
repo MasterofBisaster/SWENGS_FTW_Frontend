@@ -2,7 +2,7 @@
   <h1>{{ftwUserDetailGroup.controls.user_username.value}}</h1>
 </div>
 <div style="margin-block-start: 0.67em" class="ui-g-12 ui-md-2">
-  <button (click)="userService.addOrRemoveUserAsFriend(userService.userId(),ftwUserDetailGroup.controls.user_id.value)" class="ui-button"
+  <button (click)="addOrRemoveAsFriend()" class="ui-button"
           *ngIf="userService.userId()!=ftwUserDetailGroup.controls.user_id.value"
           pButton type="button" label="Add as Friend" icon="pi pi-user-plus"
           style="margin-right: .25em"></button>
