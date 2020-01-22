@@ -1,53 +1,12 @@
-<!--
-<form [formGroup]="locationFormGroup" class="location-form">
-    <mat-form-field>
-        <input matInput type="text" placeholder="Name" formControlName="name" required>
-        <mat-hint align="end">The name of the location</mat-hint>
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput type="text" placeholder="Street" formControlName="street">
-        <mat-hint align="end">The street of the location</mat-hint>
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput type="text" placeholder="City" formControlName="city">
-        <mat-hint align="end">The city of the location</mat-hint>
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput type="text" placeholder="Zip_Code" formControlName="zip_code">
-        <mat-hint align="end">The zip-code of the location</mat-hint>
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput type="text" placeholder="Country" formControlName="country">
-        <mat-hint align="end">The country of the location</mat-hint>
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput type="text" placeholder="Max_user" formControlName="max_user">
-        <mat-hint align="end">The maximum amount of people of the location</mat-hint>
-    </mat-form-field>
-    <div>
-        <p-fileUpload url="./api/media/upload" accept="image/*" name="myfile[]" showUploadButton=false
-                      (onSelect)="uploadFile($event)"></p-fileUpload>
-    </div>
-    <br/>
-    <mat-card-actions align="center">
-        <button mat-raised-button color="primary" [disabled]="!locationFormGroup.valid" (click)="createLocation()">
-            <span *ngIf="!locationFormGroup.controls.id.value">Create</span>
-            <span *ngIf="locationFormGroup.controls.id.value">Update</span>
-        </button>
-    </mat-card-actions>
-</form>
--->
+<p-panel>
+  <p-header>
+    <h1>Create a location</h1>
+  </p-header>
 
-<h1>Create a location</h1>
-<div class="ui-g-12 ui-md-6">
   <form [formGroup]="locationFormGroup" class="location-form">
     <!--NAME -->
     <div class="ui-g-12 ui-md-12">
-      <div class="ui-g-12 ui-md-12">
-        <!--
-                <h2>Name</h2>
-        -->
-      </div>
+
       <div class="ui-g-12 ui-md-9">
 
       <span class="ui-float-label">
@@ -60,11 +19,9 @@
                    text="Field is required"></p-message>
       </div>
     </div>
+
     <!--STREET -->
     <div class="ui-g-12 ui-md-12">
-      <div class="ui-g-12 ui-md-12">
-        <!--<h2>Street</h2>-->
-      </div>
       <div class="ui-g-12 ui-md-9">
 
       <span class="ui-float-label">
@@ -72,111 +29,65 @@
         <label for="float-street">Street</label>
        </span>
       </div>
-      <!-- <div class="ui-g-12 ui-md-3">
-         <p-message *ngIf="locationFormGroup.controls.street.hasError('required')" severity="error"
-                    text="Field is required"></p-message>
-       </div>-->
     </div>
-    <!--ZIPCODE -->
-    <div class="ui-g-12 ui-md-6">
-      <div class="ui-g-12 ui-md-12">
-        <!--
-                <h2>Zip Code</h2>
-        -->
-      </div>
-      <div class="ui-g-12 ui-md-9">
 
+    <!--ZIPCODE -->
+    <div class="ui-g-12 ui-md-12">
+      <div class="ui-g-12 ui-md-3">
       <span class="ui-float-label">
         <input id="float-zip_code" type="number" size="30" formControlName="zip_code" pInputText>
         <label for="float-zip_code">Zip Code</label>
        </span>
       </div>
-      <!--<div class="ui-g-12 ui-md-3">
-        <p-message *ngIf="locationFormGroup.controls.zip_code.hasError('required')" severity="error"
-                   text="Field is required"></p-message>
-      </div>-->
-    </div>
-    <!--CITY -->
-    <div class="ui-g-12 ui-md-6">
-      <div class="ui-g-12 ui-md-12">
-        <!--
-                <h2>City</h2>
-        -->
-      </div>
-      <div class="ui-g-12 ui-md-9">
-
-      <span class="ui-float-label">
+      <!--CITY -->
+      <div class="ui-g-12 ui-md-3"><span class="ui-float-label">
         <input id="float-city" type="text" size="30" formControlName="city" pInputText>
         <label for="float-city">City</label>
-       </span>
-      </div>
-      <!--<div class="ui-g-12 ui-md-3">
-        <p-message *ngIf="locationFormGroup.controls.city.hasError('required')" severity="error"
-                   text="Field is required"></p-message>
-      </div>-->
-    </div>
-    <!--COUNTRY -->
-    <div class="ui-g-12 ui-md-6">
-      <div class="ui-g-12 ui-md-12">
-        <!--
-                <h2>Country</h2>
-        -->
-      </div>
-      <div class="ui-g-12 ui-md-6">
+       </span></div>
+      <!--COUNTRY -->
+      <div class="ui-g-12 ui-md-3">
 
       <span class="ui-float-label">
         <input id="float-country" type="text" size="30" formControlName="country" pInputText>
         <label for="float-country">Country</label>
        </span>
       </div>
-      <!--  <div class="ui-g-12 ui-md-3">
-          <p-message *ngIf="locationFormGroup.controls.country.hasError('required')" severity="error"
-                     text="Field is required"></p-message>
-        </div>-->
     </div>
+
+
     <!--CAPACITY -->
     <div class="ui-g-12 ui-md-6">
-      <div class="ui-g-12 ui-md-12">
-        <!--<h2>Capacity</h2>-->
-      </div>
-      <div class="ui-g-12 ui-md-6">
 
-      <span class="ui-float-label">
-        <input id="float-max_user" type="number" size="30" formControlName="max_user" pInputText>
-        <label for="float-max_user">Max. amount of people</label>
+      <div class="ui-g-12 ui-md-6">
+        <span class="ui-float-label">
+          <input id="float-max_user" type="number" size="30" formControlName="max_user" pInputText>
+          <label for="float-max_user">Max. amount of people</label>
        </span>
       </div>
-      <!--  <div class="ui-g-12 ui-md-3">
-          <p-message *ngIf="locationFormGroup.controls.country.hasError('required')" severity="error"
-                     text="Field is required"></p-message>
-        </div>-->
     </div>
-    <!--    <mat-error *ngIf="categoryFormGroup.controls.title.hasError('required')">Title is required</mat-error>
 
-      <mat-form-field>
-          <input matInput type="text" placeholder="Title" formControlName="title" required>
-          <mat-hint align="end">The title of the movie</mat-hint>
-          <mat-error *ngIf="categoryFormGroup.controls.title.hasError('required')">Title is required</mat-error>
-      </mat-form-field>-->
     <div class="ui-g-12 ui-md-12">
       <h3 *ngIf="!locationFormGroup.controls?.picture.value">No picture added!</h3>
       <h3 *ngIf="locationFormGroup.controls?.picture.value">Picture of the location:</h3>
-      <img *ngIf="locationFormGroup.controls?.picture.value" class="ui-g-12 ui-md-3" width="400" [src]="'/api/media/' + locationFormGroup.controls.picture.value">
+      <img *ngIf="locationFormGroup.controls?.picture.value" class="ui-g-12 ui-md-3" width="400"
+           [src]="'/api/media/' + locationFormGroup.controls.picture.value">
     </div>
     <div class="ui-g-12 ui-md-12">
-      <p-fileUpload class="ui-g-12 ui-md-3" chooseLabel="Upload a picture..." url="./api/media/upload" accept="image/*"
+      <p-fileUpload class="ui-g-12 ui-md-3" chooseLabel="Upload a picture..." url="./api/media/upload"
+                    accept="image/*"
                     name="myfile[]" mode="basic"
                     (onSelect)="uploadFile($event)"></p-fileUpload>
 
     </div>
-    <br/>
-    <div class="ui-g-12 ui-md-2">
-      <button pButton *ngIf="!locationFormGroup.controls.id.value" label="Create" [disabled]="!locationFormGroup.valid"
+    <div class="ui-g-3">
+      <button pButton *ngIf="!locationFormGroup.controls.id.value" label="Create"
+              [disabled]="!locationFormGroup.valid"
               (click)="createLocation()">
       </button>
-      <button pButton *ngIf="locationFormGroup.controls.id.value" label="Update" [disabled]="!locationFormGroup.valid"
+      <button pButton *ngIf="locationFormGroup.controls.id.value" label="Update"
+              [disabled]="!locationFormGroup.valid"
               (click)="createLocation()">
       </button>
     </div>
   </form>
-</div>
+</p-panel>
