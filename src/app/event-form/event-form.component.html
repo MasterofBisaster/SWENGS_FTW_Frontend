@@ -77,6 +77,10 @@
             <label for="float-creator">Creator</label>
           </span>
         </div>-->
+    <div class="ui-g-12 ui-md-12">
+      <p-fileUpload url="./api/media/upload" accept="image/*" name="myfile[]" showUploadButton=false
+                    (onSelect)="uploadFile($event)"></p-fileUpload>
+    </div>
     <!--Buttons-->
     <div class="ui-g-12 ui-md-2">
       <button pButton *ngIf="!eventFormGroup.controls.id.value" label="Create" [disabled]="!eventFormGroup.valid"
