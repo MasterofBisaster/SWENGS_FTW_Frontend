@@ -54,15 +54,22 @@
     </div>
     <!--    Description-->
     <div class="ui-g-12 ui-md-12">
-<!--      <span class="ui-float-label">
+      <p-editor [(ngModel)]="description" formControlName="description" [style]="{'height':'320px'}">
+        <p-header>
+        <span class="ql-formats">
+            <button class="ql-bold" aria-label="Bold"></button>
+            <button class="ql-italic" aria-label="Italic"></button>
+            <button class="ql-underline" aria-label="Underline"></button>
+        </span>
+        </p-header>
+      </p-editor>
+      <p>Value: {{description||null}}</p>
+    </div>
+     <!-- <span class="ui-float-label">
         <input id="float-description" type="text" formControlName="description" pInputText>
         <label for="float-description">Description</label>
-      </span>-->
-      <span class="ui-float-label">
-        <textarea id="float-description" type="text" formControlName="description" rows="5" cols="58" pInputTextarea></textarea>
-        <label for="float-description">Description</label>
-    </span>
-    </div>
+      </span>
+    </div>-->
     <!--Creator-->
     <!--    <div class="ui-g-12 ui-md-12">
           <span class="ui-float-label">

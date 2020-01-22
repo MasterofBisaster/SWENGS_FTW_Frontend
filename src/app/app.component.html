@@ -6,7 +6,7 @@
   <app-logout *ngIf="isLoggedIn"></app-logout>
   <button routerLink="login" pButton label="Login" *ngIf="isLoggedIn == false" icon="fa fa-sign-in" style="margin-left:.25em"></button>
   <button routerLink="register" pButton label="Register" *ngIf="isLoggedIn == false" icon="pi pi-id-card" style="margin-left:.25em"></button>
-  <button [routerLink]="'/user-detail/' + userService.userId()" pButton label="My Profile" *ngIf="isLoggedIn" icon="pi pi-user" style="margin-left:.25em"></button>
+  <button [routerLink]="'/user-detail/' + userService.userId()" pButton label="{{userService.userName()+'\'s'}} Profile" *ngIf="isLoggedIn" icon="pi pi-user" style="margin-left:.25em"></button>
 </p-menubar>
 
 <div class="content-section implementation ui-fluid">

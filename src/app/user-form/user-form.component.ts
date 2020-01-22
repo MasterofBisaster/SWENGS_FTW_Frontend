@@ -67,4 +67,5 @@ export class UserFormComponent implements OnInit {
         formData.append('file', fileToUpload, fileToUpload.name);
         return this.http.post(endpoint, formData);
     }
+
 }

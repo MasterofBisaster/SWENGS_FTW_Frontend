@@ -17,7 +17,7 @@ export class EventFormComponent implements OnInit {
   eventFormGroup;
   categoryOptions;
   locationOptions;
-
+  description: string;
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router,
               private categoryService: CategoryService, private commentService: CommentService,

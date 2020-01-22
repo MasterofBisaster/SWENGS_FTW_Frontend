@@ -11,6 +11,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class EventListComponent implements OnInit {
   events: any[];
+  allEvents: any[];
   @Input() classCard = 'ui-g-12 ui-md-4';
   @Input() classButton = 'ui-g-12 ui-md-4';
   @Input() classButtonEdit = 'ui-g-12 ui-md-3';
@@ -22,7 +23,8 @@ export class EventListComponent implements OnInit {
 
   ngOnInit() {
     const data = this.route.snapshot.data;
-    this.events = data.events;
+    this.allEvents = data.events;
+    this.events = this.allEvents.slice(0, 3);
   }
 
   deleteEvent(event: any) {
@@ -30,5 +32,24 @@ export class EventListComponent implements OnInit {
       .subscribe(() => {
         this.ngOnInit();
       });
+  }
+
+  dateAsYYYYMMDDHHNNSS(date): string {
+
+    return date.getFullYear()
+      + '-' + this.leftpad(date.getMonth() + 1, 2)
+      + '-' + this.leftpad(date.getDate(), 2)
+      + ' ' + this.leftpad(date.getHours(), 2)
+      + ':' + this.leftpad(date.getMinutes(), 2)
+      + ':' + this.leftpad(date.getSeconds(), 2);
+  }
+
+  leftpad(val, resultLength = 2, leftpadChar = '0'): string {
+    return (String(leftpadChar).repeat(resultLength)
+      + String(val)).slice(String(val).length);
+  }
+
+  paginate(event) {
+    this.events = this.allEvents.slice(event.first, event.first + event.rows);
   }
 }

@@ -1,26 +1,42 @@
-<h1>{{ftwUserDetailGroup.controls.user_username.value}}</h1>
+<div class="ui-g-12 ui-md-1">
+  <h1>{{ftwUserDetailGroup.controls.user_username.value}}</h1>
+</div>
+<div style="margin-block-start: 0.67em" class="ui-g-12 ui-md-2">
+  <button (click)="addOrRemoveAsFriend()" class="ui-button"
+          *ngIf="userService.userId()!=ftwUserDetailGroup.controls.user_id.value"
+          pButton type="button" label="Add as Friend" icon="pi pi-user-plus"
+          style="margin-right: .25em"></button>
+</div>
 
-<p-accordion [multiple]="true">
-  <p-accordionTab selected=true header="About {{ftwUserDetailGroup.controls.user_username.value}}">
-    <div class="ui-g">
-      <div class="ui-g-12 ui-md-3">
-        <img width="200px" [src]="'/api/media/' + ftwUserDetailGroup.controls.picture.value">
-        <p>Change Picture:</p>
+  <p-accordion [multiple]="true" class="ui-g-12 ui-md-12">
+    <p-accordionTab selected=true header="About {{ftwUserDetailGroup.controls.user_username.value}}">
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-3">
+          <h2 *ngIf="userService.userId()==ftwUserDetailGroup.controls.user_id.value">Your Profile Picture:</h2>
+          <h2 *ngIf="userService.userId()!=ftwUserDetailGroup.controls.user_id.value">{{ftwUserDetailGroup.controls.user_username.value}}'s Profile Picture:</h2>
+          <img width="200px" [src]="'/api/media/' + ftwUserDetailGroup.controls.picture.value">
+          <!--<div *ngIf="userService.userId()==ftwUserDetailGroup.controls.user_id.value">
+            <p>Change Picture:</p>
 
-        <p-fileUpload url="./api/media/upload" accept="image/*" name="myfile[]" showUploadButton=false
-                      (onSelect)="uploadFile($event)" showUploadButton="false"></p-fileUpload>
+            <p-fileUpload url="./api/media/upload" accept="image/*" name="myfile[]" showUploadButton=false
+                          (onSelect)="uploadFile($event)" showUploadButton="false"></p-fileUpload>
+          </div>-->
+        </div>
+        <div class="ui-g-12 ui-md-8">
+          <h2>Your Data:</h2>
+          <p>Username: {{ftwUserDetailGroup.controls.user_username.value}}</p>
+          <p>FirstName: {{ftwUserDetailGroup.controls.user_first_name.value}}</p>
+          <p>Last Name: {{ftwUserDetailGroup.controls.user_last_name.value}}</p>
+        </div>
       </div>
-      <div class="ui-g-12 ui-md-8">
-        <p>Username: {{ftwUserDetailGroup.controls.user_username.value}}</p>
-        <p>FirstName: {{ftwUserDetailGroup.controls.user_first_name.value}}</p>
-        <p>Last Name: {{ftwUserDetailGroup.controls.user_last_name.value}}</p>
+    </p-accordionTab>
+    <p-accordionTab selected=true header="{{ftwUserDetailGroup.controls.user_username.value}}'s events">
+      <div class="ui-g-12 ui-md-12">
+        <app-event-list classCard="ui-g-12 ui-md-4"></app-event-list>
       </div>
-    </div>
-  </p-accordionTab>
-  <p-accordionTab selected=true header="{{ftwUserDetailGroup.controls.user_username.value}}'s events">
-    <app-event-list></app-event-list>
-  </p-accordionTab>
-</p-accordion>
 
+
+    </p-accordionTab>
+  </p-accordion>
 
 

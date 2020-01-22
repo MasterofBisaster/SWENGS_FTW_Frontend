@@ -24,9 +24,10 @@ export class UserDetailComponent implements OnInit {
         this.ftwUserDetailGroup = this.fb.group({
             id: [null],
             picture: [null],
-            user_username: [null, [Validators.required]],
-            user_first_name: [null, [Validators.required]],
-            user_last_name: [null, [Validators.required]],
+            user_username: [null],
+            user_first_name: [null],
+            user_last_name: [null],
+            user_id: [null]
         });
 
         const data = this.route.snapshot.data;
@@ -56,4 +57,9 @@ export class UserDetailComponent implements OnInit {
         formData.append('file', fileToUpload, fileToUpload.name);
         return this.http.post(endpoint, formData);
     }
+    addOrRemoveAsFriend() {
+      this.userService.addOrRemoveUserAsFriend(this.userService.userId(), this.ftwUserDetailGroup.controls.user_id.value);
+
+    }
+
 }
