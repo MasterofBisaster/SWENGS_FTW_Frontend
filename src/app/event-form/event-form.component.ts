@@ -6,6 +6,7 @@ import {CommentService} from '../service/comment.service';
 import {LocationService} from '../service/location.service';
 import {UserService} from '../service/user.service';
 import {EventService} from '../service/event.service';
+import {HttpClient} from '@angular/common/http';
 
 
 @Component({
@@ -18,11 +19,12 @@ export class EventFormComponent implements OnInit {
   categoryOptions;
   locationOptions;
   description: string;
-
+  newPicture;
+  fileToUpload: File = null;
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router,
               private categoryService: CategoryService, private commentService: CommentService,
               private locationService: LocationService, private userService: UserService,
-              private eventService: EventService) {
+              private eventService: EventService, private http: HttpClient) {
   }
 
   ngOnInit() {
@@ -85,5 +87,19 @@ export class EventFormComponent implements OnInit {
   leftpad(val, resultLength = 2, leftpadChar = '0'): string {
     return (String(leftpadChar).repeat(resultLength)
       + String(val)).slice(String(val).length);
+  }
+  uploadFile(event) {
+    const files = event.files;
+    this.fileToUpload = files.item(0);
+    this.postFile(this.fileToUpload).subscribe((response: any) => {
+      this.newPicture = response;
+      this.eventFormGroup.get('picture').patchValue(this.newPicture.id);
+    });
+  }
+  postFile(fileToUpload: File) {
+    const endpoint = '/api/media/upload';
+    const formData: FormData = new FormData();
+    formData.append('file', fileToUpload, fileToUpload.name);
+    return this.http.post(endpoint, formData);
   }
 }
