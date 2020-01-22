@@ -20,26 +20,33 @@
   </mat-card>
 </form>
 -->
-<form [formGroup]="loginFormGroup" (ngSubmit)="login()">
-  <h3>Login</h3>
 
-
-      <div class="ui-g-12 ui-md-4">
-        <div class="ui-inputgroup">
-          <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
-          <input type="text" pInputText formControlName="username" name="username" placeholder="Username">
+<p-panel>
+  <p-header>
+    <h1>Login</h1>
+  </p-header>
+  <img src="assets/login2.jpg" width="100%">
+  <p-footer>
+    <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-3">
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon "><i class="pi pi-user" style="line-height: 1.25;"></i></span>
+            <input type="text" pInputText formControlName="username" name="username" placeholder="Username">
+          </div>
+        </div>
+        <div class="ui-g-12 ui-md-3">
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon"><i class="pi pi-key" style="line-height: 1.25;"></i></span>
+            <input type="password" pPassword feedback=false formControlName="password" placeholder="Password"/>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-md-3">
+          <button pButton type="submit" label="Login"></button>
         </div>
       </div>
-
-      <div class="ui-g-12 ui-md-4">
-        <div class="ui-inputgroup">
-          <span class="ui-inputgroup-addon"><i class="pi pi-key" style="line-height: 1.25;"></i></span>
-          <input type="password" pPassword feedback=false formControlName="password" placeholder="Password"/>
-        </div>
-      </div>
-      <div class="ui-g-12 ui-md-2">
-      <button pButton type="submit" label="Login" ></button>
-      </div>
+    </form>
+  </p-footer>
 
 
-</form>
+</p-panel>
