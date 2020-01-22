@@ -29,8 +29,8 @@
             <p>Change Picture:</p>
             <img width="400" [src]="'/api/media/' + userFormGroup.controls.picture.value">
             <div>
-                <p-fileUpload url="./api/media/upload" accept="image/*" name="myfile[]" showUploadButton=false
-                              (onSelect)="uploadFile($event)" showUploadButton="false"></p-fileUpload>
+                <p-fileUpload class="ui-g-12 ui-md-3" chooseLabel="Upload a picture..." url="./api/media/upload" accept="image/*" name="myfile[]" mode="basic"
+                              (onSelect)="uploadFile($event)" ></p-fileUpload>
             </div>
         </p-accordion>
     </form>

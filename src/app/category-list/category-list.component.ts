@@ -13,6 +13,8 @@ import {ActivatedRoute} from '@angular/router';
 export class CategoryListComponent implements OnInit {
 
   categories: any[];
+  allCategories: any[];
+  @Input() amountRows = 4;
   @Input() classCard = 'ui-g-12 ui-md-3';
   @Input() classButton = 'ui-g-12 ui-md-5';
   @Input() classButtonEdit = 'ui-g-12 ui-md-3';
@@ -25,6 +27,8 @@ export class CategoryListComponent implements OnInit {
 
     const data = this.route.snapshot.data;
     this.categories = data.categories;
+    this.allCategories = data.categories;
+    this.categories = this.allCategories.slice(0, this.amountRows);
   }
 
   deleteCategory(category: any) {
@@ -32,5 +36,9 @@ export class CategoryListComponent implements OnInit {
       .subscribe(() => {
         this.ngOnInit();
       });
+  }
+
+  paginate(categorie) {
+    this.categories = this.allCategories.slice(categorie.first, categorie.first + categorie.rows);
   }
 }

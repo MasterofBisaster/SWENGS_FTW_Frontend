@@ -55,10 +55,10 @@
         <label for="float-name">Name</label>
        </span>
       </div>
-      <!--<div class="ui-g-12 ui-md-3">
+      <div class="ui-g-12 ui-md-3">
         <p-message *ngIf="locationFormGroup.controls.name.hasError('required')" severity="error"
                    text="Field is required"></p-message>
-      </div>-->
+      </div>
     </div>
     <!--STREET -->
     <div class="ui-g-12 ui-md-12">
@@ -159,8 +159,15 @@
           <mat-error *ngIf="categoryFormGroup.controls.title.hasError('required')">Title is required</mat-error>
       </mat-form-field>-->
     <div class="ui-g-12 ui-md-12">
-      <p-fileUpload url="./api/media/upload" accept="image/*" name="myfile[]" showUploadButton=false
+      <h3 *ngIf="!locationFormGroup.controls?.picture.value">No picture added!</h3>
+      <h3 *ngIf="locationFormGroup.controls?.picture.value">Picture of the location:</h3>
+      <img *ngIf="locationFormGroup.controls?.picture.value" class="ui-g-12 ui-md-3" width="400" [src]="'/api/media/' + locationFormGroup.controls.picture.value">
+    </div>
+    <div class="ui-g-12 ui-md-12">
+      <p-fileUpload class="ui-g-12 ui-md-3" chooseLabel="Upload a picture..." url="./api/media/upload" accept="image/*"
+                    name="myfile[]" mode="basic"
                     (onSelect)="uploadFile($event)"></p-fileUpload>
+
     </div>
     <br/>
     <div class="ui-g-12 ui-md-2">
