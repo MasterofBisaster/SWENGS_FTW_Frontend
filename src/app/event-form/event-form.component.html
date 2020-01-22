@@ -10,22 +10,28 @@
     </div>
     <!--  start date-->
     <div class="ui-g-12 ui-md-6">
-      <!--<div class="ui-g-12 ui-md-12">
-        <h3>Start Date</h3>
-      </div>-->
       <div class="ui-g-12 ui-md-12">
-        <p-calendar placeholder="Start Date"formControlName="start_date" showTime="true" [monthNavigator]="true" [yearNavigator]="true"
-                    yearRange="2020:2030"></p-calendar>
+<!--        Prime NG Datepicker funktioniert update noch nicht.-->
+<!--        <p-calendar placeholder="Start Date" formControlName="start_date" showTime="true" [monthNavigator]="true" [yearNavigator]="true"-->
+<!--                    yearRange="2020:2030"></p-calendar>-->
+        <mat-form-field>
+          <input matInput [matDatepicker]="pickerstart" placeholder="Start Date" formControlName="start_date">
+          <mat-datepicker-toggle matSuffix [for]="pickerstart"></mat-datepicker-toggle>
+          <mat-datepicker #pickerstart></mat-datepicker>
+        </mat-form-field>
       </div>
     </div>
     <!--  end date-->
     <div class="ui-g-12 ui-md-6">
-      <!-- <div class="ui-g-12 ui-md-12">
-         <h3>End Date</h3>
-       </div>-->
       <div class="ui-g-12 ui-md-12">
-        <p-calendar placeholder="End Date" formControlName="end_date" showTime="true" [monthNavigator]="true" [yearNavigator]="true"
-                    yearRange="2020:2030"></p-calendar>
+<!--        Prime NG Datepicker funktioniert update noch nicht.-->
+<!--        <p-calendar placeholder="End Date" formControlName="end_date" showTime="true" [monthNavigator]="true" [yearNavigator]="true"-->
+<!--                    yearRange="2020:2030"></p-calendar>-->
+        <mat-form-field>
+          <input matInput [matDatepicker]="pickerend" placeholder="End Date" formControlName="end_date">
+          <mat-datepicker-toggle matSuffix [for]="pickerend"></mat-datepicker-toggle>
+          <mat-datepicker #pickerend></mat-datepicker>
+        </mat-form-field>
       </div>
     </div>
     <!--   private-->
