@@ -46,7 +46,7 @@ export class EventService {
   }
 
     deleteEvent(event) {
-    return this.http.delete('/api/event/' + event.id + '/delete');
+        return this.http.delete('/api/event/' + event + '/delete');
   }
 
     getEventsByUser(userId) {
