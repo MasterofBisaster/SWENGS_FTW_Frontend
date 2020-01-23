@@ -54,6 +54,8 @@ import {MessageModule} from 'primeng/message';
 import {CheckboxModule} from 'primeng/checkbox';
 import {PanelModule} from 'primeng/panel';
 
+import {CookieService} from 'ngx-cookie-service';
+
 
 export function tokenGetter() {
     return localStorage.getItem('access_token');
@@ -122,7 +124,7 @@ export function tokenGetter() {
     CheckboxModule,
     PanelModule
   ],
-    providers: [],
+    providers: [CookieService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

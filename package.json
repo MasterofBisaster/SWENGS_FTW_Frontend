@@ -27,6 +27,7 @@
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
     "ng2-file-upload": "^1.4.0",
+    "ngx-cookie-service": "^2.3.0",
     "primeflex": "^1.0.0",
     "quill": "^1.3.7",
     "rxjs": "~6.4.0",

@@ -3,16 +3,19 @@ import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {CookieService} from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
+  // cookieService = new CookieService;
   readonly accessTokenLocalStorageKey = 'access_token';
   isLoggedIn = new BehaviorSubject(false);
 
-  constructor(private http: HttpClient, private router: Router, private jwtHelperService: JwtHelperService) {
+  constructor(public cookieService: CookieService, private http: HttpClient, private router: Router,
+              private jwtHelperService: JwtHelperService) {
     const token = localStorage.getItem(this.accessTokenLocalStorageKey);
     if (token) {
       console.log('Token expiration date: ' + this.jwtHelperService.getTokenExpirationDate(token));
@@ -34,6 +37,7 @@ export class UserService {
 
   logout() {
     localStorage.removeItem(this.accessTokenLocalStorageKey);
+    this.cookieService.deleteAll();
     this.isLoggedIn.next(false);
     this.router.navigate(['/login']);
   }
@@ -81,7 +85,7 @@ export class UserService {
     return this.http.get('/api/user/' + id + '/detail');
   }
 
-    addOrRemoveUserAsFriend(userId, friendId) {
+  addOrRemoveUserAsFriend(userId, friendId) {
     return this.http.put('/api/user/add-friend/' + userId + '/' + friendId, userId, friendId);
   }
 }
