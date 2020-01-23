@@ -38,9 +38,10 @@ export class CategoryListComponent implements OnInit {
 
   deleteCategory(category: any) {
     this.categoryService.deleteCategory(category)
-      .subscribe(() => {
-        this.ngOnInit();
-      });
+        .subscribe(() => {
+          window.location.reload();
+          this.ngOnInit();
+        });
   }
 
   paginate(event) {

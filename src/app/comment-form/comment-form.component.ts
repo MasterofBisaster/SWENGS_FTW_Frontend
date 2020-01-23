@@ -35,22 +35,22 @@ export class CommentFormComponent implements OnInit {
     comment.create_date = this.dateAsYYYYMMDDHHNNSS(new Date());
 
     this.commentService.createComment(comment)
-      .subscribe((response: any) => {
-        window.location.reload();
-      });
+        .subscribe((response: any) => {
+          window.location.reload();
+        });
   }
 
   dateAsYYYYMMDDHHNNSS(date): string {
     return date.getFullYear()
-      + '-' + this.leftpad(date.getMonth() + 1, 2)
-      + '-' + this.leftpad(date.getDate(), 2)
-      + ' ' + this.leftpad(date.getHours(), 2)
-      + ':' + this.leftpad(date.getMinutes(), 2)
-      + ':' + this.leftpad(date.getSeconds(), 2);
+        + '-' + this.leftpad(date.getMonth() + 1, 2)
+        + '-' + this.leftpad(date.getDate(), 2)
+        + ' ' + this.leftpad(date.getHours(), 2)
+        + ':' + this.leftpad(date.getMinutes(), 2)
+        + ':' + this.leftpad(date.getSeconds(), 2);
   }
 
   leftpad(val, resultLength = 2, leftpadChar = '0'): string {
     return (String(leftpadChar).repeat(resultLength)
-      + String(val)).slice(String(val).length);
+        + String(val)).slice(String(val).length);
   }
 }
