@@ -33,7 +33,7 @@
   </p-card>
 </div>
 <div class="ui-g-12">
-    <p-paginator [rows]="amountRows" [totalRecords]="allCategories.length" [rowsPerPageOptions]="[4,8,12]"
+    <p-paginator [rows]="amountRows" [totalRecords]="allCategories.length" [rowsPerPageOptions]="[1*amountRows,2*amountRows,3*amountRows]"
                  (onPageChange)="paginate($event)"></p-paginator>
 </div>
 

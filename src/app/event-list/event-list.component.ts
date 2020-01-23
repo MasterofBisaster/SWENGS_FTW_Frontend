@@ -23,6 +23,14 @@ export class EventListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setEvents();
+
+    this.route.params.subscribe((params: { filter: string }) => {
+      this.setEvents();
+    });
+  }
+
+  setEvents() {
     const data = this.route.snapshot.data;
     this.allEvents = data.events;
     this.events = this.allEvents.slice(0, this.amountRows);

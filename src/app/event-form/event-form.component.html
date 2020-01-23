@@ -43,13 +43,27 @@
     </div>
     <!--    Location-->
     <div class="ui-g-12 ui-md-6">
-      <p-dropdown formControlName="location" editable="true" [options]="locationOptions" placeholder="Select a Location"
-                  optionLabel="name"></p-dropdown>
+<!--      primeNG dropdown funktioniert nicht richtig bei Update-->
+<!--      <p-dropdown formControlName="location" editable="true" [options]="locationOptions" placeholder="Select a Location"-->
+<!--                  optionLabel="name"></p-dropdown>-->
+      <select name="name" formControlName="location">
+        <option>Select location</option>
+        <option *ngFor="let locationOption of locationOptions" value="{{ locationOption.id }}">
+          {{ locationOption.name }}
+        </option>
+      </select>
     </div>
     <!--    Category-->
     <div class="ui-g-12 ui-md-6">
-      <p-dropdown formControlName="category" editable="true" [options]="categoryOptions" placeholder="Select a Category"
-                  optionLabel="title"></p-dropdown>
+<!--      primeNG dropdown funktioniert nicht richtig bei Update-->
+<!--      <p-dropdown formControlName="category" editable="true" [options]="categoryOptions" placeholder="Select a Category"-->
+<!--                  optionLabel="title"></p-dropdown>-->
+      <select name="title" formControlName="category">
+        <option>Select a category</option>
+        <option *ngFor="let categoryOption of categoryOptions" value="{{ categoryOption.id }}">
+          {{ categoryOption.title }}
+        </option>
+      </select>
     </div>
     <!--Short Description-->
     <div class="ui-g-12 ui-md-9">

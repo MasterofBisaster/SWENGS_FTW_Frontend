@@ -26,7 +26,7 @@ export class EventService {
   }
 
   getPrivateSearchEvents(searchString, userId) {
-    return this.http.get('/api/event/list/private/search/' + searchString + '/' + userId);
+    return this.http.get('/api/event/list/private/search/' + searchString);
   }
 
   createEvent(event) {

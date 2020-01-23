@@ -8,24 +8,10 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  events: any[];
-  locations: any[];
-  categories: any[];
-  displayedColumns = ['name'];
-  displayedColumns2 = ['title'];
-
   constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit() {
 
-
-    const data = this.route.snapshot.data;
-    this.events = data.events;
-    this.locations = data.locations;
-    this.categories = data.categories;
-
-
   }
-
 }
