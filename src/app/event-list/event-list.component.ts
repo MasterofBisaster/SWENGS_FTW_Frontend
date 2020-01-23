@@ -39,6 +39,7 @@ export class EventListComponent implements OnInit {
   deleteEvent(event: any) {
     this.eventService.deleteEvent(event)
         .subscribe(() => {
+          window.location.reload();
           this.ngOnInit();
         });
   }
