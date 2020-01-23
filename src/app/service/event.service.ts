@@ -40,13 +40,20 @@ export class EventService {
   getEvent(id) {
     return this.http.get('/api/event/' + id + '/get');
   }
+
   getEventDetail(id) {
     return this.http.get('/api/event/' + id + '/detail');
   }
-  deleteEvent(event) {
+
+    deleteEvent(event) {
     return this.http.delete('/api/event/' + event.id + '/delete');
   }
-  getEventsByUser(userId) {
+
+    getEventsByUser(userId) {
     return this.http.get('api/user/event/' + userId);
   }
+
+    attendOrNotToEvent(eventId, userId) {
+        return this.http.put('/api/event/add-user/' + eventId + '/' + userId, eventId, userId);
+    }
 }

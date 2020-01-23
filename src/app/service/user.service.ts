@@ -80,9 +80,8 @@ export class UserService {
   getUserDetail(id) {
     return this.http.get('/api/user/' + id + '/detail');
   }
-  addOrRemoveUserAsFriend(userId, friendId) {
-    console.log(userId);
-    console.log(friendId);
+
+    addOrRemoveUserAsFriend(userId, friendId) {
     return this.http.put('/api/user/add-friend/' + userId + '/' + friendId, userId, friendId);
   }
 }
