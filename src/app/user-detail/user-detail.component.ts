@@ -70,6 +70,7 @@ export class UserDetailComponent implements OnInit {
   addOrRemoveAsFriend() {
     this.userService.addOrRemoveUserAsFriend(this.userService.userId(), this.ftwUserDetailGroup.controls.user_id.value)
         .subscribe(() => {
+          alert('Successfully changed your friendship status!');
           window.location.reload();
         });
   }

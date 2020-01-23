@@ -41,6 +41,7 @@ export class LocationListComponent implements OnInit {
     this.locationService.deleteLocation(location)
         .subscribe(() => {
           this.setLocations();
+          alert('Location deleted');
           window.location.reload();
         });
   }
