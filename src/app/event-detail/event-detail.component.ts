@@ -53,6 +53,7 @@ export class EventDetailComponent implements OnInit {
     this.eventService.attendOrNotToEvent(this.eventDetailGroup.controls.id.value, this.userService.userId())
         .subscribe(() => {
           window.location.reload();
+            alert('You changed successfully the information if you are participating or not!');
         });
   }
 }
