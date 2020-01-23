@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve} from '@angular/router';
 import {Observable} from 'rxjs';
-import {EventService} from '../service/event.service';
-import {LocationService} from '../service/location.service';
 import {CategoryService} from '../service/category.service';
 
 @Injectable({

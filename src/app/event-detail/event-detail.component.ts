@@ -13,7 +13,6 @@ export class EventDetailComponent implements OnInit {
 
   eventDetailGroup;
 
-
   constructor(private eventService: EventService, private route: ActivatedRoute,
               private fb: FormBuilder, private userService: UserService) {
   }
@@ -36,7 +35,6 @@ export class EventDetailComponent implements OnInit {
       max_users: [null],
       user_name: [null, [Validators.required]],
       costs: [null],
-      // picture: [],
       creator: [null],
       picture: [null]
     });

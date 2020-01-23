@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, Validators} from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {UserService} from '../service/user.service';
 
@@ -54,9 +54,9 @@ export class UserDetailComponent implements OnInit {
       this.ftwUserDetailGroup.get('picture').patchValue(this.newPicture.id);
       const user = this.ftwUserDetailGroup.value;
       this.userService.updateUser(user)
-        .subscribe(() => {
-          window.location.reload();
-        });
+          .subscribe(() => {
+            window.location.reload();
+          });
     });
   }
 
@@ -69,9 +69,9 @@ export class UserDetailComponent implements OnInit {
 
   addOrRemoveAsFriend() {
     this.userService.addOrRemoveUserAsFriend(this.userService.userId(), this.ftwUserDetailGroup.controls.user_id.value)
-      .subscribe(() => {
-        window.location.reload();
-      });
+        .subscribe(() => {
+          window.location.reload();
+        });
   }
 
 }

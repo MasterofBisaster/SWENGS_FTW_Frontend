@@ -20,6 +20,7 @@ export class EventFormComponent implements OnInit {
   locationOptions;
   newPicture;
   fileToUpload: File = null;
+
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router,
               private categoryService: CategoryService, private commentService: CommentService,
               private locationService: LocationService, private userService: UserService,
@@ -52,50 +53,37 @@ export class EventFormComponent implements OnInit {
     if (data.event) {
       this.eventFormGroup.patchValue(data.event);
     }
-
-    // verzweifelte versuche mit dem Datum folgen
-
-    // this.eventFormGroup.controls.start_date.value = this.eventFormGroup.controls.start_date.value | date ['MM/dd/yyyy HH:mm'];
-    // this.eventFormGroup.start_date = this.datepipe.transform(this.eventFormGroup.start_date, 'MM/dd/yyyy HH:mm:ss');
-    // let latest_date = this.datepipe.transform(this.eventFormGroup.start_date, 'MM/dd/yyyy HH:mm');
-    // this.latestDate = this.datepipe.transform(this.eventFormGroup.start_date, 'MM/dd/yyyy HH:mm');
-    // this.eventFormGroup.start_date = this.latestDate;
-
   }
 
   createEvent() {
     const event = this.eventFormGroup.value;
-    // event.category = event.category.id;
-    // event.location = event.location.id;
-    // event.start_date = this.dateAsYYYYMMDDHHNNSS(new Date());
-    // event.end_date = this.dateAsYYYYMMDDHHNNSS(new Date());
     if (event.id) {
       this.eventService.updateEvent(event)
-        .subscribe(() => {
-          alert('updated successfully');
-        });
+          .subscribe(() => {
+            alert('updated successfully');
+          });
     } else {
       this.eventService.createEvent(event)
-        .subscribe((response: any) => {
-          this.router.navigate(['/event-form/' + response.id]);
-          // this.router.navigate(['/home']);
-        });
+          .subscribe((response: any) => {
+            this.router.navigate(['/event-form/' + response.id]);
+          });
     }
   }
 
   dateAsYYYYMMDDHHNNSS(vdate): string {
     return vdate.getFullYear()
-      + '-' + this.leftpad(vdate.getMonth() + 1, 2)
-      + '-' + this.leftpad(vdate.getDate(), 2)
-      + ' ' + this.leftpad(vdate.getHours(), 2)
-      + ':' + this.leftpad(vdate.getMinutes(), 2)
-      + ':' + this.leftpad(vdate.getSeconds(), 2);
+        + '-' + this.leftpad(vdate.getMonth() + 1, 2)
+        + '-' + this.leftpad(vdate.getDate(), 2)
+        + ' ' + this.leftpad(vdate.getHours(), 2)
+        + ':' + this.leftpad(vdate.getMinutes(), 2)
+        + ':' + this.leftpad(vdate.getSeconds(), 2);
   }
 
   leftpad(val, resultLength = 2, leftpadChar = '0'): string {
     return (String(leftpadChar).repeat(resultLength)
-      + String(val)).slice(String(val).length);
+        + String(val)).slice(String(val).length);
   }
+
   uploadFile(event) {
     const files = event.files;
     this.fileToUpload = files.item(0);
@@ -104,6 +92,7 @@ export class EventFormComponent implements OnInit {
       this.eventFormGroup.get('picture').patchValue(this.newPicture.id);
     });
   }
+
   postFile(fileToUpload: File) {
     const endpoint = '/api/media/upload';
     const formData: FormData = new FormData();

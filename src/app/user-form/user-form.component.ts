@@ -46,7 +46,6 @@ export class UserFormComponent implements OnInit {
         }
     }
 
-
     uploadFile(event) {
         const files = event.files;
         this.fileToUpload = files.item(0);

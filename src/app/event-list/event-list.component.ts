@@ -38,9 +38,9 @@ export class EventListComponent implements OnInit {
 
   deleteEvent(event: any) {
     this.eventService.deleteEvent(event)
-      .subscribe(() => {
-        this.ngOnInit();
-      });
+        .subscribe(() => {
+          this.ngOnInit();
+        });
   }
 
   paginate(event) {

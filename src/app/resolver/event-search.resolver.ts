@@ -8,11 +8,11 @@ import {UserService} from '../service/user.service';
   providedIn: 'root'
 })
 export class EventSearchResolver implements Resolve<Observable<any>> {
-  constructor(private eventService: EventService, private userService: UserService) {
+  constructor(private eventService: EventService) {
   }
 
   resolve(route: ActivatedRouteSnapshot) {
-      return this.eventService.getSearchEvents(route.paramMap.get('searchString'));
+    return this.eventService.getSearchEvents(route.paramMap.get('searchString'));
 
   }
 }

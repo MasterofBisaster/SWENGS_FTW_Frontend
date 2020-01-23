@@ -3,19 +3,19 @@ import {Router} from '@angular/router';
 import {UserService} from '../service/user.service';
 
 @Component({
-  selector: 'app-logout',
-  templateUrl: './logout.component.html',
-  styleUrls: ['./logout.component.scss']
+    selector: 'app-logout',
+    templateUrl: './logout.component.html',
+    styleUrls: ['./logout.component.scss']
 })
 export class LogoutComponent implements OnInit {
 
-  constructor(private router: Router, private userService: UserService) {
-  }
+    constructor(private router: Router, private userService: UserService) {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  logout() {
-    this.userService.logout();
-  }
+    logout() {
+        this.userService.logout();
+    }
 }

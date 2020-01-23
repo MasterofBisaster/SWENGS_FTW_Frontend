@@ -39,10 +39,10 @@ export class LocationListComponent implements OnInit {
 
   deleteLocation(location: any) {
     this.locationService.deleteLocation(location)
-      .subscribe(() => {
+        .subscribe(() => {
           this.setLocations();
           window.location.reload();
-      });
+        });
   }
 
   paginate(event) {

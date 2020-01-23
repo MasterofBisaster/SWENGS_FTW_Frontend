@@ -5,26 +5,26 @@ import {Router} from '@angular/router';
 import {UserService} from '../service/user.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
-  loginFormGroup;
+    loginFormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private userService: UserService) {
-  }
+    constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private userService: UserService) {
+    }
 
-  ngOnInit() {
-    this.loginFormGroup = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-    });
-  }
+    ngOnInit() {
+        this.loginFormGroup = this.fb.group({
+            username: ['', Validators.required],
+            password: ['', Validators.required],
+        });
+    }
 
-  login() {
-    this.userService.login(this.loginFormGroup.value);
-  }
+    login() {
+        this.userService.login(this.loginFormGroup.value);
+    }
 
 }

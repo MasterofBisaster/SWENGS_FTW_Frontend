@@ -13,21 +13,9 @@ export class EventService {
     return this.http.get('/api/event/list');
   }
 
-  // getPublicEvents() {
-  //   return this.http.get('/api/event/list/public');
-  // }
-  //
-  // getPrivateEvents() {
-  //   return this.http.get('/api/event/list/private/');
-  // }
-
   getSearchEvents(searchString) {
     return this.http.get('/api/event/list/search/' + searchString);
   }
-
-  // getPrivateSearchEvents(searchString, userId) {
-  //   return this.http.get('/api/event/list/private/search/' + searchString);
-  // }
 
   createEvent(event) {
     return this.http.post('/api/event/create', event);
@@ -47,11 +35,11 @@ export class EventService {
 
     deleteEvent(event) {
         return this.http.delete('/api/event/' + event + '/delete');
-  }
+    }
 
     getEventsByUser(userId) {
-    return this.http.get('api/user/event/' + userId);
-  }
+      return this.http.get('api/user/event/' + userId);
+    }
 
     attendOrNotToEvent(eventId, userId) {
         return this.http.put('/api/event/add-user/' + eventId + '/' + userId, eventId, userId);

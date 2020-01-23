@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-ftw-word-list',
-  templateUrl: './ftw-word-list.component.html',
-  styleUrls: ['./ftw-word-list.component.scss']
+    selector: 'app-ftw-word-list',
+    templateUrl: './ftw-word-list.component.html',
+    styleUrls: ['./ftw-word-list.component.scss']
 })
 export class FtwWordListComponent implements OnInit {
 
-  constructor() { }
+    constructor() {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 }

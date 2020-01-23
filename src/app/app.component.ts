@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {MenuItem} from 'primeng/api';
 import {UserService} from './service/user.service';
 import {FtwWordService} from './service/ftw-word.service';
-import {EventService} from './service/event.service';
-import {JwtHelperService} from '@auth0/angular-jwt';
 import {Router} from '@angular/router';
 
 @Component({
@@ -26,7 +24,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.setFTWPhrase();
 
-    this.userService.isLoggedIn.subscribe( (isLoggedIn) => {
+    this.userService.isLoggedIn.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
     });
 
@@ -55,62 +53,43 @@ export class AppComponent implements OnInit {
     this.menuBarItems = [
       {
         label: 'Home', icon: 'pi pi-home', routerLink: 'home'
-        /*items: [{
-          label: 'New',
-          icon: 'pi pi-fw pi-plus',
-          items: [
-            {label: 'Project'},
-            {label: 'Other'},
-          ]*/
-        }]; /*,
-          {label: 'Open'},
-          {label: 'Quit'}
-        ]
-      },
-      {
-        label: 'Edit',
-        icon: 'pi pi-fw pi-pencil',
-        items: [
-          {label: 'Delete', icon: 'pi pi-fw pi-trash'},
-          {label: 'Refresh', icon: 'pi pi-fw pi-refresh'}
-        ]
-      }
-    ]; */
+      }];
+
   }
 
   setFTWPhrase() {
     let ftwWords: any[];
     this.ftwWordService.getFtwWords()
-      .subscribe( (response: any[]) => {
-        ftwWords = this.shuffle(response);
+        .subscribe((response: any[]) => {
+          ftwWords = this.shuffle(response);
 
-        let fWord = '';
-        let tWord = '';
-        let wWord = '';
+          let fWord = '';
+          let tWord = '';
+          let wWord = '';
 
-        for (const word of ftwWords) {
+          for (const word of ftwWords) {
 
-          switch (word.word_category) {
-            case 'f': {
-              fWord = word.word;
-              break;
+            switch (word.word_category) {
+              case 'f': {
+                fWord = word.word;
+                break;
+              }
+              case 't': {
+                tWord = word.word;
+                break;
+              }
+              case 'w': {
+                wWord = word.word;
+                break;
+              }
             }
-            case 't': {
-              tWord = word.word;
-              break;
-            }
-            case 'w': {
-              wWord = word.word;
+            if (fWord !== '' && tWord !== '' && wWord !== '') {
               break;
             }
           }
-          if (fWord !== '' && tWord !== '' && wWord !== '') {
-            break;
-          }
-        }
 
-        this.ftwPhrase = fWord + ', ' + tWord + ', ' + wWord;
-    });
+          this.ftwPhrase = fWord + ', ' + tWord + ', ' + wWord;
+        });
   }
 
   shuffle(arra1) {

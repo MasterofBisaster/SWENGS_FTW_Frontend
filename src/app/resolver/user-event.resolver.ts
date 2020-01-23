@@ -8,7 +8,7 @@ import {UserService} from '../service/user.service';
   providedIn: 'root'
 })
 export class UserEventResolver implements Resolve<Observable<any>> {
-  constructor(private eventService: EventService, private userService: UserService) {
+  constructor(private eventService: EventService) {
   }
 
   resolve(route: ActivatedRouteSnapshot) {
