@@ -10,6 +10,9 @@
     {{eventDetailGroup.controls.user_name.value}}
     <h3>Description:</h3>
     {{eventDetailGroup.controls.description.value}}
+      <h3>Cost:</h3>
+      {{eventDetailGroup.controls.costs.value}}€
+
   </p-accordionTab>
   <p-accordionTab selected=true header="Event Location">
     <p>{{eventDetailGroup.controls.location_name.value}}</p>
@@ -19,7 +22,7 @@
 
     <div class="ui-g-12 ui-md-2">
       <a href="https://google.com/maps/place/{{eventDetailGroup.controls.location_street.value.replace(' ', '+')}},
-    +{{eventDetailGroup.controls.location_zip_code.value}}
+    +{{eventDetailGroup.controls.location_zip_code.value}}ˆ
     +{{eventDetailGroup.controls.location_city.value}}">
         <button pButton type="button" label="Google Maps" icon="pi pi-compass" style="margin-right: .25em"></button>
       </a>
@@ -47,9 +50,9 @@
             [routerLink]="'/event-form/' + eventDetailGroup.controls.id.value"></button>
   </div>
 
-  <div style="margin-block-start: 0.67em" class="ui-g-12 ui-md-2">
+    <div style="margin-block-start: 0.67em" class="ui-g-12 ui-md-5">
     <button (click)="attendToEvent()" class="ui-button"
-            pButton type="button" label="Add as Friend" icon="pi pi-user-plus"
+            pButton type="button" label="Attend to Event" icon="pi pi-user-plus"
             style="margin-right: .25em"></button>
   </div>
 </div>
