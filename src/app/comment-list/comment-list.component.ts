@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from '../service/user.service';
 import {CommentService} from '../service/comment.service';
-import {VirtualScrollerModule} from 'primeng/virtualscroller';
 
 @Component({
   selector: 'app-comment-list',
@@ -20,13 +19,6 @@ export class CommentListComponent implements OnInit {
     this.commentService.getCommentsForEvent(this.eventId)
       .subscribe((response: any[]) => {
         this.comments = response;
-      });
-  }
-
-  deleteComment(comments: any) {
-    this.commentService.deleteComment(comments)
-      .subscribe(() => {
-        this.ngOnInit();
       });
   }
 }

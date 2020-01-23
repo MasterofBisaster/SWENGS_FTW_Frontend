@@ -3,8 +3,6 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CategoryService} from '../service/category.service';
 import {CommentService} from '../service/comment.service';
-import {DatePipe} from '@angular/common';
-import {JwtHelperService} from '@auth0/angular-jwt';
 import {UserService} from '../service/user.service';
 
 
@@ -33,22 +31,13 @@ export class CommentFormComponent implements OnInit {
   }
 
   createComment() {
-    //  this.commentFormGroup.controls.release_date.value = Date.now();
     const comment = this.commentFormGroup.value;
     comment.create_date = this.dateAsYYYYMMDDHHNNSS(new Date());
-    // comment.create_date = Date.now().toLocaleString('en-US');
-    if (comment.id) {
-      this.commentService.updateComment(comment)
-        .subscribe(() => {
-          alert('updated successfully');
-        });
-    } else {
-      this.commentService.createComment(comment)
-        .subscribe((response: any) => {
-          window.location.reload();
-          // this.router.navigate(['/event-detail/' + this.eventId]);
-        });
-    }
+
+    this.commentService.createComment(comment)
+      .subscribe((response: any) => {
+        window.location.reload();
+      });
   }
 
   dateAsYYYYMMDDHHNNSS(date): string {
@@ -64,5 +53,4 @@ export class CommentFormComponent implements OnInit {
     return (String(leftpadChar).repeat(resultLength)
       + String(val)).slice(String(val).length);
   }
-
 }

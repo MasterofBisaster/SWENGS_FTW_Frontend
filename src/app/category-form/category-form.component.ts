@@ -3,7 +3,6 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CategoryService} from '../service/category.service';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-category-form',

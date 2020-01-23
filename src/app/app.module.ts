@@ -15,7 +15,6 @@ import {
 } from '@angular/material';
 import {LogoutComponent} from './logout/logout.component';
 import {LoginComponent} from './login/login.component';
-import {DateComponent} from './date/date.component';
 import {EventListComponent} from './event-list/event-list.component';
 import {EventFormComponent} from './event-form/event-form.component';
 import {EventDetailComponent} from './event-detail/event-detail.component';
@@ -66,7 +65,6 @@ export function tokenGetter() {
         AppComponent,
         LogoutComponent,
         LoginComponent,
-        DateComponent,
         EventListComponent,
         EventFormComponent,
         EventDetailComponent,

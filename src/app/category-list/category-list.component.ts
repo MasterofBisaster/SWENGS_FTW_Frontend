@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from '../service/user.service';
 import {CategoryService} from '../service/category.service';
-import {VirtualScrollerModule} from 'primeng/virtualscroller';
 import {ActivatedRoute} from '@angular/router';
 
 
@@ -26,7 +25,6 @@ export class CategoryListComponent implements OnInit {
   ngOnInit() {
 
     this.setCategories();
-
     this.route.params.subscribe((params: { filter: string }) => {
       this.setCategories();
     });

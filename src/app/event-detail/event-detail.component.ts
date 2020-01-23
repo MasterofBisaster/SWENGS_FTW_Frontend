@@ -35,13 +35,20 @@ export class EventDetailComponent implements OnInit {
       description: [null, [Validators.required]],
       max_users: [null],
       user_name: [null, [Validators.required]],
-      // confirmed_users: [null],
       costs: [null],
       // picture: [],
       creator: [null],
       picture: [null]
     });
 
+    this.setEvent();
+
+    this.route.params.subscribe((params: { filter: string }) => {
+      this.setEvent();
+    });
+  }
+
+  setEvent() {
     const data = this.route.snapshot.data;
 
     if (data.event) {
