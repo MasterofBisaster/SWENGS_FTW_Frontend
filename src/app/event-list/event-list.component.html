@@ -1,40 +1,41 @@
-  <p-card [class]="classCard" [header]="event.name" [subheader]="' by '+  event.user_name"  [style]="{width: '100%'}"
-          styleClass="ui-card-shadow"*ngFor="let event of events">
-    <p-header>
-      <div *ngIf="event?.picture" class="aspect-ratio-box">
-        <img  src="/api/media/{{event.picture}}">
-      </div>
-      <div *ngIf="!event?.picture" class="aspect-ratio-box">
-        <img  src="assets/usercard.png">
-      </div>
-    </p-header>
+<p-card [class]="classCard" [header]="event.name" [subheader]="' by '+  event.user_name" [style]="{width: '100%'}"
+        styleClass="ui-card-shadow" *ngFor="let event of events">
+  <p-header>
+    <div *ngIf="event?.picture" class="aspect-ratio-box">
+      <img src="/api/media/{{event.picture}}">
+    </div>
+    <div *ngIf="!event?.picture" class="aspect-ratio-box">
+      <img src="assets/usercard.png">
+    </div>
+  </p-header>
 
-      <p-progressBar [value]="event.confirmed_users"></p-progressBar>
-      <p> Capacity: {{event.confirmed_users}}/{{event.max_users}}</p>
-      <p> Start: {{event.start_date | date:'dd. MMM  yyyy, HH:mm ' }}</p>
-      <p>End: {{event.end_date | date:'dd. MMM  yyyy, HH:mm ' }}</p>
-    <p-footer>
+  <p-progressBar [value]="event.confirmed_users"></p-progressBar>
+  <p> Capacity: {{event.confirmed_users}}/{{event.max_users}}</p>
+  <p> Start: {{event.start_date | date:'dd. MMM  yyyy, HH:mm ' }}</p>
+  <p>End: {{event.end_date | date:'dd. MMM  yyyy, HH:mm ' }}</p>
+  <p-footer>
 
-      <div class="ui-g">
-        <div [class]="classButton">
-          <button pButton type="button" label="More Infos" icon="pi pi-search-plus" style="margin-right: .25em"
-                  [routerLink]="'/event-detail/' + event.id"></button>
-          <!--<button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>-->
-        </div>
-        <div [class]="classButtonEdit">
-          <button class="ui-button-info" *ngIf="userService.userId()==event.creator"
-                  [routerLink]="'/event-form/' + event.id" pButton type="button" label="Edit" icon="pi pi-pencil"
-                  style="margin-right: .25em"></button>
-        </div>
-        <div [class]="classButtonDelete">
-          <button class="ui-button-danger" *ngIf="userService.userId()==event.creator"
-                  (click)="deleteEvent(event.id)" pButton type="button" label="Delete" icon="pi pi-trash"
-                  style="margin-right: .25em"></button>
-        </div>
+    <div class="ui-g">
+      <div [class]="classButton">
+        <button pButton type="button" label="More Infos" icon="pi pi-search-plus" style="margin-right: .25em"
+                [routerLink]="'/event-detail/' + event.id"></button>
+        <!--<button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>-->
       </div>
-    </p-footer>
-  </p-card>
+      <div [class]="classButtonEdit">
+        <button class="ui-button-info" *ngIf="userService.userId()==event.creator"
+                [routerLink]="'/event-form/' + event.id" pButton type="button" label="Edit" icon="pi pi-pencil"
+                style="margin-right: .25em"></button>
+      </div>
+      <div [class]="classButtonDelete">
+        <button class="ui-button-danger" *ngIf="userService.userId()==event.creator"
+                (click)="deleteEvent(event.id)" pButton type="button" label="Delete" icon="pi pi-trash"
+                style="margin-right: .25em"></button>
+      </div>
+    </div>
+  </p-footer>
+</p-card>
 <div class="ui-g-12">
-     <p-paginator [rows]="amountRows" [totalRecords]="allEvents.length" [rowsPerPageOptions]="[1*amountRows,2*amountRows,3*amountRows]"
-                  (onPageChange)="paginate($event)"></p-paginator>
- </div>
+  <p-paginator [rows]="amountRows" [totalRecords]="allEvents.length"
+               [rowsPerPageOptions]="[1*amountRows,2*amountRows,3*amountRows]"
+               (onPageChange)="paginate($event)"></p-paginator>
+</div>
