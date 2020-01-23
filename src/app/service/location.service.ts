@@ -30,6 +30,6 @@ export class LocationService {
   }
 
   deleteLocation(location) {
-    return this.http.delete('/api/location/' + location.id + '/delete');
+    return this.http.delete('/api/location/' + location + '/delete');
   }
 }

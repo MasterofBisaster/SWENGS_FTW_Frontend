@@ -30,6 +30,6 @@ export class CategoryService {
   }
 
   deleteCategory(category) {
-    return this.http.delete('/api/category/' + category.id + '/delete');
+    return this.http.delete('/api/category/' + category + '/delete');
   }
 }

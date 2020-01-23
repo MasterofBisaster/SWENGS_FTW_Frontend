@@ -40,7 +40,8 @@ export class LocationListComponent implements OnInit {
   deleteLocation(location: any) {
     this.locationService.deleteLocation(location)
       .subscribe(() => {
-        this.ngOnInit();
+          this.setLocations();
+          window.location.reload();
       });
   }
 
