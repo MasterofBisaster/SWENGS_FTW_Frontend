@@ -14,6 +14,8 @@
             <div class="ui-g-12 ui-md-3">
                 <p-message *ngIf="registerFormGroup.controls.username.hasError('required')" severity="error"
                            text="Field is required"></p-message>
+              <p-message *ngIf="registerFormGroup.controls.username.hasError('usernameAlreadyExists')" severity="error"
+                         text="Username already exists"></p-message>
             </div>
         </div>
 
