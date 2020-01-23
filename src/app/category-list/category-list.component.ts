@@ -25,8 +25,15 @@ export class CategoryListComponent implements OnInit {
 
   ngOnInit() {
 
+    this.setCategories();
+
+    this.route.params.subscribe((params: { filter: string }) => {
+      this.setCategories();
+    });
+  }
+
+  setCategories() {
     const data = this.route.snapshot.data;
-    this.categories = data.categories;
     this.allCategories = data.categories;
     this.categories = this.allCategories.slice(0, this.amountRows);
   }
@@ -38,7 +45,7 @@ export class CategoryListComponent implements OnInit {
       });
   }
 
-  paginate(categorie) {
-    this.categories = this.allCategories.slice(categorie.first, categorie.first + categorie.rows);
+  paginate(event) {
+    this.categories = this.allCategories.slice(event.first, event.first + event.rows);
   }
 }

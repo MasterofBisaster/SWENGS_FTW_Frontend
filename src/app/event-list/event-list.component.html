@@ -35,6 +35,6 @@
     </p-footer>
   </p-card>
 <div class="ui-g-12">
-     <p-paginator [rows]="amountRows" [totalRecords]="allEvents.length" [rowsPerPageOptions]="[3,6,9]"
+     <p-paginator [rows]="amountRows" [totalRecords]="allEvents.length" [rowsPerPageOptions]="[1*amountRows,2*amountRows,3*amountRows]"
                   (onPageChange)="paginate($event)"></p-paginator>
  </div>

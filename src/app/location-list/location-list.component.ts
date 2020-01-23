@@ -12,7 +12,7 @@ export class LocationListComponent implements OnInit {
 
   locations: any[];
   allLocations: any[];
-  amountRows = 4;
+  @Input() amountRows = 4;
   @Input() classCard = 'ui-g-12 ui-md-3';
   @Input() classButton = 'ui-g-12 ui-md-5';
   @Input() classButtonEdit = 'ui-g-12 ui-md-3';
@@ -24,6 +24,14 @@ export class LocationListComponent implements OnInit {
 
   ngOnInit() {
 
+    this.setLocations();
+
+    this.route.params.subscribe((params: { filter: string }) => {
+      this.setLocations();
+    });
+  }
+
+  setLocations() {
     const data = this.route.snapshot.data;
     this.allLocations = data.locations;
     this.locations = this.allLocations.slice(0, this.amountRows);
@@ -36,8 +44,8 @@ export class LocationListComponent implements OnInit {
       });
   }
 
-  paginate(location) {
-    this.locations = this.allLocations.slice(location.first, location.first + location.rows);
+  paginate(event) {
+    this.locations = this.allLocations.slice(event.first, event.first + event.rows);
   }
 }
 
