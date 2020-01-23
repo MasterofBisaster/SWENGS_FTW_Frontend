@@ -18,7 +18,6 @@ export class EventFormComponent implements OnInit {
   eventFormGroup;
   categoryOptions;
   locationOptions;
-  description: string;
   newPicture;
   fileToUpload: File = null;
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router,
@@ -66,10 +65,10 @@ export class EventFormComponent implements OnInit {
 
   createEvent() {
     const event = this.eventFormGroup.value;
-    event.category = event.category.id;
-    event.location = event.location.id;
-    event.start_date = this.dateAsYYYYMMDDHHNNSS(new Date());
-    event.end_date = this.dateAsYYYYMMDDHHNNSS(new Date());
+    // event.category = event.category.id;
+    // event.location = event.location.id;
+    // event.start_date = this.dateAsYYYYMMDDHHNNSS(new Date());
+    // event.end_date = this.dateAsYYYYMMDDHHNNSS(new Date());
     if (event.id) {
       this.eventService.updateEvent(event)
         .subscribe(() => {
