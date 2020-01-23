@@ -13,21 +13,21 @@ export class EventService {
     return this.http.get('/api/event/list');
   }
 
-  getPublicEvents() {
-    return this.http.get('/api/event/list/public');
-  }
-
-  getPrivateEvents() {
-    return this.http.get('/api/event/list/private/');
-  }
+  // getPublicEvents() {
+  //   return this.http.get('/api/event/list/public');
+  // }
+  //
+  // getPrivateEvents() {
+  //   return this.http.get('/api/event/list/private/');
+  // }
 
   getSearchEvents(searchString) {
     return this.http.get('/api/event/list/search/' + searchString);
   }
 
-  getPrivateSearchEvents(searchString, userId) {
-    return this.http.get('/api/event/list/private/search/' + searchString);
-  }
+  // getPrivateSearchEvents(searchString, userId) {
+  //   return this.http.get('/api/event/list/private/search/' + searchString);
+  // }
 
   createEvent(event) {
     return this.http.post('/api/event/create', event);
