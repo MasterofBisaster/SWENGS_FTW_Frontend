@@ -20,7 +20,8 @@
         <div class="ui-g-12 ui-md-12">
             <div class="ui-g-12 ui-md-3">
             <span class="ui-float-label">
-            <input id="float-password" type="text" size="30" formControlName="password" required pInputText>
+            <input id="float-password" pPassword [feedback]=true type="password" name="uPass" size="30"
+                   formControlName="password" required pInputText>
             <label for="float-password">Password</label>
             </span>
             </div>
@@ -33,7 +34,8 @@
         <div class="ui-g-12 ui-md-12">
             <div class="ui-g-12 ui-md-3">
                 <span class="ui-float-label">
-                <input id="float-confirmPassword" type="text" size="30" formControlName="confirmPassword" required
+                <input id="float-confirmPassword" pPassword [feedback]=false type="password" name="uPass" size="30"
+                       formControlName="confirmPassword" required
                        pInputText>
                 <label for="float-confirmPassword">Confirm password</label>
                 </span>
@@ -47,14 +49,12 @@
         </div>
     </form>
 
-    <button pButton *ngIf="!registerFormGroup.controls.id.value" label="Create"
-            [disabled]="!registerFormGroup.valid"
-            (click)="createUser()">
-    </button>
-    <button pButton *ngIf="registerFormGroup.controls.id.value" label="Update"
-            [disabled]="!registerFormGroup.valid"
-            (click)="createUser()">
-    </button>
+    <div class="ui-g ui-md-1">
+        <button pButton *ngIf="!registerFormGroup.controls.id.value" label="Create"
+                [disabled]="!registerFormGroup.valid"
+                (click)="createUser()">
+        </button>
+    </div>
 </p-panel>
 
 
