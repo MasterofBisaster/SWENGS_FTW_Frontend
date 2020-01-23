@@ -46,5 +46,11 @@
             *ngIf="eventDetailGroup.controls.creator.value == userService.userId()"
             [routerLink]="'/event-form/' + eventDetailGroup.controls.id.value"></button>
   </div>
+
+  <div style="margin-block-start: 0.67em" class="ui-g-12 ui-md-2">
+    <button (click)="attendToEvent()" class="ui-button"
+            pButton type="button" label="Add as Friend" icon="pi pi-user-plus"
+            style="margin-right: .25em"></button>
+  </div>
 </div>
 

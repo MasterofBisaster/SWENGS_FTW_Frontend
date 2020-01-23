@@ -16,7 +16,7 @@ export class EventDetailComponent implements OnInit {
 
     constructor(private eventService: EventService, private route: ActivatedRoute,
                 private fb: FormBuilder, private userService: UserService) {
-  }
+    }
 
   ngOnInit() {
 
@@ -49,4 +49,10 @@ export class EventDetailComponent implements OnInit {
     }
   }
 
+  attendToEvent() {
+    this.eventService.attendOrNotToEvent(this.eventDetailGroup.controls.id.value, this.userService.userId())
+        .subscribe(() => {
+          window.location.reload();
+        });
+  }
 }
