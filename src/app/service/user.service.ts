@@ -88,4 +88,8 @@ export class UserService {
   addOrRemoveUserAsFriend(userId, friendId) {
     return this.http.put('/api/user/add-friend/' + userId + '/' + friendId, userId, friendId);
   }
+
+  getUsers() {
+    return this.http.get('/api/user/list');
+  }
 }
