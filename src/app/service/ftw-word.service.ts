@@ -12,4 +12,8 @@ export class FtwWordService {
     getFtwWords() {
         return this.http.get('/api/ftwword/list');
     }
+
+  getSFWFtwWords() {
+    return this.http.get('/api/ftwword/list/sfw');
+  }
 }

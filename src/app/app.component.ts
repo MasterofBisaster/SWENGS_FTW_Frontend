@@ -15,14 +15,18 @@ export class AppComponent implements OnInit {
   menuBarItems: MenuItem[];
   isLoggedIn = false;
   ftwPhrase;
+  sfwFtwPhrase;
   searchString: string;
   mobile: boolean;
+
   constructor(private userService: UserService, private ftwWordService: FtwWordService, private router: Router) {
   }
 
 
   ngOnInit() {
     this.setFTWPhrase();
+    this.setSfwFTWPhrase();
+
     if (window.screen.width < 660) { // 768px portrait
       this.mobile = true;
     }
@@ -59,39 +63,79 @@ export class AppComponent implements OnInit {
 
   }
 
+  reloadFtwWords() {
+    this.setFTWPhrase();
+    this.setSfwFTWPhrase();
+  }
+
   setFTWPhrase() {
     let ftwWords: any[];
     this.ftwWordService.getFtwWords()
-        .subscribe((response: any[]) => {
-          ftwWords = this.shuffle(response);
+      .subscribe((response: any[]) => {
+        ftwWords = this.shuffle(response);
 
-          let fWord = '';
-          let tWord = '';
-          let wWord = '';
+        let fWord = '';
+        let tWord = '';
+        let wWord = '';
 
-          for (const word of ftwWords) {
+        for (const word of ftwWords) {
 
-            switch (word.word_category) {
-              case 'f': {
-                fWord = word.word;
-                break;
-              }
-              case 't': {
-                tWord = word.word;
-                break;
-              }
-              case 'w': {
-                wWord = word.word;
-                break;
-              }
+          switch (word.word_category) {
+            case 'f': {
+              fWord = word.word;
+              break;
             }
-            if (fWord !== '' && tWord !== '' && wWord !== '') {
+            case 't': {
+              tWord = word.word;
+              break;
+            }
+            case 'w': {
+              wWord = word.word;
               break;
             }
           }
+          if (fWord !== '' && tWord !== '' && wWord !== '') {
+            break;
+          }
+        }
 
-          this.ftwPhrase = fWord + ', ' + tWord + ', ' + wWord;
-        });
+        this.ftwPhrase = fWord + ', ' + tWord + ', ' + wWord;
+      });
+  }
+
+  setSfwFTWPhrase() {
+    let sfwFtwWords: any[];
+    this.ftwWordService.getSFWFtwWords()
+      .subscribe((response: any[]) => {
+        sfwFtwWords = this.shuffle(response);
+
+        let fWord = '';
+        let tWord = '';
+        let wWord = '';
+
+        for (const word of sfwFtwWords) {
+
+          switch (word.word_category) {
+            case 'f': {
+              fWord = word.word;
+              break;
+            }
+            case 't': {
+              tWord = word.word;
+              break;
+            }
+            case 'w': {
+              wWord = word.word;
+              break;
+            }
+          }
+          if (fWord !== '' && tWord !== '' && wWord !== '') {
+            break;
+          }
+        }
+
+        this.sfwFtwPhrase = fWord + ', ' + tWord + ', ' + wWord;
+      });
   }
 
   shuffle(arra1) {
