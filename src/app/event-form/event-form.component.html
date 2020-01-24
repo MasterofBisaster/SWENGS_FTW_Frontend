@@ -10,63 +10,31 @@
       </span>
 
     <!--  start date-->
-
-
-    <!--        Prime NG Datepicker funktioniert update noch nicht.-->
-    <!--        <p-calendar placeholder="Start Date" formControlName="start_date" showTime="true" [monthNavigator]="true" [yearNavigator]="true"-->
-    <!--                    yearRange="2020:2030"></p-calendar>-->
-    <mat-form-field class="ui-g-12 ui-md-6">
-      <input matInput [matDatepicker]="pickerstart" placeholder="Start Date" formControlName="start_date">
-      <mat-datepicker-toggle matSuffix [for]="pickerstart"></mat-datepicker-toggle>
-      <mat-datepicker #pickerstart></mat-datepicker>
-    </mat-form-field>
-
+    <p-calendar placeholder="Start Date" formControlName="start_date" [monthNavigator]="true" [yearNavigator]="true"
+                yearRange="2020:2030" showTime="true" showSeconds="true" dateFormat="yy-mm-dd"></p-calendar>
 
     <!--  end date-->
-
-
-    <!--        Prime NG Datepicker funktioniert update noch nicht.-->
-    <!--        <p-calendar placeholder="End Date" formControlName="end_date" showTime="true" [monthNavigator]="true" [yearNavigator]="true"-->
-    <!--                    yearRange="2020:2030"></p-calendar>-->
-    <mat-form-field class="ui-g-12 ui-md-6">
-      <input matInput [matDatepicker]="pickerend" placeholder="End Date" formControlName="end_date">
-      <mat-datepicker-toggle matSuffix [for]="pickerend"></mat-datepicker-toggle>
-      <mat-datepicker #pickerend></mat-datepicker>
-    </mat-form-field>
-
+    <p-calendar placeholder="End Date" formControlName="end_date" [monthNavigator]="true" [yearNavigator]="true"
+                yearRange="2020:2030" showTime="true" showSeconds="true" dateFormat="yy-mm-dd"></p-calendar>
 
     <!--   private-->
-
     <div class="ui-md-12">
       <!--      <mat-checkbox formControlName="private">Private</mat-checkbox>-->
       <p-checkbox formControlName="private" binary="true" label="private"></p-checkbox>
     </div>
 
-    <div class="ui-g"><!--    Location-->
+    <!--    Location-->
+    <div class="ui-g">
       <div class="ui-g-8 ui-md-6">
-        <!--      primeNG dropdown funktioniert nicht richtig bei Update-->
         <p-dropdown formControlName="location" editable="true" [options]="locationOptions" dataKey="id"
                     placeholder="Select a Location"
                     optionLabel=name></p-dropdown>
-        <!-- <select name="name" formControlName="location">
-           <option>Select location</option>
-           <option *ngFor="let locationOption of locationOptions" value="{{ locationOption.id }}">
-             {{ locationOption.name }}
-           </option>
-         </select>-->
       </div>
       <!--    Category-->
       <div class="ui-g-8 ui-md-6">
-        <!--              primeNG dropdown funktioniert nicht richtig bei Update-->
         <p-dropdown formControlName="category" editable="true" [options]="categoryOptions" dataKey="id"
                     placeholder="Select a Category"
                     optionLabel="title"></p-dropdown>
-        <!--<select name="title" formControlName="category">
-          <option>Select a category</option>
-          <option *ngFor="let categoryOption of categoryOptions" value="{{ categoryOption.id }}">
-            {{ categoryOption.title }}
-          </option>
-        </select>-->
       </div>
     </div>
     <!--Short Description-->
@@ -80,24 +48,18 @@
     </div>
     <!--    Description-->
     <div class="ui-g">
-    <div class="ui-g-12 ui-md-12">
-      <p-editor formControlName="description" [style]="{'height':'320px'}">
-        <p-header>
+      <div class="ui-g-12 ui-md-12">
+        <p-editor formControlName="description" [style]="{'height':'320px'}">
+          <p-header>
         <span class="ql-formats">
             <button class="ql-bold" aria-label="Bold"></button>
             <button class="ql-italic" aria-label="Italic"></button>
             <button class="ql-underline" aria-label="Underline"></button>
         </span>
-        </p-header>
-      </p-editor>
-      <!--<p>Value: {{description||null}}</p>-->
+          </p-header>
+        </p-editor>
+      </div>
     </div>
-    </div>
-    <!-- <span class="ui-float-label">
-       <input id="float-description" type="text" formControlName="description" pInputText>
-       <label for="float-description">Description</label>
-     </span>
-   </div>-->
     <!--Creator-->
     <!--    <div class="ui-g-12 ui-md-12">
           <span class="ui-float-label">
