@@ -45,9 +45,9 @@
     <div class="ui-g"><!--    Location-->
       <div class="ui-g-8 ui-md-6">
         <!--      primeNG dropdown funktioniert nicht richtig bei Update-->
-        <p-dropdown formControlName="location" editable="true" [options]="locationOptions"
+        <p-dropdown formControlName="location" editable="true" [options]="locationOptions" dataKey="id"
                     placeholder="Select a Location"
-                    optionLabel="name"></p-dropdown>
+                    optionLabel=name></p-dropdown>
         <!-- <select name="name" formControlName="location">
            <option>Select location</option>
            <option *ngFor="let locationOption of locationOptions" value="{{ locationOption.id }}">
@@ -58,7 +58,7 @@
       <!--    Category-->
       <div class="ui-g-8 ui-md-6">
         <!--              primeNG dropdown funktioniert nicht richtig bei Update-->
-        <p-dropdown formControlName="category" editable="true" [options]="categoryOptions"
+        <p-dropdown formControlName="category" editable="true" [options]="categoryOptions" dataKey="id"
                     placeholder="Select a Category"
                     optionLabel="title"></p-dropdown>
         <!--<select name="title" formControlName="category">
