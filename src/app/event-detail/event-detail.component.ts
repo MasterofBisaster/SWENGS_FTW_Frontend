@@ -64,6 +64,7 @@ export class EventDetailComponent implements OnInit {
     }
 
     userAttendEvent() {
+
         if (this.userService.userId() in this.eventDetailGroup.controls.confirmed_users.value) {
             return false;
         } else {
@@ -71,11 +72,14 @@ export class EventDetailComponent implements OnInit {
         }
     }
 
+
     userUnattendEvent() {
+
         if (this.userService.userId() in this.eventDetailGroup.controls.confirmed_users.value) {
             return true;
         } else {
             return false;
         }
+
     }
 }
