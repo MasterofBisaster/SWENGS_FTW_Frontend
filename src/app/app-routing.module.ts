@@ -27,6 +27,8 @@ import {LocationResolver} from './resolver/location.resolver';
 import {EventResolver} from './resolver/event.resolver';
 import {UserFormComponent} from './user-form/user-form.component';
 import {UserEventResolver} from './resolver/user-event.resolver';
+import {CategoryEventListResolver} from './resolver/category-event-list.resolver';
+import {LocationEventListResolver} from './resolver/location-event-list.resolver';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -35,6 +37,20 @@ const routes: Routes = [
     component: EventListComponent,
     resolve: {
       events: EventListResolver,
+    }
+  },
+  {
+    path: 'event-list/category/:categoryId',
+    component: EventListComponent,
+    resolve: {
+      events: CategoryEventListResolver,
+    }
+  },
+  {
+    path: 'event-list/location/:locationId',
+    component: EventListComponent,
+    resolve: {
+      events: LocationEventListResolver,
     }
   },
   {

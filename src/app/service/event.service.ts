@@ -44,4 +44,12 @@ export class EventService {
     attendOrNotToEvent(eventId, userId) {
         return this.http.put('/api/event/add-user/' + eventId + '/' + userId, eventId, userId);
     }
+
+  getEventsByLocation(locationId) {
+    return this.http.get('api/event/list/location/' + locationId);
+  }
+
+  getEventsByCategory(categoryId) {
+    return this.http.get('api/event/list/category/' + categoryId);
+  }
 }
