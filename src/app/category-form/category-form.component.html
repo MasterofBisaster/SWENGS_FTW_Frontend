@@ -26,25 +26,24 @@
       </div>
     </div>
     <div class="ui-g">
-      <div class="ui-g-12 ui-md-12">
-        <p-fileUpload class="ui-g-12 ui-md-3" chooseLabel="Upload a picture..." url="./api/media/upload"
+
+      <p-fileUpload class="ui-g-8 ui-md-3" chooseLabel="Upload a picture..." url="./api/media/upload"
                       accept="image/*"
                       name="myfile[]" mode="basic"
                       (onSelect)="uploadFile($event)"></p-fileUpload>
-      </div>
     </div>
 
 
   </form>
   <p-footer>
     <div class="ui-g">
-      <div class="ui-g-6 ui-md-2">
-        <button pButton *ngIf="!categoryFormGroup.controls.id.value" label="Create"
+      <div *ngIf="!categoryFormGroup.controls.id.value" class="ui-g-6 ui-md-2 center">
+        <button pButton label="Create"
                 [disabled]="!categoryFormGroup.valid"
                 (click)="createCategory()"></button>
       </div>
-      <div class="ui-g-6 ui-md-2">
-        <button pButton *ngIf="categoryFormGroup.controls.id.value" label="Update" [disabled]="!categoryFormGroup.valid"
+      <div *ngIf="categoryFormGroup.controls.id.value" class="ui-g-6 ui-md-2 center">
+        <button pButton label="Update" [disabled]="!categoryFormGroup.valid"
                 (click)="createCategory()">
         </button>
       </div>

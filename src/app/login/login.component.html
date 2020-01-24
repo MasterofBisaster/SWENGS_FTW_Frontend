@@ -6,22 +6,27 @@
   <p-footer>
     <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
       <div class="ui-g">
-        <div class="ui-g-12 ui-md-3">
+        <div class="ui-md-6 center">
+          <div class="ui-g-12 ui-md-6">
           <div class="ui-inputgroup">
             <span class="ui-inputgroup-addon "><i class="pi pi-user" style="line-height: 1.25;"></i></span>
             <input type="text" pInputText formControlName="username" name="username" placeholder="Username">
           </div>
         </div>
-        <div class="ui-g-12 ui-md-3">
+          <div class="ui-g-12 ui-md-6">
           <div class="ui-inputgroup">
             <span class="ui-inputgroup-addon"><i class="pi pi-key" style="line-height: 1.25;"></i></span>
             <input type="password" pPassword [feedback]=false formControlName="password" placeholder="Password"/>
           </div>
         </div>
-          <div class="ui-g-3 ui-md-3" style="margin: 0 auto">
-            <button pButton type="submit" label="Login" ></button>
+        </div>
+      </div>
+      <div class="ui-g">
+        <div class="ui-g-3 ui-md-1" style="margin: 0 auto">
+          <button pButton type="submit" label="Login"></button>
           </div>
       </div>
+
     </form>
   </p-footer>
 </p-panel>
