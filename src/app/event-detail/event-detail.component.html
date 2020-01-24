@@ -1,5 +1,32 @@
 <h1>{{eventDetailGroup.controls.name.value}}</h1>
+<div class="ui-g-12 ui-md-4">
 
+  <div *ngIf="eventDetailGroup?.controls.picture.value" class="aspect-ratio-box">
+    <img src="/api/media/{{eventDetailGroup.controls.picture.value}}">
+  </div>
+  <div class="aspect-ratio-box" *ngIf="!eventDetailGroup.controls?.picture.value">
+    <img src="assets/user_picture_default.png">
+  </div>
+  <div class="ui-g-6 ui-md-3" *ngIf="eventDetailGroup.controls.creator.value == userService.userId()">
+    <button pButton type="button" label="Edit Event" icon="pi pi-pencil"
+            [routerLink]="'/event-form/' + eventDetailGroup.controls.id.value"></button>
+  </div>
+
+  <div class="ui-g-6 ui-md-5">
+    <button (click)="attendToEvent()" class="ui-button"
+            *ngIf="userAttendEvent()"
+            pButton type="button" label="Attend to event" icon="pi pi-user-plus"
+            style="margin-right: .25em"></button>
+  </div>
+
+  <div style="margin-block-start: 0.67em" class="ui-g-12 ui-md-5">
+    <button (click)="attendToEvent()" class="ui-button"
+            *ngIf="userUnattendEvent()"
+            pButton type="button" label="Unattend" icon="pi pi-user-plus"
+            style="margin-right: .25em"></button>
+  </div>
+
+</div>
 <p-accordion class="ui-g-12 ui-md-8" [multiple]="true">
     <p-accordionTab selected=true header="About {{eventDetailGroup.controls.name.value}}">
         <h3>Start of the event:</h3>
@@ -36,35 +63,3 @@
         <app-comment-list [eventId]="eventDetailGroup.controls.id.value"></app-comment-list>
     </p-accordionTab>
 </p-accordion>
-
-<div class="ui-g-12 ui-md-4">
-
-    <div *ngIf="eventDetailGroup?.controls.picture.value" class="aspect-ratio-box">
-        <img src="/api/media/{{eventDetailGroup.controls.picture.value}}">
-    </div>
-    <div *ngIf="!eventDetailGroup.controls?.picture.value" class="aspect-ratio-box">
-        <img src="assets/user_picture_default.png">
-    </div>
-    <div class="ui-g-12 ui-md-3">
-        <button pButton type="button" label="Edit Event" icon="pi pi-pencil" style="margin-right: .25em"
-                *ngIf="eventDetailGroup.controls.creator.value == userService.userId()"
-                [routerLink]="'/event-form/' + eventDetailGroup.controls.id.value"></button>
-    </div>
-
-    <div style="margin-block-start: 0.67em" class="ui-g-12 ui-md-5">
-        <button (click)="attendToEvent()" class="ui-button"
-                *ngIf="userAttendEvent()"
-                pButton type="button" label="Attend to event" icon="pi pi-user-plus"
-                style="margin-right: .25em"></button>
-    </div>
-
-    <div style="margin-block-start: 0.67em" class="ui-g-12 ui-md-5">
-        <button (click)="attendToEvent()" class="ui-button"
-                *ngIf="userUnattendEvent()"
-                pButton type="button" label="Unattend" icon="pi pi-user-plus"
-                style="margin-right: .25em"></button>
-    </div>
-
-</div>
-
-<!--eventDetailGroup.controls.creator.value == userService.userId()-->
