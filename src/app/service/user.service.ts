@@ -92,4 +92,8 @@ export class UserService {
   getUsers() {
     return this.http.get('/api/user/list');
   }
+
+  checkFriends(userId, friendId) {
+    return this.http.get('/api/user/check-friends/' + userId + '/' + friendId);
+  }
 }

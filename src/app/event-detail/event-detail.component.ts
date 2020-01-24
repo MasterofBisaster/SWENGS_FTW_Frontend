@@ -73,14 +73,10 @@ export class EventDetailComponent implements OnInit {
     }
 
     userUnattendEvent() {
-        if (this.eventDetailGroup.controls.confirmed_users.length === 0) {
-            return false;
+        if (this.userService.userId() in this.eventDetailGroup.controls.confirmed_users.value) {
+            return true;
         } else {
-            if (this.userService.userId() in this.eventDetailGroup.controls.confirmed_users.value) {
-                return true;
-            } else {
-                return false;
-            }
+            return false;
         }
     }
 }
