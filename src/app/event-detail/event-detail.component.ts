@@ -60,11 +60,11 @@ export class EventDetailComponent implements OnInit {
         this.eventService.attendOrNotToEvent(this.eventDetailGroup.controls.id.value, this.userService.userId())
             .subscribe(() => {
                 alert('Successfully changed your attendance information!');
-                window.location.reload();
             });
     }
 
     userAttendEvent() {
+
         if (this.userService.userId() in this.eventDetailGroup.controls.confirmed_users.value) {
             return false;
         } else {
@@ -72,11 +72,14 @@ export class EventDetailComponent implements OnInit {
         }
     }
 
+
     userUnattendEvent() {
+
         if (this.userService.userId() in this.eventDetailGroup.controls.confirmed_users.value) {
             return true;
         } else {
             return false;
         }
+
     }
 }
