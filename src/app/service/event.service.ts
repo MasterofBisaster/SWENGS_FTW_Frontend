@@ -52,4 +52,10 @@ export class EventService {
   getEventsByCategory(categoryId) {
     return this.http.get('api/event/list/category/' + categoryId);
   }
+
+  checkIfUserAttendsEvent(eventId) {
+    return this.http.get('api/event/check/attending-status/' + eventId);
+  }
+
+
 }

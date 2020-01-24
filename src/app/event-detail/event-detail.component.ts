@@ -15,7 +15,7 @@ import {MessageService} from 'primeng/api';
 export class EventDetailComponent implements OnInit {
 
   eventDetailGroup;
-  attendEvent: boolean;
+  attendEventBool: boolean;
 
   constructor(private eventService: EventService, private route: ActivatedRoute,
               private fb: FormBuilder, private userService: UserService, private messageService: MessageService) {
@@ -45,10 +45,14 @@ export class EventDetailComponent implements OnInit {
     });
 
     this.setEvent();
-    this.attendEvent = this.userService.userId() in this.eventDetailGroup.controls.confirmed_users.value;
-    console.log(this.attendEvent);
-    this.userUnattendEvent();
-    console.log(this.attendEvent);
+    const userId = this.userService.userId();
+    const confirmedUsers = this.eventDetailGroup.controls.confirmed_users.value;
+    // this.attendEventBool =  userId in confirmedUsers;
+    this.eventService.checkIfUserAttendsEvent(this.eventDetailGroup.controls.id.value).subscribe((response) => {
+      this.attendEventBool = response;
+      console.log(this.attendEventBool);
+    });
+
     this.route.params.subscribe((params: { filter: string }) => {
       this.setEvent();
     });
@@ -83,9 +87,9 @@ export class EventDetailComponent implements OnInit {
   userUnattendEvent() {
 
     if (this.userService.userId() in this.eventDetailGroup.controls.confirmed_users.value) {
-      this.attendEvent = true;
+      return true;
     } else {
-      this.attendEvent = false;
+      return false;
     }
 
   }
