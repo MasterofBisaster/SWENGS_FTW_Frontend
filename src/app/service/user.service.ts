@@ -74,6 +74,7 @@ export class UserService {
   }
 
   createUser(user) {
+    this.cookieService.deleteAll();
     return this.http.post('/api/register/create', user);
   }
 
