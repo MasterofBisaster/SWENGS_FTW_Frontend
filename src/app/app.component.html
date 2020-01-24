@@ -23,8 +23,12 @@
 <div class="content-section implementation ui-fluid">
   <div *ngIf="!mobile" class="ui-g-12 ui-md-2">
       <img alt="logo" src="../assets/img/ftw_logo.png" width="70%" routerLink='home'/>
-      <h4>{{ftwPhrase}}</h4>
-      <p-menu [model]="menuItems"></p-menu>
+    <h4 *ngIf="sfwMode">{{ftwPhrase}}</h4>
+    <h4 *ngIf="!sfwMode">{{sfwFtwPhrase}}</h4>
+    <p-toggleButton onLabel="NSFW Mode" offLabel="NSFW Mode"
+                    onIcon="fa fa-check" offIcon="fa fa-times" iconPos="right" [(ngModel)]="sfwMode"></p-toggleButton>
+    <button (click)="reloadFtwWords()" pButton icon="pi pi-refresh"></button>
+    <p-menu [model]="menuItems"></p-menu>
   </div>
   <div *ngIf="mobile" class="ui-g-12 ui-md-2">
     <p-menubar [model]="menuItems"></p-menubar>
