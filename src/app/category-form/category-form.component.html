@@ -37,12 +37,12 @@
   </form>
   <p-footer>
     <div class="ui-g">
-      <div *ngIf="!categoryFormGroup.controls.id.value" class="ui-g-6 ui-md-2 center">
+      <div class="ui-g-4 ui-md-2 center" *ngIf="!categoryFormGroup.controls.id.value">
         <button pButton label="Create"
                 [disabled]="!categoryFormGroup.valid"
                 (click)="createCategory()"></button>
       </div>
-      <div *ngIf="categoryFormGroup.controls.id.value" class="ui-g-6 ui-md-2 center">
+      <div class="ui-g-4 ui-md-2 center" *ngIf="categoryFormGroup.controls.id.value">
         <button pButton label="Update" [disabled]="!categoryFormGroup.valid"
                 (click)="createCategory()">
         </button>

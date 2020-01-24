@@ -140,11 +140,11 @@
   <p-footer>
     <!--Buttons-->
     <div class="ui-g">
-      <div *ngIf="!eventFormGroup.controls.id.value" class="ui-g-12 ui-md-2 center">
+      <div *ngIf="!eventFormGroup.controls.id.value" class="ui-g-4 ui-md-2 center">
         <button pButton label="Create" [disabled]="!eventFormGroup.valid"
                 (click)="createEvent()"></button>
       </div>
-      <div *ngIf="eventFormGroup.controls.id.value" class="ui-g-12 ui-md-2 center">
+      <div *ngIf="eventFormGroup.controls.id.value" class="ui-g-4 ui-md-2 center">
         <button pButton label="Update" [disabled]="!eventFormGroup.valid"
                 (click)="createEvent( )">
         </button>

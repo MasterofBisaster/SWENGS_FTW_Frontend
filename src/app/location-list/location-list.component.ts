@@ -15,8 +15,8 @@ export class LocationListComponent implements OnInit {
   @Input() amountRows = 4;
   @Input() classCard = 'ui-g-12 ui-md-3';
   @Input() classButton = 'ui-g-12 ui-md-5';
-  @Input() classButtonEdit = 'ui-g-12 ui-md-3';
-  @Input() classButtonDelete = 'ui-g-12 ui-md-4';
+  @Input() classButtonEdit = 'ui-g-6 ui-md-3';
+  @Input() classButtonDelete = 'ui-g-6 ui-md-4';
 
 
   constructor(private locationService: LocationService, public userService: UserService, private route: ActivatedRoute) {
