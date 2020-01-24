@@ -16,14 +16,16 @@ export class AppComponent implements OnInit {
   isLoggedIn = false;
   ftwPhrase;
   searchString: string;
-
+  mobile: boolean;
   constructor(private userService: UserService, private ftwWordService: FtwWordService, private router: Router) {
   }
 
 
   ngOnInit() {
     this.setFTWPhrase();
-
+    if (window.screen.width < 660) { // 768px portrait
+      this.mobile = true;
+    }
     this.userService.isLoggedIn.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
     });

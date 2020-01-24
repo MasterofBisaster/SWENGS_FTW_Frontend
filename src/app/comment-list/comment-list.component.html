@@ -19,8 +19,11 @@
       </div>-->
       <div class="ui-g-12 ui-md-8">
         <div class="ui-g">
-          <div class="ui-g-2 ui-sm-3">
+          <div class="ui-g-2 ui-sm-3" *ngIf="comments?.user_picture">
             <img width="70" height="70" alt="logo" src="/api/media/{{comments.user_picture}}"/>
+          </div>
+          <div class="ui-g-2 ui-sm-3" *ngIf="!comments?.user_picture">
+            <img width="70" height="70" alt="logo" src="assets/user_picture_default.jpg"/>
           </div>
           <div class="ui-g-10 ui-sm-8">
             <p><span style="font-weight:bold">{{comments?.user_name}}</span> posted on <span style="font-weight:bold">{{comments?.create_date  | date:'dd. MMM  yyyy, HH:mm '}}</span>:

@@ -10,11 +10,14 @@
 </p-menubar>
 
 <div class="content-section implementation ui-fluid">
-    <div class="ui-g-12 ui-md-2">
+  <div *ngIf="!mobile" class="ui-g-12 ui-md-2">
       <img alt="logo" src="../assets/img/ftw_logo.png" width="70%" routerLink='home'/>
       <h4>{{ftwPhrase}}</h4>
       <p-menu [model]="menuItems"></p-menu>
-    </div>
+  </div>
+  <div *ngIf="mobile" class="ui-g-12 ui-md-2">
+    <p-menubar [model]="menuItems"></p-menubar>
+  </div>
     <div class="ui-g-12 ui-md-10">
         <router-outlet></router-outlet>
     </div>

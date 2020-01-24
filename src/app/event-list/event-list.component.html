@@ -10,7 +10,7 @@
     </div>
   </p-header>
 
-  <p-progressBar [value]="event.confirmed_users"></p-progressBar>
+  <p-progressBar [value]="((event.confirmed_users/event.max_users)*100)"></p-progressBar>
   <p> Capacity: {{event.confirmed_users}}/{{event.max_users}}</p>
   <p> Start: {{event.start_date | date:'dd. MMM  yyyy, HH:mm ' }}</p>
   <p>End: {{event.end_date | date:'dd. MMM  yyyy, HH:mm ' }}</p>
