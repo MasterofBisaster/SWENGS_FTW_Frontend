@@ -58,6 +58,11 @@ export class EventFormComponent implements OnInit {
       const categoryId = this.eventFormGroup.controls.category.value;
       const category = this.categoryOptions.find(element => element.id === categoryId);
       this.eventFormGroup.controls.category.value = category;
+
+      const startDate = this.dateAsYYYYMMDDHHNNSS(new Date(this.eventFormGroup.controls.start_date.value));
+      this.eventFormGroup.controls.start_date.value = startDate;
+      const endDate = this.dateAsYYYYMMDDHHNNSS(new Date(this.eventFormGroup.controls.end_date.value));
+      this.eventFormGroup.controls.end_date.value = endDate;
     }
   }
 
