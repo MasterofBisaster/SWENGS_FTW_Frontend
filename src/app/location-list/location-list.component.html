@@ -16,6 +16,13 @@
 
       <div class="ui-g">
         <div [class]="classButton">
+          <button [routerLink]="'/event-list/location/'+location.id" pButton type="button" label="More events"
+                  icon="pi pi-plus" style="margin-right: .25em"></button>
+          <!--<button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>-->
+        </div>
+      </div>
+      <div class="ui-g">
+        <div [class]="classButton">
           <a target="_blank"
              href="https://google.com/maps/place/{{location.street.replace(' ', '+')}},+{{location.zip_code}}+{{location.city}}">
             <button pButton type="button" label="Google Maps" icon="pi pi-compass" style="margin-right: .25em"></button>

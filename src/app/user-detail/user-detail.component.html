@@ -1,16 +1,19 @@
 <div class="ui-g-12 ui-md-1">
   <h1>{{ftwUserDetailGroup.controls.user_username.value}}</h1>
 </div>
-<div style="margin-block-start: 0.67em" class="ui-g-12 ui-md-2">
+<div class="ui-g-12 ui-md-2"
+     *ngIf="userAddFriend()&&ftwUserDetailGroup.controls.user_id.value!=userService.userId()&&userService.userId()!=null">
   <button (click)="addOrRemoveAsFriend()" class="ui-button"
-          *ngIf="userAddFriend()"
+
           pButton type="button" label="Add as Friend" icon="pi pi-user-plus"
           style="margin-right: .25em"></button>
 </div>
 
-<div style="margin-block-start: 0.67em" class="ui-g-12 ui-md-2">
+<div
+  *ngIf="userRemoveFriend()&&ftwUserDetailGroup.controls.user_id.value!=userService.userId()&&userService.userId()!=null"
+  class="ui-g-12 ui-md-2">
   <button (click)="addOrRemoveAsFriend()" class="ui-button"
-          *ngIf="userRemoveFriend()"
+
           pButton type="button" label="Remove as Friend" icon="pi pi-user-plus"
           style="margin-right: .25em"></button>
 </div>
@@ -42,8 +45,8 @@
                   style="margin-right: .25em"></button>
         </div>
         <div class="ui-g-12 ui-md-12"><p>Username: {{ftwUserDetailGroup.controls.user_username.value}}</p>
-          <p>FirstName: {{ftwUserDetailGroup.controls.user_first_name.value}}</p>
-          <p>Last Name: {{ftwUserDetailGroup.controls.user_last_name.value}}</p></div>
+          <p>First Name: {{ftwUserDetailGroup.controls.first_name.value}}</p>
+          <p>Last Name: {{ftwUserDetailGroup.controls.last_name.value}}</p></div>
       </div>
     </div>
   </p-accordionTab>

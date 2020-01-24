@@ -58,6 +58,8 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {PanelModule} from 'primeng/panel';
 
 import {CookieService} from 'ngx-cookie-service';
+import {InputSwitchModule} from 'primeng/inputswitch';
+import {ToggleButtonModule} from 'primeng/primeng';
 
 
 export function tokenGetter() {
@@ -84,48 +86,50 @@ export function tokenGetter() {
         UserDetailComponent,
         UserFormComponent,
         HomeComponent],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        MatTableModule,
-        MatButtonModule,
-        MatToolbarModule,
-        MatMenuModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatInputModule,
-        MatCardModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatCheckboxModule,
-        JwtModule.forRoot({
-            config: {
-                tokenGetter,
-                whitelistedDomains: ['localhost:4200']
-            }
-        }),
-        MenuModule,
-        ButtonModule,
-        InputTextModule,
-        MenubarModule,
-        FileUploadModule,
-        PasswordModule,
-        CardModule,
-        VirtualScrollerModule,
-        AngularFontAwesomeModule,
-        AccordionModule,
-        RxReactiveFormsModule,
-        CalendarModule,
-        PaginatorModule,
-        EditorModule,
-        FileUploadModule,
-        MessageModule,
-        CheckboxModule,
-        PanelModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    MatTableModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter,
+        whitelistedDomains: ['localhost:4200']
+      }
+    }),
+    MenuModule,
+    ButtonModule,
+    InputTextModule,
+    MenubarModule,
+    FileUploadModule,
+    PasswordModule,
+    CardModule,
+    VirtualScrollerModule,
+    AngularFontAwesomeModule,
+    AccordionModule,
+    RxReactiveFormsModule,
+    CalendarModule,
+    PaginatorModule,
+    EditorModule,
+    FileUploadModule,
+    MessageModule,
+    CheckboxModule,
+    PanelModule,
+    InputSwitchModule,
+    ToggleButtonModule
+  ],
     providers: [CookieService],
     bootstrap: [AppComponent]
 })

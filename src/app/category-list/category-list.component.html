@@ -14,7 +14,8 @@
 
       <div class="ui-g">
         <div [class]="classButton">
-          <button pButton type="button" label="More Infos" icon="pi pi-search-plus"
+          <button [routerLink]="'/event-list/category/'+category.id" pButton type="button" label="More events"
+                  icon="pi pi-search-plus"
                   style="margin-right: .25em"></button>
           <!--<button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>-->
         </div>
