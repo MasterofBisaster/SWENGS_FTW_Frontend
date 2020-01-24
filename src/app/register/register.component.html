@@ -1,66 +1,70 @@
 <p-panel class="ui-g-12 ui-md-6">
-    <p-header>
-        <h1>Create a new User</h1>
-    </p-header>
+  <p-header>
+    <h1>Create a new User</h1>
+  </p-header>
 
-    <form [formGroup]="registerFormGroup" class="register-form">
-        <div class="ui-g">
-            <div class="ui-g-12 ui-md-6">
+  <form [formGroup]="registerFormGroup" class="register-form">
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-6">
                 <span class="ui-float-label">
                     <input id="float-username" type="text" size="30" formControlName="username" required pInputText>
                     <label for="float-username">Username</label>
                 </span>
-            </div>
-            <div class="ui-g-12 ui-md-3">
-                <p-message *ngIf="registerFormGroup.controls.username.hasError('required')" severity="error"
-                           text="Field is required"></p-message>
-              <p-message *ngIf="registerFormGroup.controls.username.hasError('usernameAlreadyExists')" severity="error"
-                         text="Username already exists"></p-message>
-            </div>
-        </div>
+      </div>
 
-        <div class="ui-g">
-            <div class="ui-g-12 ui-md-3">
+      <p-message class="ui-g-6 ui-md-3" *ngIf="registerFormGroup.controls.username.hasError('required')"
+                 severity="error"
+                 text="Field is required"></p-message>
+
+
+      <p-message class="ui-g-9 ui-md-3"
+                 *ngIf="registerFormGroup.controls.username.hasError('usernameAlreadyExists')" severity="error"
+                 text="Username already exists"></p-message>
+
+    </div>
+
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-3">
             <span class="ui-float-label">
             <input id="float-password" pPassword [feedback]=true type="password" name="uPass" size="30"
                    formControlName="password" required pInputText>
             <label for="float-password">Password</label>
             </span>
-            </div>
-            <div class="ui-g-12 ui-md-3">
-                <p-message *ngIf="registerFormGroup.controls.password.hasError('required')" severity="error"
-                           text="Field is required"></p-message>
-            </div>
-        </div>
+      </div>
+      <div class="ui-g-6 ui-md-3">
+        <p-message *ngIf="registerFormGroup.controls.password.hasError('required')" severity="error"
+                   text="Field is required"></p-message>
+      </div>
+    </div>
 
-        <div class="ui-g">
-            <div class="ui-g-12 ui-md-3">
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-3">
                 <span class="ui-float-label">
                 <input id="float-confirmPassword" pPassword [feedback]=false type="password" name="uPass" size="30"
                        formControlName="confirmPassword" required
                        pInputText>
                 <label for="float-confirmPassword">Confirm password</label>
                 </span>
-            </div>
-            <div class="ui-g-12 ui-md-3">
-                <p-message *ngIf="registerFormGroup.controls.confirmPassword.hasError('compare')" severity="error"
-                           text="Passwords do not match"></p-message>
-                <!--<p-message *ngIf="registerFormGroup.controls.confirmPassword.hasError('required')" severity="error"
-                           text="Field is required"></p-message>-->
-            </div>
-        </div>
-    </form>
-<p-footer>
-
-<div class="ui-g">
-    <div class="ui-g-12 ui-md-3">
-      <button pButton *ngIf="!registerFormGroup.controls.id.value" label="Create"
-              [disabled]="!registerFormGroup.valid"
-              (click)="createUser()">
-      </button>
+      </div>
+      <div class="ui-g-6 ui-md-3">
+        <p-message *ngIf="registerFormGroup.controls.confirmPassword.hasError('compare')" severity="error"
+                   text="Passwords do not match"></p-message>
+        <!--<p-message *ngIf="registerFormGroup.controls.confirmPassword.hasError('required')" severity="error"
+                   text="Field is required"></p-message>-->
+      </div>
     </div>
-</div>
-</p-footer>
+  </form>
+  <p-footer>
+
+    <div class="ui-g">
+      <div class="ui-g-4 ui-md-3" style="margin: 0 auto">
+        <button pButton *ngIf="!registerFormGroup.controls.id.value" label="Create"
+                [disabled]="!registerFormGroup.valid"
+                (click)="createUser()">
+        </button>
+      </div>
+    </div>
+  </p-footer>
 </p-panel>
 
 
