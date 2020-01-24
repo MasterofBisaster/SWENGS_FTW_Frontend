@@ -154,7 +154,6 @@ const routes: Routes = [
   {
     path: 'category-list',
     component: CategoryListComponent,
-    canActivate: [AuthGuard],
     resolve: {
       categories: CategoryListResolver,
     }
