@@ -11,12 +11,13 @@
 <p-accordion [multiple]="true" class="ui-g-12 ui-md-12">
   <p-accordionTab selected=true header="About {{ftwUserDetailGroup.controls.user_username.value}}">
     <div class="ui-g">
-      <div class="ui-g-12 ui-md-3">
+      <div class="ui-g ui-md-3">
         <h2 *ngIf="userService.userId()==ftwUserDetailGroup.controls.user_id.value">Your Profile Picture:</h2>
         <h2
           *ngIf="userService.userId()!=ftwUserDetailGroup.controls.user_id.value">{{ftwUserDetailGroup.controls.user_username.value}}
           's Profile Picture:</h2>
-        <img width="200px" [src]="'/api/media/' + ftwUserDetailGroup.controls.picture.value">
+        <img *ngIf="ftwUserDetailGroup.controls?.picture.value"width="200px" [src]="'/api/media/' + ftwUserDetailGroup.controls.picture.value">
+        <img *ngIf="!ftwUserDetailGroup.controls?.picture.value" width="200px" [src]="'/assets/user_picture_default.jpg'">
         <!--<div *ngIf="userService.userId()==ftwUserDetailGroup.controls.user_id.value">
           <p>Change Picture:</p>
 
@@ -24,7 +25,7 @@
                         (onSelect)="uploadFile($event)" showUploadButton="false"></p-fileUpload>
         </div>-->
       </div>
-      <div class="ui-g-12 ui-md-9">
+      <div class="ui-g ui-md-9">
         <h2>Your Data:</h2>
         <div class="ui-g-12 ui-md-1">
           <button class="ui-button-info" *ngIf="userService.userId()==ftwUserDetailGroup.controls.user_id.value"
@@ -39,7 +40,7 @@
     </div>
   </p-accordionTab>
   <p-accordionTab selected=true header="{{ftwUserDetailGroup.controls.user_username.value}}'s events">
-    <div class="ui-g">
+    <div class="ui-g-12">
       <app-event-list classCard="ui-g-12 ui-md-4"></app-event-list>
     </div>
 

@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
     const user = this.registerFormGroup.value;
     this.userService.createUser(user)
       .subscribe((response: any) => {
-        this.router.navigate(['/event-list/']);
+        this.router.navigate(['/login/']);
       });
   }
 

@@ -1,43 +1,54 @@
-<p-panel>
-    <p-header>
-        <h1>Create a category</h1>
-    </p-header>
+<p-panel class="ui-g-12 ui-md-6">
+  <p-header>
+    <h1>Create a category</h1>
+  </p-header>
 
-    <form [formGroup]="categoryFormGroup" class="category-form">
-        <div class="ui-g-12 ui-md-12">
-            <div class="ui-g-12 ui-md-3">
+  <form [formGroup]="categoryFormGroup" class="category-form">
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-3">
             <span class="ui-float-label">
                 <input id="float-title" type="text" size="30" formControlName="title" required pInputText>
                 <label for="float-title">Title</label>
             </span>
-            </div>
-            <div class="ui-g-12 ui-md-3">
-                <p-message *ngIf="categoryFormGroup.controls.title.hasError('required')" severity="error"
-                           text="Field is required"></p-message>
-            </div>
-        </div>
+      </div>
+      <div class="ui-g-6 ui-md-3">
+        <p-message *ngIf="categoryFormGroup.controls.title.hasError('required')" severity="error"
+                   text="Field is required"></p-message>
+      </div>
+    </div>
 
-        <div class="ui-g-12 ui-md-12">
-            <h3 *ngIf="!categoryFormGroup.controls?.picture.value">No picture added!</h3>
-            <h3 *ngIf="categoryFormGroup.controls?.picture.value">Picture of the category:</h3>
-            <img *ngIf="categoryFormGroup.controls?.picture.value" class="ui-g-12 ui-md-3" width="400"
-                 [src]="'/api/media/' + categoryFormGroup.controls.picture.value">
-        </div>
-        <div class="ui-g-12 ui-md-12">
-            <p-fileUpload class="ui-g-12 ui-md-3" chooseLabel="Upload a picture..." url="./api/media/upload"
-                          accept="image/*"
-                          name="myfile[]" mode="basic"
-                          (onSelect)="uploadFile($event)"></p-fileUpload>
-        </div>
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-12">
+        <h3 *ngIf="!categoryFormGroup.controls?.picture.value">No picture added!</h3>
+        <h3 *ngIf="categoryFormGroup.controls?.picture.value">Picture of the category:</h3>
+        <img *ngIf="categoryFormGroup.controls?.picture.value" class="ui-g-12 ui-md-3" width="400"
+             [src]="'/api/media/' + categoryFormGroup.controls.picture.value">
+      </div>
+    </div>
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-12">
+        <p-fileUpload class="ui-g-12 ui-md-3" chooseLabel="Upload a picture..." url="./api/media/upload"
+                      accept="image/*"
+                      name="myfile[]" mode="basic"
+                      (onSelect)="uploadFile($event)"></p-fileUpload>
+      </div>
+    </div>
 
+
+  </form>
+  <p-footer>
+    <div class="ui-g">
+      <div class="ui-g-6 ui-md-2">
         <button pButton *ngIf="!categoryFormGroup.controls.id.value" label="Create"
                 [disabled]="!categoryFormGroup.valid"
+                (click)="createCategory()"></button>
+      </div>
+      <div class="ui-g-6 ui-md-2">
+        <button pButton *ngIf="categoryFormGroup.controls.id.value" label="Update" [disabled]="!categoryFormGroup.valid"
                 (click)="createCategory()">
         </button>
-        <button pButton *ngIf="categoryFormGroup.controls.id.value" label="Update"
-                [disabled]="!categoryFormGroup.valid"
-                (click)="createCategory()">
-        </button>
-    </form>
+      </div>
+    </div>
+  </p-footer>
 </p-panel>
 
