@@ -1,3 +1,4 @@
+<p-toast position="bottom-left"></p-toast>
 <h1>{{eventDetailGroup.controls.name.value}}</h1>
 <div class="ui-g-12 ui-md-4">
 
@@ -12,7 +13,7 @@
             [routerLink]="'/event-form/' + eventDetailGroup.controls.id.value"></button>
   </div>
 
-  <div class="ui-g-6 ui-md-5">
+  <!--<div class="ui-g-6 ui-md-5">
     <button (click)="attendToEvent()" class="ui-button"
             *ngIf="userAttendEvent()"
             pButton type="button" label="Attend to event" icon="pi pi-user-plus"
@@ -23,42 +24,46 @@
     <button (click)="attendToEvent()" class="ui-button"
             *ngIf="userUnattendEvent()"
             pButton type="button" label="Unattend" icon="pi pi-user-plus"></button>
+  </div>-->
+  <div class="ui-g-6 ui-md-5">
+    <p-toggleButton onLabel="Attending Event" offLabel="Unattending Event"
+                    (onChange)="attendToEvent()" onIcon="fa fa-check" offIcon="fa fa-times" iconPos="right"
+                    [(ngModel)]="attendEvent"></p-toggleButton>
   </div>
-
 </div>
 <p-accordion class="ui-g-12 ui-md-8" [multiple]="true">
-    <p-accordionTab selected=true header="About {{eventDetailGroup.controls.name.value}}">
-        <h3>Start of the event:</h3>
-        {{eventDetailGroup.controls.start_date.value | date:'dd. MMM  yyyy, HH:mm ' }}
-        <h3>End of the event:</h3>
-        {{eventDetailGroup.controls.end_date.value | date:'dd. MMM  yyyy, HH:mm ' }}
-        <h3>Created by:</h3>
-        {{eventDetailGroup.controls.user_name.value}}
-        <h3>Description:</h3>
-        {{eventDetailGroup.controls.description.value}}
-        <h3>Cost:</h3>
-        {{eventDetailGroup.controls.costs.value}}€
+  <p-accordionTab selected=true header="About {{eventDetailGroup.controls.name.value}}">
+    <h3>Start of the event:</h3>
+    {{eventDetailGroup.controls.start_date.value | date:'dd. MMM  yyyy, HH:mm ' }}
+    <h3>End of the event:</h3>
+    {{eventDetailGroup.controls.end_date.value | date:'dd. MMM  yyyy, HH:mm ' }}
+    <h3>Created by:</h3>
+    {{eventDetailGroup.controls.user_name.value}}
+    <h3>Description:</h3>
+    {{eventDetailGroup.controls.description.value}}
+    <h3>Cost:</h3>
+    {{eventDetailGroup.controls.costs.value}}€
 
-    </p-accordionTab>
-    <p-accordionTab selected=true header="Event Location">
-        <p>{{eventDetailGroup.controls.location_name.value}}</p>
-        <p>{{eventDetailGroup.controls.location_street.value}}</p>
-        <p>{{eventDetailGroup.controls.location_zip_code.value}} {{eventDetailGroup.controls.location_city.value}},
-            {{eventDetailGroup.controls.location_country.value}}</p>
+  </p-accordionTab>
+  <p-accordionTab selected=true header="Event Location">
+    <p>{{eventDetailGroup.controls.location_name.value}}</p>
+    <p>{{eventDetailGroup.controls.location_street.value}}</p>
+    <p>{{eventDetailGroup.controls.location_zip_code.value}} {{eventDetailGroup.controls.location_city.value}},
+      {{eventDetailGroup.controls.location_country.value}}</p>
 
-        <div class="ui-g-12 ui-md-2">
-            <a href="https://google.com/maps/place/{{eventDetailGroup.controls.location_street.value.replace(' ', '+')}},
+    <div class="ui-g-12 ui-md-2">
+      <a href="https://google.com/maps/place/{{eventDetailGroup.controls.location_street.value.replace(' ', '+')}},
     +{{eventDetailGroup.controls.location_zip_code.value}}ˆ
     +{{eventDetailGroup.controls.location_city.value}}">
-                <button pButton type="button" label="Google Maps" icon="pi pi-compass"
-                        style="margin-right: .25em"></button>
-            </a>
-        </div>
-        <br>
-        <br>
+        <button pButton type="button" label="Google Maps" icon="pi pi-compass"
+                style="margin-right: .25em"></button>
+      </a>
+    </div>
+    <br>
+    <br>
 
-    </p-accordionTab>
-    <p-accordionTab selected=true header="Comments">
-        <app-comment-list [eventId]="eventDetailGroup.controls.id.value"></app-comment-list>
-    </p-accordionTab>
+  </p-accordionTab>
+  <p-accordionTab selected=true header="Comments">
+    <app-comment-list [eventId]="eventDetailGroup.controls.id.value"></app-comment-list>
+  </p-accordionTab>
 </p-accordion>

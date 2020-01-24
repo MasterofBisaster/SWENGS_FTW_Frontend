@@ -60,6 +60,7 @@ import {PanelModule} from 'primeng/panel';
 import {CookieService} from 'ngx-cookie-service';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {ToggleButtonModule} from 'primeng/primeng';
+import {ToastModule} from 'primeng/toast';
 
 
 export function tokenGetter() {
@@ -128,7 +129,8 @@ export function tokenGetter() {
     CheckboxModule,
     PanelModule,
     InputSwitchModule,
-    ToggleButtonModule
+    ToggleButtonModule,
+    ToastModule
   ],
     providers: [CookieService],
     bootstrap: [AppComponent]
