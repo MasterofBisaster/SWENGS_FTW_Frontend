@@ -48,16 +48,15 @@
     <p>{{eventDetailGroup.controls.location_zip_code.value}} {{eventDetailGroup.controls.location_city.value}},
       {{eventDetailGroup.controls.location_country.value}}</p>
 
-    <div class="ui-g-12 ui-md-2">
-      <a href="https://google.com/maps/place/{{eventDetailGroup.controls.location_street.value.replace(' ', '+')}},
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-2">
+        <a href="https://google.com/maps/place/{{eventDetailGroup.controls.location_street.value.replace(' ', '+')}},
     +{{eventDetailGroup.controls.location_zip_code.value}}ˆ
     +{{eventDetailGroup.controls.location_city.value}}">
-        <button pButton type="button" label="Google Maps" icon="pi pi-compass"></button>
-      </a>
+          <button pButton type="button" label="Google Maps" icon="pi pi-compass"></button>
+        </a>
+      </div>
     </div>
-    <br>
-    <br>
-
   </p-accordionTab>
   <p-accordionTab selected=true header="Comments">
     <app-comment-list [eventId]="eventDetailGroup.controls.id.value"></app-comment-list>
