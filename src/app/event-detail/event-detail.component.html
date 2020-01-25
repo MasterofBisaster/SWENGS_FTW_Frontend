@@ -6,12 +6,22 @@
     <img src="/api/media/{{eventDetailGroup.controls.picture.value}}">
   </div>
   <div class="aspect-ratio-box" *ngIf="!eventDetailGroup.controls?.picture.value">
-    <img src="assets/user_picture_default.png">
+    <img src="assets/usercard.png">
   </div>
-  <div class="ui-g-6 ui-md-3" *ngIf="eventDetailGroup.controls.creator.value == userService.userId()">
-    <button pButton type="button" label="Edit Event" icon="pi pi-pencil"
-            [routerLink]="'/event-form/' + eventDetailGroup.controls.id.value"></button>
-  </div>
+  <p-panel>
+    <p-header>Actions</p-header>
+    <div class="ui-g">
+      <div class="ui-g-6 ui-md-4" *ngIf="eventDetailGroup.controls.creator.value == userService.userId()">
+        <button pButton type="button" label="Edit Event" icon="pi pi-pencil"
+                [routerLink]="'/event-form/' + eventDetailGroup.controls.id.value"></button>
+      </div>
+      <div class="ui-g-6 ui-md-5">
+        <p-toggleButton onLabel="Attending Event" offLabel="Unattending Event"
+                        (onChange)="attendToEvent()" onIcon="fa fa-check" offIcon="fa fa-times" iconPos="right"
+                        [(ngModel)]="attendEventBool"></p-toggleButton>
+      </div>
+    </div>
+  </p-panel>
 
   <!--<div class="ui-g-6 ui-md-5">
     <button (click)="attendToEvent()" class="ui-button"
@@ -25,11 +35,7 @@
             *ngIf="userUnattendEvent()"
             pButton type="button" label="Unattend" icon="pi pi-user-plus"></button>
   </div>-->
-  <div class="ui-g-6 ui-md-5">
-    <p-toggleButton onLabel="Attending Event" offLabel="Unattending Event"
-                    (onChange)="attendToEvent()" onIcon="fa fa-check" offIcon="fa fa-times" iconPos="right"
-                    [(ngModel)]="attendEventBool"></p-toggleButton>
-  </div>
+
 </div>
 <p-accordion class="ui-g-12 ui-md-8" [multiple]="true">
   <p-accordionTab selected=true header="About {{eventDetailGroup.controls.name.value}}">
@@ -38,9 +44,14 @@
     <h3>End of the event:</h3>
     {{eventDetailGroup.controls.end_date.value | date:'dd. MMM  yyyy, HH:mm ' }}
     <h3>Created by:</h3>
-    {{eventDetailGroup.controls.user_name.value}}
-    <h3>Description:</h3>
-    {{eventDetailGroup.controls.description.value}}
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-3">
+        <button [routerLink]="'/user-detail/'+eventDetailGroup.controls.creator.value" pButton type="button"
+                [label]="eventDetailGroup.controls.user_name.value" icon="pi pi-user"></button>
+      </div>
+    </div>
+    <h3>Description: </h3>
+    <p [innerHTML]="eventDetailGroup.controls.description.value"></p>
     <h3>Cost:</h3>
     {{eventDetailGroup.controls.costs.value}}€
 
@@ -55,8 +66,7 @@
       <a href="https://google.com/maps/place/{{eventDetailGroup.controls.location_street.value.replace(' ', '+')}},
     +{{eventDetailGroup.controls.location_zip_code.value}}ˆ
     +{{eventDetailGroup.controls.location_city.value}}">
-        <button pButton type="button" label="Google Maps" icon="pi pi-compass"
-                style="margin-right: .25em"></button>
+        <button pButton type="button" label="Google Maps" icon="pi pi-compass"></button>
       </a>
     </div>
     <br>

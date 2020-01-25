@@ -3,21 +3,24 @@ import {ActivatedRoute} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {UserService} from '../service/user.service';
+import {MessageService} from 'primeng/api';
 
 @Component({
     selector: 'app-user-detail',
     templateUrl: './user-detail.component.html',
-    styleUrls: ['./user-detail.component.scss']
+  styleUrls: ['./user-detail.component.scss'],
+  providers: [MessageService]
+
 })
 export class UserDetailComponent implements OnInit {
     ftwUserDetailGroup;
     newPicture;
     fileToUpload: File = null;
     picture;
-    userFriends;
-
+  userFriendsBool;
+  friends: any[];
     constructor(private route: ActivatedRoute, private fb: FormBuilder, private http: HttpClient,
-                private userService: UserService) {
+                private userService: UserService, private messageService: MessageService) {
     }
 
     ngOnInit() {
@@ -30,16 +33,23 @@ export class UserDetailComponent implements OnInit {
             last_name: [null],
             user_id: [null],
         });
-
+        const data = this.route.snapshot.data;
+        if (data.friends) {
+        this.friends = data.friends;
+      }
         this.setFtwUser();
 
         this.route.params.subscribe((params: { filter: string }) => {
             this.setFtwUser();
         });
-
         this.userService.checkFriends(this.userService.userId(), this.ftwUserDetailGroup.controls.user_id.value).subscribe((response) => {
-            this.userFriends = response;
+          if (typeof response === 'string') {
+            this.userFriendsBool = Boolean(JSON.parse(response));
+          }
         });
+      /*  this.userService.checkFriends(this.userService.userId(), this.ftwUserDetailGroup.controls.user_id.value).subscribe((response) => {
+            this.userFriends = response;
+        });*/
     }
 
     setFtwUser() {
@@ -74,24 +84,14 @@ export class UserDetailComponent implements OnInit {
     addOrRemoveAsFriend() {
         this.userService.addOrRemoveUserAsFriend(this.userService.userId(), this.ftwUserDetailGroup.controls.user_id.value)
             .subscribe(() => {
-                alert('Successfully changed your friendship status!');
-                window.location.reload();
+              if (this.userFriendsBool) {
+                this.messageService.add({severity: 'success', summary: 'Successfully added!', detail: 'You added this user as a friend!'});
+              } else {
+                this.messageService.add({
+                  severity: 'success',
+                  summary: 'Successfully removed', detail: 'You removed this user as a friend!'
+                });
+              }
             });
-    }
-
-    userAddFriend() {
-        if (this.userFriends === true) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    userRemoveFriend() {
-        if (this.userFriends === true) {
-            return true;
-        } else {
-            return false;
-        }
     }
 }

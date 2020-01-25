@@ -2,27 +2,29 @@
   <p-header><h1>Create an Event</h1></p-header>
 
   <form [formGroup]="eventFormGroup" class="event-form">
-
     <!--NAME-->
+    <div class="ui-g-12 ui-md-12">
     <span class="ui-float-label">
         <input id="float-name" type="text" size="30" formControlName="name" pInputText required>
         <label for="float-name">Eventname</label>
       </span>
-
+    </div>
     <!--  start date-->
-    <p-calendar placeholder="Start Date" formControlName="start_date" [monthNavigator]="true" [yearNavigator]="true"
-                yearRange="2020:2030" showTime="true" showSeconds="true" dateFormat="yy-mm-dd"></p-calendar>
-
+    <div class="ui-g-12 ui-md-6">
+      <p-calendar placeholder="Start Date" formControlName="start_date" [monthNavigator]="true" [yearNavigator]="true"
+                  yearRange="2020:2030" showTime="true" showSeconds="true" dateFormat="yy-mm-dd"></p-calendar>
+    </div>
     <!--  end date-->
-    <p-calendar placeholder="End Date" formControlName="end_date" [monthNavigator]="true" [yearNavigator]="true"
-                yearRange="2020:2030" showTime="true" showSeconds="true" dateFormat="yy-mm-dd"></p-calendar>
-
+    <div class="ui-g-12 ui-md-6">
+      <p-calendar placeholder="End Date" formControlName="end_date" [monthNavigator]="true" [yearNavigator]="true"
+                  yearRange="2020:2030" showTime="true" showSeconds="true" dateFormat="yy-mm-dd"></p-calendar>
+    </div>
     <!--   private-->
     <div class="ui-md-12">
       <!--      <mat-checkbox formControlName="private">Private</mat-checkbox>-->
-      <p-checkbox formControlName="private" binary="true" label="private"></p-checkbox>
+      <p-checkbox formControlName="private" binary="true"
+                  label="Should your event only be visible to your friends?"></p-checkbox>
     </div>
-
     <!--    Location-->
     <div class="ui-g">
       <div class="ui-g-8 ui-md-6">
@@ -95,9 +97,7 @@
                     accept="image/*"
                     name="myfile[]" mode="basic"
                     (onSelect)="uploadFile($event)"></p-fileUpload>
-
     </div>
-
   </form>
   <p-footer>
     <!--Buttons-->
@@ -114,4 +114,4 @@
     </div>
   </p-footer>
 </p-panel>
-<!--<div><app-mediainput></app-mediainput></div>-->
+

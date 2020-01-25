@@ -57,5 +57,4 @@ export class EventService {
     return this.http.get('api/event/check/attending-status/' + eventId);
   }
 
-
 }

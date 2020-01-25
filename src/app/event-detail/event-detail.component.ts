@@ -15,7 +15,7 @@ import {MessageService} from 'primeng/api';
 export class EventDetailComponent implements OnInit {
 
   eventDetailGroup;
-  attendEventBool: boolean;
+  attendEventBool;
 
   constructor(private eventService: EventService, private route: ActivatedRoute,
               private fb: FormBuilder, private userService: UserService, private messageService: MessageService) {
@@ -45,18 +45,14 @@ export class EventDetailComponent implements OnInit {
     });
 
     this.setEvent();
-    const userId = this.userService.userId();
-    const confirmedUsers = this.eventDetailGroup.controls.confirmed_users.value;
-    // this.attendEventBool =  userId in confirmedUsers;
     this.eventService.checkIfUserAttendsEvent(this.eventDetailGroup.controls.id.value).subscribe((response) => {
-      this.attendEventBool = response;
-      console.log(this.attendEventBool);
+      if (typeof response === 'string') {
+        this.attendEventBool = Boolean(JSON.parse(response));
+      }
     });
-
     this.route.params.subscribe((params: { filter: string }) => {
       this.setEvent();
     });
-
   }
 
   setEvent() {
@@ -74,23 +70,21 @@ export class EventDetailComponent implements OnInit {
       });
   }
 
-  userAttendEvent() {
+  /*  userAttendEvent() {
 
-    if (this.userService.userId() in this.eventDetailGroup.controls.confirmed_users.value) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-
-  userUnattendEvent() {
-
-    if (this.userService.userId() in this.eventDetailGroup.controls.confirmed_users.value) {
-      return true;
-    } else {
-      return false;
+      if (this.userService.userId() in this.eventDetailGroup.controls.confirmed_users.value) {
+        return false;
+      } else {
+        return true;
+      }
     }
 
-  }
+    userUnattendEvent() {
+
+      if (this.userService.userId() in this.eventDetailGroup.controls.confirmed_users.value) {
+        return true;
+      } else {
+        return false;
+      }
+    }*/
 }

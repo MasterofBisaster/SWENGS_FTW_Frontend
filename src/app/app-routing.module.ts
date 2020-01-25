@@ -29,6 +29,7 @@ import {UserFormComponent} from './user-form/user-form.component';
 import {UserEventResolver} from './resolver/user-event.resolver';
 import {CategoryEventListResolver} from './resolver/category-event-list.resolver';
 import {LocationEventListResolver} from './resolver/location-event-list.resolver';
+import {UserFriendsResolver} from './resolver/user-friends.resolver';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -113,19 +114,19 @@ const routes: Routes = [
     component: CategoryFormComponent,
     canActivate: [AuthGuard],
     resolve: {
-    category: CategoryResolver,
+      category: CategoryResolver,
     }
-    },
+  },
   {
     path: 'category-form',
     component: CategoryFormComponent,
     canActivate: [AuthGuard],
   },
-    {
-        path: 'location-form',
-        component: LocationFormComponent,
-        canActivate: [AuthGuard],
-    },
+  {
+    path: 'location-form',
+    component: LocationFormComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'location-form/:id',
     component: LocationFormComponent,
@@ -141,6 +142,7 @@ const routes: Routes = [
     resolve: {
       events: UserEventResolver,
       user: FtwUserDetailResolver,
+      friends: UserFriendsResolver
     }
   },
   {

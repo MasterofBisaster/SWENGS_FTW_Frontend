@@ -20,8 +20,6 @@
                   icon="pi pi-plus" style="margin-right: .25em"></button>
           <!--<button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>-->
         </div>
-      </div>
-      <div class="ui-g">
         <div [class]="classButton">
           <a target="_blank"
              href="https://google.com/maps/place/{{location.street.replace(' ', '+')}},+{{location.zip_code}}+{{location.city}}">
@@ -30,6 +28,9 @@
           <!--<button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>-->
 
         </div>
+      </div>
+      <div class="ui-g">
+
         <div [class]="classButtonEdit">
           <button class="ui-button-info" *ngIf="userService.hasPermission('ftw.change_location')"
                   [routerLink]="'/location-form/' + location.id" pButton type="button" label="Edit"

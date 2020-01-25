@@ -1,34 +1,73 @@
-<div class="ui-g-12 ui-md-1">
+<p-toast position="bottom-left"></p-toast>
+<div class="ui-g">
   <h1>{{ftwUserDetailGroup.controls.user_username.value}}</h1>
 </div>
-<div class="ui-g-12 ui-md-2"
+<!--<div class="ui-g-12 ui-md-2"
      *ngIf="userAddFriend()&&ftwUserDetailGroup.controls.user_id.value!=userService.userId()&&userService.userId()!=null">
-  <button (click)="addOrRemoveAsFriend()" class="ui-button"
-
-          pButton type="button" label="Add as Friend" icon="pi pi-user-plus"
+  <button (click)="addOrRemoveAsFriend()" class="ui-button"  pButton type="button" label="Add as Friend" icon="pi pi-user-plus"
           style="margin-right: .25em"></button>
-</div>
+</div>-->
 
-<div
+<!--<div *ngIf="ftwUserDetailGroup.controls.user_id.value!=userService.userId()&&userService.userId()!=null"
+     class="ui-g-12 ui-md-3">
+  <p-toggleButton onLabel="You are both friends!" offLabel="Add This"
+                  (onChange)="addOrRemoveAsFriend()" onIcon="fa fa-check" offIcon="fa fa-times" iconPos="right"
+                  [(ngModel)]="userFriendsBool"></p-toggleButton>
+</div>-->
+
+<!--<div
   *ngIf="userRemoveFriend()&&ftwUserDetailGroup.controls.user_id.value!=userService.userId()&&userService.userId()!=null"
   class="ui-g-12 ui-md-2">
   <button (click)="addOrRemoveAsFriend()" class="ui-button"
 
           pButton type="button" label="Remove as Friend" icon="pi pi-user-plus"
           style="margin-right: .25em"></button>
-</div>
+</div>-->
+<p-accordion [multiple]="true" class="ui-g-12 ui-md-6"
+             *ngIf="userService.userId()!=ftwUserDetailGroup.controls.user_id.value">
+  <p-accordionTab selected=true header="Actions">
+    <div class="ui-g">
+      <div *ngIf="ftwUserDetailGroup.controls.user_id.value!=userService.userId()&&userService.userId()!=null"
+           class="ui-g-12 ui-md-6">
 
+        <p-toggleButton
+          onLabel="Click to remove {{ftwUserDetailGroup.controls.user_username.value}} as friend"
+          offLabel="Click to add {{ftwUserDetailGroup.controls.user_username.value}} as friend"
+          (onChange)="addOrRemoveAsFriend()" onIcon="fa fa-check" offIcon="fa fa-times" iconPos="right"
+          [(ngModel)]="userFriendsBool"></p-toggleButton>
+      </div>
 
-<p-accordion [multiple]="true" class="ui-g-12 ui-md-12">
+    </div>
+
+  </p-accordionTab>
+</p-accordion>
+
+<p-accordion [multiple]="true" class="ui-g-12 ui-md-3"
+             *ngIf="userService.userId()==ftwUserDetailGroup.controls.user_id.value">
+  <p-accordionTab selected=true header="Actions">
+    <div class="ui-g">
+      <div *ngIf="userService.userId()==ftwUserDetailGroup.controls.user_id.value" class="ui-g-12 ui-md-9">
+        <button class="ui-button-info"
+                [routerLink]="'/user-form/' + ftwUserDetailGroup.controls.user_id.value" pButton type="button"
+                label="Edit your Profile" icon="pi pi-pencil"
+                style="margin-right: .25em"></button>
+      </div>
+    </div>
+  </p-accordionTab>
+</p-accordion>
+
+<p-accordion [multiple]="true" class="ui-g-12 ui-md-6">
   <p-accordionTab selected=true header="About {{ftwUserDetailGroup.controls.user_username.value}}">
     <div class="ui-g">
-      <div class="ui-g ui-md-3">
+      <div class="ui-g ui-md-6">
         <h2 *ngIf="userService.userId()==ftwUserDetailGroup.controls.user_id.value">Your Profile Picture:</h2>
         <h2
           *ngIf="userService.userId()!=ftwUserDetailGroup.controls.user_id.value">{{ftwUserDetailGroup.controls.user_username.value}}
           's Profile Picture:</h2>
-        <img *ngIf="ftwUserDetailGroup.controls?.picture.value"width="200px" [src]="'/api/media/' + ftwUserDetailGroup.controls.picture.value">
-        <img *ngIf="!ftwUserDetailGroup.controls?.picture.value" width="200px" [src]="'/assets/user_picture_default.jpg'">
+        <img *ngIf="ftwUserDetailGroup.controls?.picture.value" width="200px"
+             [src]="'/api/media/' + ftwUserDetailGroup.controls.picture.value">
+        <img *ngIf="!ftwUserDetailGroup.controls?.picture.value" width="200px"
+             [src]="'/assets/user_picture_default.jpg'">
         <!--<div *ngIf="userService.userId()==ftwUserDetailGroup.controls.user_id.value">
           <p>Change Picture:</p>
 
@@ -36,20 +75,39 @@
                         (onSelect)="uploadFile($event)" showUploadButton="false"></p-fileUpload>
         </div>-->
       </div>
-      <div class="ui-g ui-md-9">
+      <div class="ui-g ui-md-6">
         <h2>Your Data:</h2>
-        <div class="ui-g-12 ui-md-1">
-          <button class="ui-button-info" *ngIf="userService.userId()==ftwUserDetailGroup.controls.user_id.value"
-                  [routerLink]="'/user-form/' + ftwUserDetailGroup.controls.user_id.value" pButton type="button"
-                  label="Edit" icon="pi pi-pencil"
-                  style="margin-right: .25em"></button>
-        </div>
         <div class="ui-g-12 ui-md-12"><p>Username: {{ftwUserDetailGroup.controls.user_username.value}}</p>
           <p>First Name: {{ftwUserDetailGroup.controls.first_name.value}}</p>
           <p>Last Name: {{ftwUserDetailGroup.controls.last_name.value}}</p></div>
       </div>
     </div>
   </p-accordionTab>
+</p-accordion>
+<p-accordion [multiple]="true" class="ui-g-12 ui-md-3"
+             *ngIf="userService.userId()==ftwUserDetailGroup.controls.user_id.value">
+  <p-accordionTab selected=true header="Friends:">
+    <p-virtualScroller [value]="friends" scrollHeight="210px" [itemSize]="70">
+      <ng-template let-friend pTemplate="item" let-i="index">
+        <a [routerLink]="'/user-detail/' + friend.id">
+          <div class="ui-g friends-item">
+            <div class="ui-g-4 ui-md-3" *ngIf="friend?.picture">
+              <img width="70" height="70" alt="logo" src="/api/media/{{friend?.picture}}"/>
+            </div>
+            <div class="ui-g-4 ui-md-3" *ngIf="!friend?.picture">
+              <img width="70" height="70" alt="logo" src="assets/user_picture_default.jpg"/>
+            </div>
+            <div class="ui-g-8 ui-md-9">
+              <p><span style="font-weight:bold">{{friend?.username}}</span>
+              </p>
+            </div>
+          </div>
+        </a>
+      </ng-template>
+    </p-virtualScroller>
+  </p-accordionTab>
+</p-accordion>
+<p-accordion [multiple]="true" class="ui-g-12 ui-md-12">
   <p-accordionTab selected=true header="{{ftwUserDetailGroup.controls.user_username.value}}'s events">
     <div class="ui-g-12">
       <app-event-list classCard="ui-g-12 ui-md-4"></app-event-list>

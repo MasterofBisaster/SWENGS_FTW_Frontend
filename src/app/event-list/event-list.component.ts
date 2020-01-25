@@ -33,16 +33,19 @@ export class EventListComponent implements OnInit {
   setEvents() {
     const data = this.route.snapshot.data;
     this.allEvents = data.events;
+    this.allEvents.map((elem) => {
+      elem.percent = Math.round((elem.confirmed_users / elem.max_users) * 100);
+    });
     this.events = this.allEvents.slice(0, this.amountRows);
   }
 
   deleteEvent(event: any) {
     this.eventService.deleteEvent(event)
-        .subscribe(() => {
-          alert('Event deleted');
-          window.location.reload();
-          this.ngOnInit();
-        });
+      .subscribe(() => {
+        alert('Event deleted');
+        window.location.reload();
+        this.ngOnInit();
+      });
   }
 
   paginate(event) {
