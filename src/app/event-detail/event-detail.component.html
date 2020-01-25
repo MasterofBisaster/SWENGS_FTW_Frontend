@@ -8,7 +8,7 @@
   <div class="aspect-ratio-box" *ngIf="!eventDetailGroup.controls?.picture.value">
     <img src="assets/usercard.png">
   </div>
-  <p-panel>
+  <p-panel *ngIf="!userService.isLoggedIn">
     <p-header>Actions</p-header>
     <div class="ui-g">
       <div class="ui-g-6 ui-md-4" *ngIf="eventDetailGroup.controls.creator.value == userService.userId()">
