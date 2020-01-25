@@ -13,9 +13,8 @@
         <label for="float-name">Name</label>
        </span>
         </div>
-        <div class="ui-g-12 ui-md-3">
-          <p-message *ngIf="locationFormGroup.controls.name.hasError('required')" severity="error"
-                     text="Field is required"></p-message>
+        <div class="ui-g-12 ui-md-3" *ngIf="locationFormGroup.controls.name.hasError('required')">
+          <p-message severity="error" text="Field is required"></p-message>
         </div>
       </div>
 
@@ -88,7 +87,7 @@
           </button>
         </div>
         <div class="ui-g-4 ui-md-2 center" *ngIf="locationFormGroup.controls.id.value">
-          <button pButtonlabel="Update"
+          <button pButton label="Update"
                   [disabled]="!locationFormGroup.valid"
                   (click)="createLocation()">
           </button>

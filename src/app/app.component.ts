@@ -27,7 +27,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.setFTWPhrase();
     this.setSfwFTWPhrase();
-
     if (window.screen.width < 660) { // 768px portrait
       this.mobile = true;
     }
