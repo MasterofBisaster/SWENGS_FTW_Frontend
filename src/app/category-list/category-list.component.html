@@ -17,7 +17,6 @@
           <button [routerLink]="'/event-list/category/'+category.id" pButton type="button" label="More events"
                   icon="pi pi-search-plus"
                   style="margin-right: .25em"></button>
-          <!--<button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>-->
         </div>
         <div [class]="classButtonEdit">
           <button class="ui-button-info" *ngIf="userService.hasPermission('ftw.change_category')"

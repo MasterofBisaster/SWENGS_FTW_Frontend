@@ -69,22 +69,4 @@ export class EventDetailComponent implements OnInit {
         this.messageService.add({severity: 'success', summary: 'Information changed', detail: 'Via MessageService'});
       });
   }
-
-  /*  userAttendEvent() {
-
-      if (this.userService.userId() in this.eventDetailGroup.controls.confirmed_users.value) {
-        return false;
-      } else {
-        return true;
-      }
-    }
-
-    userUnattendEvent() {
-
-      if (this.userService.userId() in this.eventDetailGroup.controls.confirmed_users.value) {
-        return true;
-      } else {
-        return false;
-      }
-    }*/
 }

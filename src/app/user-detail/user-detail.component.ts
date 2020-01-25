@@ -47,9 +47,6 @@ export class UserDetailComponent implements OnInit {
             this.userFriendsBool = Boolean(JSON.parse(response));
           }
         });
-      /*  this.userService.checkFriends(this.userService.userId(), this.ftwUserDetailGroup.controls.user_id.value).subscribe((response) => {
-            this.userFriends = response;
-        });*/
     }
 
     setFtwUser() {

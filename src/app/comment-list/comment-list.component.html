@@ -1,36 +1,27 @@
 <!--CSS FUNKTIONIERT NOCHT NICHT RICHTIG!-->
 <app-comment-form [eventId]="eventId" *ngIf="userService.hasPermission('ftw.add_comment')"></app-comment-form>
-
 <p-virtualScroller [value]="comments" scrollHeight="500px" [itemSize]="100">
-
   <ng-template let-comment pTemplate="item" let-i="index">
     <div class="ui-g comments-item">
-      <!--<div class="ui-g-12 ui-md-2">
-          <div style="font-size: 24px; text-align: center; padding-top: 48px">{{i}}</div>
-      </div>-->
-      <!-- <div class="ui-g-12 ui-md-2">
-
-      </div>-->
       <div class="ui-g-12 ui-md-8">
         <div class="ui-g">
           <div class="ui-g-2 ui-sm-3" *ngIf="comment?.user_picture">
-            <img width="70" height="70" alt="logo" src="/api/media/{{comment.user_picture}}"/>
+            <a [routerLink]="'/user-detail/'+ comment?.user_id">
+              <img width="70" height="70" alt="logo" src="/api/media/{{comment.user_picture}}"/></a>
           </div>
           <div class="ui-g-2 ui-sm-3" *ngIf="!comment?.user_picture">
             <img width="70" height="70" alt="logo" src="assets/user_picture_default.jpg"/>
           </div>
           <div class="ui-g-10 ui-sm-8">
-            <p><span style="font-weight:bold">{{comment?.user_name}}</span> posted on <span
+            <p><a [routerLink]="'/user-detail/'+ comment?.user_id"> <span
+              style="font-weight:bold">{{comment?.user_name}}</span></a> posted on <span
               style="font-weight:bold">{{comment?.create_date  | date:'dd. MMM  yyyy, HH:mm '}}</span>:
             </p>
             <p [innerHTML]="comment?.content"></p>
           </div>
-
-
         </div>
       </div>
     </div>
   </ng-template>
-
 </p-virtualScroller>
 

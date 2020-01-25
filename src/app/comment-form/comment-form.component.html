@@ -1,33 +1,18 @@
 <h3>Post your comment!</h3>
 <form [formGroup]="commentFormGroup">
-<p-editor [(ngModel)]="comment" formControlName="content" [style]="{'height':'320px'}">
-  <p-header>
+  <p-editor [(ngModel)]="comment" formControlName="content" [style]="{'height':'320px'}">
+    <p-header>
         <span class="ql-formats">
             <button class="ql-bold" aria-label="Bold"></button>
             <button class="ql-italic" aria-label="Italic"></button>
             <button class="ql-underline" aria-label="Underline"></button>
         </span>
-  </p-header>
-</p-editor>
+    </p-header>
+  </p-editor>
 </form>
-<p>Value: {{comment||null}}</p>
 <div class="ui-g">
-<div class="ui-g-1 ui-m-2 ui-sm-3">
-<button  pButton type="button" label="Post" icon="pi pi-comment" [disabled]="!commentFormGroup.valid" (click)="createComment()"></button>
+  <div class="ui-g-1 ui-m-2 ui-sm-3">
+    <button pButton type="button" label="Post" icon="pi pi-comment" [disabled]="!commentFormGroup.valid"
+            (click)="createComment()"></button>
+  </div>
 </div>
-</div>
-<!--<form [formGroup]="commentFormGroup" class="comment-form">
-  <mat-form-field>
-    <input matInput type="text" placeholder="Content" formControlName="content" required>
-    <mat-hint align="end">The content of the comment</mat-hint>
-    <mat-error *ngIf="commentFormGroup.controls.content.hasError('required')">Content is required</mat-error>
-  </mat-form-field>
-
-  <br/>
-  <mat-card-actions align="center">
-    <button mat-raised-button color="primary" [disabled]="!commentFormGroup.valid" (click)="createComment()">
-      <span>Post</span>
-    </button>
-  </mat-card-actions>
-</form>
--->

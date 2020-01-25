@@ -2,27 +2,6 @@
 <div class="ui-g">
   <h1>{{ftwUserDetailGroup.controls.user_username.value}}</h1>
 </div>
-<!--<div class="ui-g-12 ui-md-2"
-     *ngIf="userAddFriend()&&ftwUserDetailGroup.controls.user_id.value!=userService.userId()&&userService.userId()!=null">
-  <button (click)="addOrRemoveAsFriend()" class="ui-button"  pButton type="button" label="Add as Friend" icon="pi pi-user-plus"
-          style="margin-right: .25em"></button>
-</div>-->
-
-<!--<div *ngIf="ftwUserDetailGroup.controls.user_id.value!=userService.userId()&&userService.userId()!=null"
-     class="ui-g-12 ui-md-3">
-  <p-toggleButton onLabel="You are both friends!" offLabel="Add This"
-                  (onChange)="addOrRemoveAsFriend()" onIcon="fa fa-check" offIcon="fa fa-times" iconPos="right"
-                  [(ngModel)]="userFriendsBool"></p-toggleButton>
-</div>-->
-
-<!--<div
-  *ngIf="userRemoveFriend()&&ftwUserDetailGroup.controls.user_id.value!=userService.userId()&&userService.userId()!=null"
-  class="ui-g-12 ui-md-2">
-  <button (click)="addOrRemoveAsFriend()" class="ui-button"
-
-          pButton type="button" label="Remove as Friend" icon="pi pi-user-plus"
-          style="margin-right: .25em"></button>
-</div>-->
 <p-accordion [multiple]="true" class="ui-g-12 ui-md-6"
              *ngIf="userService.userId()!=ftwUserDetailGroup.controls.user_id.value">
   <p-accordionTab selected=true header="Actions">
@@ -68,12 +47,7 @@
              [src]="'/api/media/' + ftwUserDetailGroup.controls.picture.value">
         <img *ngIf="!ftwUserDetailGroup.controls?.picture.value" width="200px"
              [src]="'/assets/user_picture_default.jpg'">
-        <!--<div *ngIf="userService.userId()==ftwUserDetailGroup.controls.user_id.value">
-          <p>Change Picture:</p>
 
-          <p-fileUpload url="./api/media/upload" accept="image/*" name="myfile[]" showUploadButton=false
-                        (onSelect)="uploadFile($event)" showUploadButton="false"></p-fileUpload>
-        </div>-->
       </div>
       <div class="ui-g ui-md-6">
         <h2>Your Data:</h2>

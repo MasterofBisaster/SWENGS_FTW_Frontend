@@ -1,21 +1,20 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-    MatButtonModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatMenuModule,
-    MatNativeDateModule,
-    MatSelectModule,
-    MatTableModule,
-    MatToolbarModule
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatDatepickerModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatSelectModule,
+  MatTableModule,
+  MatToolbarModule
 } from '@angular/material';
 import {LogoutComponent} from './logout/logout.component';
 import {LoginComponent} from './login/login.component';
@@ -28,13 +27,9 @@ import {CommentFormComponent} from './comment-form/comment-form.component';
 import {CommentListComponent} from './comment-list/comment-list.component';
 import {CategoryListComponent} from './category-list/category-list.component';
 import {CategoryFormComponent} from './category-form/category-form.component';
-import {FtwWordFormComponent} from './ftw-word-form/ftw-word-form.component';
-import {FtwWordListComponent} from './ftw-word-list/ftw-word-list.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {JwtModule} from '@auth0/angular-jwt';
-
-
 import {MenuModule} from 'primeng/menu';
 import {MenubarModule} from 'primeng/menubar';
 import {InputTextModule} from 'primeng/inputtext';
@@ -56,7 +51,6 @@ import {FileUploadModule} from 'primeng/fileupload';
 import {MessageModule} from 'primeng/message';
 import {CheckboxModule} from 'primeng/checkbox';
 import {PanelModule} from 'primeng/panel';
-
 import {CookieService} from 'ngx-cookie-service';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {ToggleButtonModule} from 'primeng/primeng';
@@ -81,8 +75,6 @@ export function tokenGetter() {
         CommentListComponent,
         CategoryListComponent,
         CategoryFormComponent,
-        FtwWordFormComponent,
-        FtwWordListComponent,
         RegisterComponent,
         UserDetailComponent,
         UserFormComponent,
