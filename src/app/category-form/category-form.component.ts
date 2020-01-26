@@ -36,13 +36,12 @@ export class CategoryFormComponent implements OnInit {
         if (category.id) {
             this.categoryService.updateCategory(category)
                 .subscribe(() => {
-                    alert('updated successfully');
                     this.router.navigate(['category-list']);
                 });
         } else {
             this.categoryService.createCategory(category)
                 .subscribe((response: any) => {
-                    this.router.navigate(['home']);
+                  this.router.navigate(['category-list']);
                 });
         }
     }
