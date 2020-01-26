@@ -73,12 +73,12 @@ export class EventFormComponent implements OnInit {
     if (event.id) {
       this.eventService.updateEvent(event)
         .subscribe(() => {
-          alert('updated successfully');
+          this.router.navigate(['/event-list/']);
         });
     } else {
       this.eventService.createEvent(event)
         .subscribe((response: any) => {
-          this.router.navigate(['/event-form/' + response.id]);
+          this.router.navigate(['/event-list']);
         });
     }
   }

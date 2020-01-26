@@ -82,9 +82,13 @@
     <div class="ui-g ui-md-12">
       <h3 *ngIf="!eventFormGroup.controls?.picture.value">No picture added!</h3>
       <h3 *ngIf="eventFormGroup.controls?.picture.value">Picture of the event:</h3>
-      <img *ngIf="eventFormGroup.controls?.picture.value" class="ui-g-12 ui-md-3" width="400"
+    </div>
+    <div class="ui-g-12 ui-md-3">
+      <img *ngIf="eventFormGroup.controls?.picture.value"  width="400"
            [src]="'/api/media/' + eventFormGroup.controls.picture.value">
     </div>
+
+
     <div class="ui-g ui-md-3">
       <p-fileUpload chooseLabel="Upload a picture..." url="./api/media/upload"
                     accept="image/*"
