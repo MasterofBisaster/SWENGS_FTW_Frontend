@@ -1,5 +1,5 @@
 <div [class]="classCard" *ngFor="let category of categories">
-  <p-card [header]="category.title" subheader="afsf" [style]="{width: '100%'}" styleClass="ui-card-shadow">
+  <p-card [header]="category.title" [style]="{width: '100%'}" styleClass="ui-card-shadow">
     <p-header>
       <div *ngIf="category?.picture" class="aspect-ratio-box">
         <img src="/api/media/{{category.picture}}">
@@ -8,25 +8,23 @@
         <img src="assets/usercard.png">
       </div>
     </p-header>
-    <div>Test
-    </div>
     <p-footer>
 
       <div class="ui-g">
         <div [class]="classButton">
           <button [routerLink]="'/event-list/category/'+category.id" pButton type="button" label="More events"
                   icon="pi pi-search-plus"
-                  style="margin-right: .25em"></button>
+                  ></button>
         </div>
         <div [class]="classButtonEdit">
           <button class="ui-button-info" *ngIf="userService.hasPermission('ftw.change_category')"
                   [routerLink]="'/category-form/' + category.id" pButton type="button" label="Edit"
-                  icon="pi pi-pencil" style="margin-right: .25em"></button>
+                  icon="pi pi-pencil"></button>
         </div>
         <div [class]="classButtonDelete">
           <button class="ui-button-danger" *ngIf="userService.hasPermission('ftw.delete_category')"
                   (click)="deleteCategory(category.id)" pButton type="button" label="Delete" icon="pi pi-trash"
-                  style="margin-right: .25em"></button>
+                  ></button>
         </div>
       </div>
     </p-footer>

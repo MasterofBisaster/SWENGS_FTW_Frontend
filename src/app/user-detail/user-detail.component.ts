@@ -42,11 +42,13 @@ export class UserDetailComponent implements OnInit {
         this.route.params.subscribe((params: { filter: string }) => {
             this.setFtwUser();
         });
-        this.userService.checkFriends(this.userService.userId(), this.ftwUserDetailGroup.controls.user_id.value).subscribe((response) => {
-          if (typeof response === 'string') {
-            this.userFriendsBool = Boolean(JSON.parse(response));
-          }
-        });
+        if (this.userService.userId() != null) {
+          this.userService.checkFriends(this.userService.userId(), this.ftwUserDetailGroup.controls.user_id.value).subscribe((response) => {
+            if (typeof response === 'string') {
+              this.userFriendsBool = Boolean(JSON.parse(response));
+            }
+          });
+        }
     }
 
     setFtwUser() {
