@@ -2,43 +2,81 @@
   <p-header><h1>Create an Event</h1></p-header>
 
   <form [formGroup]="eventFormGroup" class="event-form">
+
     <!--NAME-->
-    <div class="ui-g-12 ui-md-12">
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-9">
     <span class="ui-float-label">
         <input id="float-name" type="text" size="30" formControlName="name" pInputText required>
         <label for="float-name">Eventname</label>
       </span>
+      </div>
+      <div class="ui-g-6 ui-md-3" *ngIf="eventFormGroup.controls.name.hasError('required')">
+        <p-message severity="error" text="Field is required"></p-message>
+      </div>
     </div>
+
+
     <!--  start date-->
-    <div class="ui-g-12 ui-md-6">
-      <p-calendar placeholder="Start Date" formControlName="start_date" [monthNavigator]="true" [yearNavigator]="true"
-                  yearRange="2020:2030" showTime="true" showSeconds="true" dateFormat="yy-mm-dd"></p-calendar>
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-4">
+        <p-calendar showButtonBar="true" placeholder="Start Date" formControlName="start_date" [monthNavigator]="true"
+                    [yearNavigator]="true"
+                    yearRange="2020:2030" showTime="true" showSeconds="true" dateFormat="yy-mm-dd"></p-calendar>
+      </div>
+      <div class="ui-g-6 ui-md-3" *ngIf="eventFormGroup.controls.start_date.hasError('required')">
+        <p-message severity="error" text="Field is required"></p-message>
+      </div>
     </div>
+
     <!--  end date-->
-    <div class="ui-g-12 ui-md-6">
-      <p-calendar placeholder="End Date" formControlName="end_date" [monthNavigator]="true" [yearNavigator]="true"
-                  yearRange="2020:2030" showTime="true" showSeconds="true" dateFormat="yy-mm-dd"></p-calendar>
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-4">
+        <p-calendar showButtonBar="true" placeholder="End Date" formControlName="end_date" [monthNavigator]="true"
+                    [yearNavigator]="true"
+                    yearRange="2020:2030" showTime="true" showSeconds="true" dateFormat="yy-mm-dd"></p-calendar>
+      </div>
+      <div class="ui-g-6 ui-md-3" *ngIf="eventFormGroup.controls.end_date.hasError('required')">
+        <p-message severity="error" text="Field is required"></p-message>
+      </div>
     </div>
+
+
     <!--   private-->
     <div class="ui-md-12">
       <!--      <mat-checkbox formControlName="private">Private</mat-checkbox>-->
       <p-checkbox formControlName="private" binary="true"
                   label="Should your event only be visible to your friends?"></p-checkbox>
     </div>
+    <div class="ui-g-6 ui-md-3" *ngIf="eventFormGroup.controls.private.hasError('required')">
+      <p-message severity="error" text="Field is required"></p-message>
+    </div>
+
+
     <!--    Location-->
     <div class="ui-g">
-      <div class="ui-g-8 ui-md-6">
-        <p-dropdown formControlName="location" editable="true" [options]="locationOptions" dataKey="id"
+      <div class="ui-g-8 ui-md-3">
+        <p-dropdown formControlName="location" [options]="locationOptions" dataKey="id"
                     placeholder="Select a Location"
                     optionLabel=name></p-dropdown>
       </div>
-      <!--    Category-->
-      <div class="ui-g-8 ui-md-6">
-        <p-dropdown formControlName="category" editable="true" [options]="categoryOptions" dataKey="id"
+      <div class="ui-g-6 ui-md-3" *ngIf="eventFormGroup.controls.location.hasError('required')">
+        <p-message text="Field is required" severity="error"></p-message>
+      </div>
+
+
+    <!--    Category-->
+      <div class="ui-g-8 ui-md-3">
+        <p-dropdown formControlName="category" [options]="categoryOptions" dataKey="id"
                     placeholder="Select a Category"
                     optionLabel="title"></p-dropdown>
       </div>
+      <div class="ui-g-6 ui-md-3" *ngIf="eventFormGroup.controls.category.hasError('required')">
+        <p-message text="Field is required" severity="error"></p-message>
+      </div>
     </div>
+
+
     <!--Short Description-->
     <div class="ui-g">
       <div class="ui-g-12 ui-md-10">
@@ -47,7 +85,14 @@
         <label for="float-sdescription">Short Description</label>
       </span>
       </div>
+      <div class="ui-g-6 ui-md-3" *ngIf="eventFormGroup.controls.short_description.hasError('required')">
+        <p-message text="Field is required" severity="error"></p-message>
+      </div>
+      <div class="ui-g-12 ui-md-5" *ngIf="eventFormGroup.controls.short_description.hasError('maxlength')">
+        <p-message text="Maximum length is 50 characters" severity="error"></p-message>
+      </div>
     </div>
+
     <!--    Description-->
     <div class="ui-g">
       <div class="ui-g-12 ui-md-12">
@@ -61,7 +106,12 @@
           </p-header>
         </p-editor>
       </div>
+      <div class="ui-g-6 ui-md-3" *ngIf="eventFormGroup.controls.description.hasError('required')" >
+        <p-message text="Field is required" severity="error"></p-message>
+      </div>
     </div>
+
+
     <!--    Max Users-->
     <div class="ui-g">
       <div class="ui-g-6 ui-md-3">
@@ -70,7 +120,10 @@
         <label for="float-maxusers">Max Users</label>
       </span>
       </div>
+    </div>
+
       <!--    Costs-->
+    <div class="ui-g">
       <div class="ui-g-6 ui-md-3">
       <span class="ui-float-label">
         <input id="float-costs" type="number" formControlName="costs" pInputText>
@@ -78,16 +131,21 @@
       </span>
       </div>
     </div>
-    <!--    Picture Upload-->
-    <div class="ui-g ui-md-12">
-      <h3 *ngIf="!eventFormGroup.controls?.picture.value">No picture added!</h3>
-      <h3 *ngIf="eventFormGroup.controls?.picture.value">Picture of the event:</h3>
-    </div>
-    <div class="ui-g-12 ui-md-3">
-      <img *ngIf="eventFormGroup.controls?.picture.value"  width="400"
-           [src]="'/api/media/' + eventFormGroup.controls.picture.value">
-    </div>
 
+
+
+    <!--    Picture Upload-->
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-12">
+        <h3 *ngIf="!eventFormGroup.controls?.picture.value">No picture added!</h3>
+        <h3 *ngIf="eventFormGroup.controls?.picture.value">Picture of the event:</h3>
+      </div>
+
+      <div class="ui-g-12 ui-md-3">
+        <img *ngIf="eventFormGroup.controls?.picture.value" width="300"
+             [src]="'/api/media/' + eventFormGroup.controls.picture.value">
+      </div>
+    </div>
 
     <div class="ui-g ui-md-3">
       <p-fileUpload chooseLabel="Upload a picture..." url="./api/media/upload"

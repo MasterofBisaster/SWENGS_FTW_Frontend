@@ -15,7 +15,7 @@
         <button pButton type="button" label="Edit Event" icon="pi pi-pencil"
                 [routerLink]="'/event-form/' + eventDetailGroup.controls.id.value"></button>
       </div>
-      <div class="ui-g-6 ui-md-5" *ngIf="eventDetailGroup.controls.creator.value != userService.userId()">
+      <div class="ui-g-8 ui-md-5" *ngIf="eventDetailGroup.controls.creator.value != userService.userId()">
         <p-toggleButton onLabel="Attending Event" offLabel="Unattending Event"
                         (onChange)="attendToEvent()" onIcon="fa fa-check" offIcon="fa fa-times" iconPos="right"
                         [(ngModel)]="attendEventBool"></p-toggleButton>

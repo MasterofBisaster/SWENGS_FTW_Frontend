@@ -10,7 +10,6 @@ import {MessageService} from 'primeng/api';
   templateUrl: './event-detail.component.html',
   styleUrls: ['./event-detail.component.scss'],
   providers: [MessageService]
-
 })
 export class EventDetailComponent implements OnInit {
 
@@ -66,7 +65,11 @@ export class EventDetailComponent implements OnInit {
   attendToEvent() {
     this.eventService.attendOrNotToEvent(this.eventDetailGroup.controls.id.value, this.userService.userId())
       .subscribe(() => {
-        this.messageService.add({severity: 'success', summary: 'Attendance changed!', detail: 'Via MessageService'});
+        if (this.attendEventBool) {
+          this.messageService.add({severity: 'success', summary: 'Attendance changed!', detail: 'You are now attending this event!'});
+        } else {
+          this.messageService.add({severity: 'success', summary: 'Attendance changed!', detail: 'You are now unattending this event!'});
+        }
       });
   }
 }
