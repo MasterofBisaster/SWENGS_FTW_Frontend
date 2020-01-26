@@ -37,6 +37,7 @@ export class CategoryFormComponent implements OnInit {
             this.categoryService.updateCategory(category)
                 .subscribe(() => {
                     alert('updated successfully');
+                    this.router.navigate(['category-list']);
                 });
         } else {
             this.categoryService.createCategory(category)

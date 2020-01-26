@@ -66,7 +66,7 @@ export class EventDetailComponent implements OnInit {
   attendToEvent() {
     this.eventService.attendOrNotToEvent(this.eventDetailGroup.controls.id.value, this.userService.userId())
       .subscribe(() => {
-        this.messageService.add({severity: 'success', summary: 'Information changed', detail: 'Via MessageService'});
+        this.messageService.add({severity: 'success', summary: 'Attendance changed!', detail: 'Via MessageService'});
       });
   }
 }

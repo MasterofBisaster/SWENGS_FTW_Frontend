@@ -42,11 +42,12 @@ export class LocationFormComponent implements OnInit {
             this.locationService.updateLocation(location)
                 .subscribe(() => {
                     alert('updated successfully');
+                    this.router.navigate(['location-list']);
                 });
         } else {
             this.locationService.createLocation(location)
                 .subscribe((response: any) => {
-                    this.router.navigate(['/home/']);
+                  this.router.navigate(['/home/']);
                 });
         }
     }
