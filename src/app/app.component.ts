@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   isLoggedIn = false;
   ftwPhrase;
   sfwFtwPhrase;
-  sfwMode = true;
+  nsfwMode = false;
   searchString: string;
   mobile: boolean;
 

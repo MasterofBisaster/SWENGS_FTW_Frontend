@@ -22,11 +22,11 @@
 <div class="content-section implementation ui-fluid">
   <div *ngIf="!mobile" class="ui-g-12 ui-md-2">
       <img alt="logo" src="../assets/img/ftw_logo.png" width="70%" routerLink='home'/>
-    <h4 *ngIf="sfwMode">{{ftwPhrase}}</h4>
-    <h4 *ngIf="!sfwMode">{{sfwFtwPhrase}}</h4>
+    <h4 *ngIf="nsfwMode">{{ftwPhrase}}</h4>
+    <h4 *ngIf="!nsfwMode">{{sfwFtwPhrase}}</h4>
     <div class="ui-md-6">
       <p-toggleButton onLabel="NSFW Mode" offLabel="NSFW Mode"
-                      onIcon="fa fa-check" offIcon="fa fa-times" iconPos="right" [(ngModel)]="sfwMode"></p-toggleButton>
+                      onIcon="fa fa-check" offIcon="fa fa-times" iconPos="right" [(ngModel)]="nsfwMode"></p-toggleButton>
 
     </div>
     <div class="ui-md-8">
