@@ -22,7 +22,7 @@ export class CategoryService {
   }
 
   updateCategory(category) {
-    return this.http.put('/api/category/' + category.id + '/update', location);
+    return this.http.put('/api/category/' + category.id + '/update', category);
   }
 
   getCategory(id) {

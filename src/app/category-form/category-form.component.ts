@@ -21,7 +21,7 @@ export class CategoryFormComponent implements OnInit {
     ngOnInit() {
         this.categoryFormGroup = this.fb.group({
             id: [null],
-            title: ['', [Validators.required]],
+          title: [null, [Validators.required]],
             picture: [null]
         });
         const data = this.route.snapshot.data;
